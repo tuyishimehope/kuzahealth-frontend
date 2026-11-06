@@ -87,43 +87,40 @@ const SignIn = () => {
     setFormStep('submitting');
 
     try {
-      // Create the user object
-      const user = { email: data.email, password: data.password };
+      const response = await axios.post(`${api}/api/v1/auth/login`, {
+        email: data.email,
+        password: data.password,
+      });
 
-      // Store user data temporarily
-      localStorage.setItem("user", JSON.stringify(user));
-
-      // API call with proper error handling
-      const response = await axios.post(`${api}/api/v1/auth/send-otp`, user);
-      
-      console.log("OTP sent successfully:", response.data);
-      
-      // Success state with animation
+      localStorage.setItem("token", JSON.stringify(response.data.token));
       setFormStep('success');
-      
-      toast.success("OTP sent successfully!", {
-        description: "Please check your email for the verification code.",
-        duration: 4000,
+
+      toast.success("Signed in successfully", {
+        duration: 3000,
         icon: <CheckCircle2 className="w-5 h-5" />,
       });
 
-      // Delay navigation for better UX
-      setTimeout(() => {
-        navigate("/auth/otp-verification", { 
-          state: { email: data.email } // Pass email to next page
-        });
-      }, 1500);
+      const destination =
+        response.data.userType === "ADMIN"
+          ? "/superadmin/dashboard"
+          : response.data.userType === "HEALTH_WORKER"
+          ? "/healthworker/dashboard"
+          : "/data-analyst/dashboard";
+
+      setTimeout(() => navigate(destination), 800);
 
     } catch (error) {
       setFormStep('error');
-      
-      const axiosError = error as AxiosError<{ message?: string }>;
-      const errorMessage = axiosError.response?.data?.message || 
-                          axiosError.message || 
-                          "Failed to send OTP. Please try again.";
-      
-      console.error("Error sending OTP:", error);
-      
+
+      const axiosError = error as AxiosError<{ message?: string } | string>;
+      const body = axiosError.response?.data;
+      const errorMessage =
+        (typeof body === "string" ? body : body?.message) ||
+        axiosError.message ||
+        "Failed to sign in. Please try again.";
+
+      console.error("Error signing in:", error);
+
       toast.error("Sign In Failed", {
         description: errorMessage,
         duration: 5000,
@@ -186,7 +183,7 @@ const SignIn = () => {
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 />
                 <p className="text-neutral-600 font-medium">
-                  {formStep === 'submitting' && "Sending OTP..."}
+                  {formStep === 'submitting' && "Signing in..."}
                   {formStep === 'success' && "Success! Redirecting..."}
                 </p>
               </div>

@@ -5,7 +5,6 @@ import {
   ForgotPassword,
   CreateNewPassword,
 } from "../../pages/auth";
-import OtpVerification from "@/pages/auth/OtpVerification";
 
 interface RouteConfig {
   path: string;
@@ -17,7 +16,6 @@ const AUTH_ROUTES = {
   SIGNUP: "/auth/signup",
   FORGOT_PASSWORD: "/auth/forgot-password",
   CREATE_NEW_PASSWORD: "/auth/reset-password",
-  OTP_VERIFICATION: "/auth/otp-verification",
 };
 
 const AuthRoutes: RouteConfig[] = [
@@ -36,10 +34,6 @@ const AuthRoutes: RouteConfig[] = [
   {
     path: AUTH_ROUTES.CREATE_NEW_PASSWORD,
     element: <CreateNewPassword />,
-  },
-  {
-    path: AUTH_ROUTES.OTP_VERIFICATION,
-    element: <OtpVerification/>
   }
 ];
 
