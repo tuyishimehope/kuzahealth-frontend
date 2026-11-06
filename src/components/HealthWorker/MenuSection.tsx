@@ -14,8 +14,8 @@ const MenuSection = ({ title, expanded, toggleExpanded, children, isCollapsed }:
   return (
     <div className="w-full mb-6">
       <div className="flex items-center justify-between px-4 py-2 cursor-pointer" onClick={toggleExpanded}>
-        <h3 className="text-gray-700 font-medium text-sm uppercase tracking-wider">{title}</h3>
-        {expanded ? <IoChevronUpOutline className="w-4 h-4 text-gray-500" /> : <IoChevronDownOutline className="w-4 h-4 text-gray-500" />}
+        <h3 className="text-neutral-700 font-medium text-sm uppercase tracking-wider">{title}</h3>
+        {expanded ? <IoChevronUpOutline className="w-4 h-4 text-neutral-500" /> : <IoChevronDownOutline className="w-4 h-4 text-neutral-500" />}
       </div>
       {expanded && <div className="mt-1">{children}</div>}
     </div>

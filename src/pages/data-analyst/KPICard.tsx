@@ -15,29 +15,30 @@ import {
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import { keyframes } from '@mui/system';
+import { alpha as tokenAlpha, colors } from "@/theme/colors";
 
 // Define color mapping for better type safety and consistency
 const colorMap = {
-  primary: '#7c3aed',
-  success: '#10b981',
-  warning: '#f59e0b',
-  error: '#ef4444',
-  info: '#3b82f6',
+  primary: colors.primary[600],
+  success: colors.success[500],
+  warning: colors.warning[500],
+  error: colors.danger[500],
+  info: colors.info[500],
 };
 
 // Animation keyframes
 const pulseAnimation = keyframes`
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+    box-shadow: 0 0 0 0 ${tokenAlpha("primary-600", 0.4)};
   }
   70% {
     transform: scale(1.02);
-    box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+    box-shadow: 0 0 0 10px ${tokenAlpha("primary-600", 0)};
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+    box-shadow: 0 0 0 0 ${tokenAlpha("primary-600", 0)};
   }
 `;
 

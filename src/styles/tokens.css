@@ -1,0 +1,175 @@
+/* =====================================================================
+ * KuzaHealth design tokens — THE single source of truth for color.
+ *
+ * Change a value here and Tailwind classes, shadcn components, Mantine,
+ * MUI and every chart pick it up. Values are space-separated RGB channels
+ * so Tailwind opacity modifiers work (e.g. bg-primary-600/20).
+ *
+ *   1. Palette scales  (--primary-600, --neutral-200, ...)  raw ramps
+ *   2. Semantic tokens (--primary, --background, ...)       what UI uses
+ *
+ * To rebrand, edit the "primary" ramp (and "neutral" if desired).
+ * ===================================================================== */
+
+:root {
+
+  /* primary */
+  --primary-50: 238 244 255; /* #EEF4FF */
+  --primary-100: 220 231 255; /* #DCE7FF */
+  --primary-200: 191 211 255; /* #BFD3FF */
+  --primary-300: 147 180 255; /* #93B4FF */
+  --primary-400: 94 139 255; /* #5E8BFF */
+  --primary-500: 58 109 255; /* #3A6DFF */
+  --primary-600: 30 94 255; /* #1E5EFF */
+  --primary-700: 24 73 214; /* #1849D6 */
+  --primary-800: 22 60 168; /* #163CA8 */
+  --primary-900: 19 47 126; /* #132F7E */
+  --primary-950: 10 26 63; /* #0A1A3F */
+
+  /* neutral */
+  --neutral-50: 246 248 252; /* #F6F8FC */
+  --neutral-100: 238 242 248; /* #EEF2F8 */
+  --neutral-200: 220 228 242; /* #DCE4F2 */
+  --neutral-300: 195 206 226; /* #C3CEE2 */
+  --neutral-400: 142 155 183; /* #8E9BB7 */
+  --neutral-500: 91 107 140; /* #5B6B8C */
+  --neutral-600: 69 83 111; /* #45536F */
+  --neutral-700: 51 64 89; /* #334059 */
+  --neutral-800: 31 42 68; /* #1F2A44 */
+  --neutral-900: 11 27 63; /* #0B1B3F */
+  --neutral-950: 5 11 36; /* #050B24 */
+
+  /* info */
+  --info-50: 240 249 255; /* #F0F9FF */
+  --info-100: 224 242 254; /* #E0F2FE */
+  --info-200: 186 230 253; /* #BAE6FD */
+  --info-300: 125 211 252; /* #7DD3FC */
+  --info-400: 56 189 248; /* #38BDF8 */
+  --info-500: 14 165 233; /* #0EA5E9 */
+  --info-600: 2 132 199; /* #0284C7 */
+  --info-700: 3 105 161; /* #0369A1 */
+  --info-800: 7 89 133; /* #075985 */
+  --info-900: 12 74 110; /* #0C4A6E */
+  --info-950: 8 47 73; /* #082F49 */
+
+  /* success */
+  --success-50: 236 253 245; /* #ECFDF5 */
+  --success-100: 209 250 229; /* #D1FAE5 */
+  --success-200: 167 243 208; /* #A7F3D0 */
+  --success-300: 110 231 183; /* #6EE7B7 */
+  --success-400: 52 211 153; /* #34D399 */
+  --success-500: 16 185 129; /* #10B981 */
+  --success-600: 5 150 105; /* #059669 */
+  --success-700: 4 120 87; /* #047857 */
+  --success-800: 6 95 70; /* #065F46 */
+  --success-900: 6 78 59; /* #064E3B */
+  --success-950: 2 44 34; /* #022C22 */
+
+  /* warning */
+  --warning-50: 255 251 235; /* #FFFBEB */
+  --warning-100: 254 243 199; /* #FEF3C7 */
+  --warning-200: 253 230 138; /* #FDE68A */
+  --warning-300: 252 211 77; /* #FCD34D */
+  --warning-400: 251 191 36; /* #FBBF24 */
+  --warning-500: 245 158 11; /* #F59E0B */
+  --warning-600: 217 119 6; /* #D97706 */
+  --warning-700: 180 83 9; /* #B45309 */
+  --warning-800: 146 64 14; /* #92400E */
+  --warning-900: 120 53 15; /* #78350F */
+  --warning-950: 69 26 3; /* #451A03 */
+
+  /* danger */
+  --danger-50: 254 242 242; /* #FEF2F2 */
+  --danger-100: 254 226 226; /* #FEE2E2 */
+  --danger-200: 254 202 202; /* #FECACA */
+  --danger-300: 252 165 165; /* #FCA5A5 */
+  --danger-400: 248 113 113; /* #F87171 */
+  --danger-500: 239 68 68; /* #EF4444 */
+  --danger-600: 220 38 38; /* #DC2626 */
+  --danger-700: 185 28 28; /* #B91C1C */
+  --danger-800: 153 27 27; /* #991B1B */
+  --danger-900: 127 29 29; /* #7F1D1D */
+  --danger-950: 69 10 10; /* #450A0A */
+
+  /* highlight */
+  --highlight-50: 253 242 248; /* #FDF2F8 */
+  --highlight-100: 252 231 243; /* #FCE7F3 */
+  --highlight-200: 251 207 232; /* #FBCFE8 */
+  --highlight-300: 249 168 212; /* #F9A8D4 */
+  --highlight-400: 244 114 182; /* #F472B6 */
+  --highlight-500: 236 72 153; /* #EC4899 */
+  --highlight-600: 219 39 119; /* #DB2777 */
+  --highlight-700: 190 24 93; /* #BE185D */
+  --highlight-800: 157 23 77; /* #9D174D */
+  --highlight-900: 131 24 67; /* #831843 */
+  --highlight-950: 80 7 36; /* #500724 */
+
+
+  /* ---------- Semantic tokens (light) ---------- */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-900);
+  --card: 255 255 255;
+  --card-foreground: var(--neutral-900);
+  --popover: 255 255 255;
+  --popover-foreground: var(--neutral-900);
+
+  --primary: var(--primary-600);
+  --primary-foreground: 255 255 255;
+  --secondary: var(--primary-50);
+  --secondary-foreground: var(--primary-700);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --accent: var(--primary-50);
+  --accent-foreground: var(--primary-700);
+  --destructive: var(--danger-500);
+  --destructive-foreground: 255 255 255;
+
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: var(--primary-500);
+
+  /* Brand surfaces (hero, footer, dark sections) */
+  --brand-navy: var(--primary-950);
+  --brand-midnight: var(--neutral-950);
+
+  /* Data visualisation series */
+  --chart-1: var(--primary-600);
+  --chart-2: var(--primary-300);
+  --chart-3: var(--primary-950);
+  --chart-4: var(--success-500);
+  --chart-5: var(--warning-500);
+  --chart-6: var(--info-500);
+  --chart-7: var(--highlight-500);
+  --chart-8: var(--danger-500);
+
+  --radius: 0.5rem;
+}
+
+/* Dark theme: add class="dark" to <html> to enable. */
+.dark {
+  --background: var(--neutral-950);
+  --foreground: var(--neutral-50);
+  --card: var(--neutral-900);
+  --card-foreground: var(--neutral-50);
+  --popover: var(--neutral-900);
+  --popover-foreground: var(--neutral-50);
+
+  --primary: var(--primary-500);
+  --primary-foreground: 255 255 255;
+  --secondary: var(--neutral-800);
+  --secondary-foreground: var(--neutral-50);
+  --muted: var(--neutral-800);
+  --muted-foreground: var(--neutral-400);
+  --accent: var(--neutral-800);
+  --accent-foreground: var(--neutral-50);
+  --destructive: var(--danger-600);
+  --destructive-foreground: 255 255 255;
+
+  --border: var(--neutral-800);
+  --input: var(--neutral-800);
+  --ring: var(--primary-400);
+
+  --chart-1: var(--primary-400);
+  --chart-2: var(--primary-200);
+  --chart-3: var(--info-400);
+}

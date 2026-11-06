@@ -41,13 +41,13 @@ const MonitorCard = ({
   icon: any;
   color: string;
 }) => (
-  <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center space-x-4">
+  <div className="bg-white rounded-xl p-4 shadow-sm border border-neutral-100 flex items-center space-x-4">
     <div className={`p-3 rounded-lg ${color}`}>
       <Icon className="text-white" size={20} />
     </div>
     <div>
-      <p className="text-sm text-gray-600">{title}</p>
-      <p className="text-lg font-semibold text-gray-900">{value ?? "N/A"}</p>
+      <p className="text-sm text-neutral-600">{title}</p>
+      <p className="text-lg font-semibold text-neutral-900">{value ?? "N/A"}</p>
     </div>
   </div>
 );
@@ -124,13 +124,13 @@ const SystemMonitor = () => {
         title: "Database",
         value: health?.components?.db?.status ?? "N/A",
         icon: Database,
-        color: health?.components?.db?.status === "UP" ? "bg-green-500" : "bg-red-500",
+        color: health?.components?.db?.status === "UP" ? "bg-success-500" : "bg-danger-500",
       },
       {
         title: "Disk Space",
         value: health?.components?.diskSpace?.status ?? "N/A",
         icon: HardDrive,
-        color: health?.components?.diskSpace?.status === "UP" ? "bg-green-500" : "bg-red-500",
+        color: health?.components?.diskSpace?.status === "UP" ? "bg-success-500" : "bg-danger-500",
       },
       {
         title: "Mail",
@@ -139,13 +139,13 @@ const SystemMonitor = () => {
             ? `DOWN (${health.components.mail.details?.error?.split("\n")[0]})`
             : "UP",
         icon: Mail,
-        color: health?.components?.mail?.status === "UP" ? "bg-green-500" : "bg-red-500",
+        color: health?.components?.mail?.status === "UP" ? "bg-success-500" : "bg-danger-500",
       },
       {
         title: "Ping",
         value: health?.components?.ping?.status ?? "N/A",
         icon: Activity,
-        color: health?.components?.ping?.status === "UP" ? "bg-green-500" : "bg-red-500",
+        color: health?.components?.ping?.status === "UP" ? "bg-success-500" : "bg-danger-500",
       },
     ],
     [health]
@@ -157,14 +157,14 @@ const SystemMonitor = () => {
         title: "CPU Usage",
         value: metrics.cpu != null ? `${(metrics.cpu * 100).toFixed(2)} %` : "N/A",
         icon: Cpu,
-        color: "bg-blue-500",
+        color: "bg-info-500",
       },
       {
         title: "Heap Memory Used",
         value:
           metrics.heapMemory != null ? `${(metrics.heapMemory / 1024 / 1024).toFixed(1)} MB` : "N/A",
         icon: Server,
-        color: "bg-green-500",
+        color: "bg-success-500",
       },
       {
         title: "Non-Heap Memory Used",
@@ -173,19 +173,19 @@ const SystemMonitor = () => {
             ? `${(metrics.nonHeapMemory / 1024 / 1024).toFixed(1)} MB`
             : "N/A",
         icon: Server,
-        color: "bg-yellow-500",
+        color: "bg-warning-500",
       },
       {
         title: "App Uptime",
         value: metrics.uptime != null ? `${(metrics.uptime / 60).toFixed(1)} min` : "N/A",
         icon: Activity,
-        color: "bg-purple-500",
+        color: "bg-primary-500",
       },
       {
         title: "Active DB Connections",
         value: metrics.activeConns != null ? metrics.activeConns : "N/A",
         icon: Database,
-        color: "bg-indigo-500",
+        color: "bg-primary-500",
       },
     ],
     [metrics]
@@ -198,7 +198,7 @@ const SystemMonitor = () => {
         {Array(8)
           .fill(0)
           .map((_, i) => (
-            <div key={i} className="bg-gray-100 p-6 rounded-xl animate-pulse h-24"></div>
+            <div key={i} className="bg-neutral-100 p-6 rounded-xl animate-pulse h-24"></div>
           ))}
       </div>
     );
@@ -206,14 +206,14 @@ const SystemMonitor = () => {
 
   // --- Render actual cards ---
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900">System Monitor</h3>
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100 space-y-6">
+      <h3 className="text-lg font-semibold text-neutral-900">System Monitor</h3>
 
       <MonitorCard
         title="Overall Health"
         value={health?.status ?? "Unknown"}
         icon={Activity}
-        color={health?.status === "UP" ? "bg-green-500" : "bg-red-500"}
+        color={health?.status === "UP" ? "bg-success-500" : "bg-danger-500"}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

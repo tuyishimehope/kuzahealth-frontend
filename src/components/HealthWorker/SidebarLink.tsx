@@ -22,7 +22,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
     return (
       <div
         className={`flex items-center space-x-4 py-2 pl-4 transition duration-200 ease-in-out cursor-not-allowed 
-          ${isActive ? "bg-btnSignIn text-white" : "text-slate-900"}`}
+          ${isActive ? "bg-primary text-white" : "text-neutral-900"}`}
       >
         <div>{icon}</div>
         <p className="text-xl">{name}</p>
@@ -36,8 +36,8 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
       className={`flex items-center space-x-4 py-2 pl-4 transition duration-200 ease-in-out 
         ${
           isActive
-            ? "bg-btnSignIn text-white"
-            : "hover:bg-blue-700 hover:cursor-pointer hover:text-white"
+            ? "bg-primary text-white"
+            : "hover:bg-primary-700 hover:cursor-pointer hover:text-white"
         }`}
     >
       <div>{icon}</div>

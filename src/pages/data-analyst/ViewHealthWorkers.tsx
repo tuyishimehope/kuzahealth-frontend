@@ -51,6 +51,7 @@ import {
   useMantineReactTable,
   type MRT_ColumnDef,
 } from "mantine-react-table";
+import { alpha, colors } from "@/theme/colors";
 
 interface HealthWorker {
   id: string;
@@ -161,15 +162,15 @@ const ViewHealthWorkers = () => {
               size={44}
               radius="xl"
               variant="gradient"
-              gradient={{ from: "#7C3AED", to: "#8B5CF6", deg: 135 }}
+              gradient={{ from: colors.primary[600], to: colors.primary[500], deg: 135 }}
               styles={{
                 root: {
-                  boxShadow: "0 4px 12px rgba(147, 51, 234, 0.25)",
+                  boxShadow: `0 4px 12px ${alpha("primary-600", 0.25)}`,
                   border: "2px solid rgba(255, 255, 255, 0.9)",
                   transition: "all 0.2s ease",
                   "&:hover": {
                     transform: "translateY(-2px) scale(1.05)",
-                    boxShadow: "0 6px 16px rgba(147, 51, 234, 0.35)",
+                    boxShadow: `0 6px 16px ${alpha("primary-600", 0.35)}`,
                   },
                 },
               }}
@@ -178,18 +179,18 @@ const ViewHealthWorkers = () => {
             </Avatar>
 
             <Box>
-              <Text size="sm" fw={600} c="#6D28D9" mb={2}>
+              <Text size="sm" fw={600} c={colors.primary[700]} mb={2}>
                 {row.original.first_name} {row.original.last_name}
               </Text>
               <Group spacing={6}>
                 <ThemeIcon
                   size={16}
                   variant="light"
-                  color="grape"
+                  color="brand"
                   radius="xl"
                   style={{
                     background:
-                      "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
+                      `linear-gradient(135deg, ${colors.primary[600]} 0%, ${colors.primary[500]} 100%)`,
                     color: "white",
                   }}
                 >
@@ -242,7 +243,7 @@ const ViewHealthWorkers = () => {
         size: 180,
         Cell: ({ cell }) => (
           <Group spacing={8} align="center">
-            <ThemeIcon size={20} variant="light" color="purple" radius="md">
+            <ThemeIcon size={20} variant="light" color="brand" radius="md">
               <IconMapPin size={12} />
             </ThemeIcon>
             <Text size="sm" fw={500}>
@@ -313,7 +314,7 @@ const ViewHealthWorkers = () => {
           <Tooltip label="View detailed profile" position="top" withArrow>
             <ActionIcon
               variant="light"
-              color="purple"
+              color="brand"
               size="lg"
               radius="lg"
               onClick={() => {
@@ -325,7 +326,7 @@ const ViewHealthWorkers = () => {
                   transition: "all 0.2s ease",
                   "&:hover": {
                     transform: "scale(1.1)",
-                    boxShadow: "0 4px 12px rgba(147, 51, 234, 0.25)",
+                    boxShadow: `0 4px 12px ${alpha("primary-600", 0.25)}`,
                   },
                 },
               }}
@@ -368,17 +369,17 @@ const ViewHealthWorkers = () => {
       withBorder: false,
       sx: {
         "& thead tr th": {
-          backgroundColor: "rgba(147, 51, 234, 0.04)",
-          color: "#6b21a8",
+          backgroundColor: alpha("primary-600", 0.04),
+          color: colors.primary[800],
           fontWeight: 600,
           fontSize: "14px",
-          borderBottom: "2px solid rgba(147, 51, 234, 0.1)",
+          borderBottom: `2px solid ${alpha("primary-600", 0.1)}`,
         },
         "& tbody tr": {
           transition: "all 0.2s ease",
         },
         "& tbody tr:hover": {
-          backgroundColor: "rgba(147, 51, 234, 0.02)",
+          backgroundColor: alpha("primary-600", 0.02),
           transform: "translateY(-1px)",
           boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
         },
@@ -392,20 +393,20 @@ const ViewHealthWorkers = () => {
       radius: "lg",
       sx: {
         overflow: "hidden",
-        border: "1px solid rgba(147, 51, 234, 0.08)",
+        border: `1px solid ${alpha("primary-600", 0.08)}`,
       },
     },
     mantineTopToolbarProps: {
       sx: {
-        backgroundColor: "rgba(249, 250, 251, 0.8)",
-        borderBottom: "1px solid rgba(147, 51, 234, 0.1)",
+        backgroundColor: alpha("neutral-50", 0.8),
+        borderBottom: `1px solid ${alpha("primary-600", 0.1)}`,
         backdropFilter: "blur(10px)",
       },
     },
     mantineBottomToolbarProps: {
       sx: {
-        backgroundColor: "rgba(249, 250, 251, 0.8)",
-        borderTop: "1px solid rgba(147, 51, 234, 0.1)",
+        backgroundColor: alpha("neutral-50", 0.8),
+        borderTop: `1px solid ${alpha("primary-600", 0.1)}`,
         backdropFilter: "blur(10px)",
       },
     },
@@ -422,7 +423,7 @@ const ViewHealthWorkers = () => {
           radius="lg"
           styles={{
             root: {
-              border: "1px solid rgba(239, 68, 68, 0.2)",
+              border: `1px solid ${alpha("danger-500", 0.2)}`,
             },
           }}
         >
@@ -460,8 +461,8 @@ const ViewHealthWorkers = () => {
           styles={{
             root: {
               background:
-                "linear-gradient(135deg, rgba(147, 51, 234, 0.02) 0%, rgba(147, 51, 234, 0.06) 100%)",
-              border: "1px solid rgba(147, 51, 234, 0.1)",
+                `linear-gradient(135deg, ${alpha("primary-600", 0.02)} 0%, ${alpha("primary-600", 0.06)} 100%)`,
+              border: `1px solid ${alpha("primary-600", 0.1)}`,
             },
           }}
         >
@@ -486,7 +487,7 @@ const ViewHealthWorkers = () => {
                     <ThemeIcon
                       size="lg"
                       variant="light"
-                      color="purple"
+                      color="brand"
                       radius="lg"
                     >
                       <IconUsers size={20} />
@@ -577,20 +578,20 @@ const ViewHealthWorkers = () => {
               styles={{
                 root: {
                   background:
-                    "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
+                    `linear-gradient(135deg, ${colors.primary[600]} 0%, ${colors.primary[500]} 100%)`,
                   color: "white",
                   fontWeight: 600,
-                  boxShadow: "0 4px 12px rgba(147, 51, 234, 0.25)",
+                  boxShadow: `0 4px 12px ${alpha("primary-600", 0.25)}`,
                   transition: "all 0.2s ease",
                   "&:hover": {
                     transform: "translateY(-2px)",
                     background:
-                      "linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%)",
-                    boxShadow: "0 6px 16px rgba(147, 51, 234, 0.35)",
+                      `linear-gradient(135deg, ${colors.primary[700]} 0%, ${colors.primary[600]} 100%)`,
+                    boxShadow: `0 6px 16px ${alpha("primary-600", 0.35)}`,
                   },
                   "&:disabled": {
-                    background: "#E9D5FF",
-                    color: "#A78BFA",
+                    background: colors.primary[200],
+                    color: colors.primary[400],
                     boxShadow: "none",
                     transform: "none",
                   },
@@ -609,7 +610,7 @@ const ViewHealthWorkers = () => {
           pos="relative"
           styles={{
             root: {
-              border: "1px solid rgba(147, 51, 234, 0.08)",
+              border: `1px solid ${alpha("primary-600", 0.08)}`,
               overflow: "hidden",
             },
           }}
@@ -669,8 +670,8 @@ const ViewHealthWorkers = () => {
                 styles={{
                   root: {
                     background:
-                      "linear-gradient(135deg, rgba(147, 51, 234, 0.04) 0%, rgba(147, 51, 234, 0.08) 100%)",
-                    border: "1px solid rgba(147, 51, 234, 0.15)",
+                      `linear-gradient(135deg, ${alpha("primary-600", 0.04)} 0%, ${alpha("primary-600", 0.08)} 100%)`,
+                    border: `1px solid ${alpha("primary-600", 0.15)}`,
                   },
                 }}
               >
@@ -679,17 +680,17 @@ const ViewHealthWorkers = () => {
                     size={100}
                     radius="xl"
                     variant="gradient"
-                    gradient={{ from: "#7C3AED", to: "#8B5CF6", deg: 135 }} // purple → violet
+                    gradient={{ from: colors.primary[600], to: colors.primary[500], deg: 135 }} // purple → violet
                     styles={{
                       root: {
-                        boxShadow: "0 8px 24px rgba(147, 51, 234, 0.25)",
+                        boxShadow: `0 8px 24px ${alpha("primary-600", 0.25)}`,
                         border: "3px solid rgba(255, 255, 255, 0.95)",
                         transition: "all 0.25s ease",
                         background:
-                          "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
+                          `linear-gradient(135deg, ${colors.primary[600]} 0%, ${colors.primary[500]} 100%)`,
                         "&:hover": {
                           transform: "translateY(-4px) scale(1.05)",
-                          boxShadow: "0 10px 28px rgba(147, 51, 234, 0.35)",
+                          boxShadow: `0 10px 28px ${alpha("primary-600", 0.35)}`,
                         },
                       },
                     }}
@@ -722,7 +723,7 @@ const ViewHealthWorkers = () => {
                     <Group spacing="lg" mt="md">
                       <Badge
                         variant="outline"
-                        color="purple"
+                        color="brand"
                         leftSection={<IconActivity size={12} />}
                       >
                         Active Professional
@@ -749,7 +750,7 @@ const ViewHealthWorkers = () => {
                     <ThemeIcon
                       size="lg"
                       variant="light"
-                      color="purple"
+                      color="brand"
                       radius="lg"
                     >
                       <IconMail size={20} />

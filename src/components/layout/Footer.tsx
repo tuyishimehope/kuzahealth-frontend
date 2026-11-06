@@ -148,7 +148,7 @@ const Footer: React.FC = () => {
           <li key={link.name}>
             <Link
               to={link.href}
-              className="text-gray-400 hover:text-white transition-colors duration-300"
+              className="text-neutral-400 hover:text-white transition-colors duration-300"
             >
               {link.name}
             </Link>
@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-neutral-900 text-white">
       {/* Main footer section */}
       <div className="container mx-auto px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
@@ -168,14 +168,14 @@ const Footer: React.FC = () => {
             <Link to="/" className="inline-block mb-6">
               <span className="text-2xl font-bold text-white">HealVirtue</span>
             </Link>
-            <p className="text-gray-400 mb-6 max-w-xs">
+            <p className="text-neutral-400 mb-6 max-w-xs">
               Dedicated to improving maternal and child health outcomes through innovation, education, and compassionate care.
             </p>
             <div className="mb-6">
               <h3 className="font-semibold text-white mb-4">Subscribe to our newsletter</h3>
               {isSubscribed ? (
-                <div className="bg-green-900/30 border border-green-500/30 rounded-lg p-4">
-                  <p className="text-green-300 text-sm">
+                <div className="bg-success-900/30 border border-success-500/30 rounded-lg p-4">
+                  <p className="text-success-300 text-sm">
                     Thank you for subscribing! We'll keep you updated with our latest news.
                   </p>
                 </div>
@@ -187,13 +187,13 @@ const Footer: React.FC = () => {
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     placeholder="Your email address"
                     required
-                    className="bg-gray-800 px-4 py-2 rounded-l-lg border-y border-l border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent flex-grow text-white"
+                    className="bg-neutral-800 px-4 py-2 rounded-l-lg border-y border-l border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent flex-grow text-white"
                   />
                   <Button
                     type="submit"
                     variant="primary"
                     size="sm"
-                    className="rounded-l-none rounded-r-lg border border-purple-600"
+                    className="rounded-l-none rounded-r-lg border border-primary-600"
                   >
                     Subscribe
                   </Button>
@@ -207,7 +207,7 @@ const Footer: React.FC = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                  className="text-neutral-400 hover:text-white transition-colors duration-300"
                   aria-label={`Follow us on ${social.name}`}
                 >
                   {social.icon}
@@ -225,23 +225,23 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom copyright section */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-neutral-800">
         <div className="container mx-auto px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-neutral-400 text-sm">
               &copy; {new Date().getFullYear()} HealVirtue. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
               <a
                 href="#accessibility"
-                className="text-gray-400 hover:text-white text-sm transition-colors duration-300"
+                className="text-neutral-400 hover:text-white text-sm transition-colors duration-300"
               >
                 Accessibility
               </a>
-              <span className="text-gray-600">•</span>
+              <span className="text-neutral-600">•</span>
               <a
                 href="#sitemap"
-                className="text-gray-400 hover:text-white text-sm transition-colors duration-300"
+                className="text-neutral-400 hover:text-white text-sm transition-colors duration-300"
               >
                 Sitemap
               </a>

@@ -187,7 +187,7 @@ const InfantVaccination = () => {
         <Title order={2}>Vaccination Schedule</Title>
         <Button
           leftIcon={<IconVaccine size={16} />}
-          className="bg-purple-600 hover:bg-purple-500"
+          className="bg-primary-600 hover:bg-primary-500"
           onClick={() => setShowModal(true)}
         >
           Record Vaccination
@@ -364,14 +364,14 @@ const InfantVaccination = () => {
               <Button
                 variant="outline"
                 onClick={resetForm}
-                className="bg-purple-600 hover:bg-purple-500 text-white"
+                className="bg-primary-600 hover:bg-primary-500 text-white"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 loading={recordMutation.isPending}
-                className="bg-purple-600 hover:bg-purple-500"
+                className="bg-primary-600 hover:bg-primary-500"
               >
                 Record
               </Button>

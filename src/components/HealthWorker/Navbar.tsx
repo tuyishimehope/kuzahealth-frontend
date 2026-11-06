@@ -54,29 +54,29 @@ const Navbar = ({
   }, []);
 
   return (
-    <div className="bg-white border-b border-gray-100 py-4 px-6 flex justify-between items-center w-full">
+    <div className="bg-white border-b border-neutral-100 py-4 px-6 flex justify-between items-center w-full">
       <div className="flex items-center gap-4">
         {toggleSidebar && (
           <button
             onClick={toggleSidebar}
-            className="p-2 rounded-full hover:bg-gray-100"
+            className="p-2 rounded-full hover:bg-neutral-100"
           >
-            <RiMenuLine className="text-gray-600 w-5 h-5" />
+            <RiMenuLine className="text-neutral-600 w-5 h-5" />
           </button>
         )}
-        <h1 className="text-2xl font-semibold text-gray-800">{title}</h1>
+        <h1 className="text-2xl font-semibold text-neutral-800">{title}</h1>
       </div>
 
       <div className="flex items-center gap-5">
         <div className="relative">
-          <button className="p-2 rounded-full hover:bg-gray-100 relative">
-            {/* <RiNotification3Line className="text-gray-600 w-5 h-5" /> */}
-            {/* <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 rounded-full"></span> */}
+          <button className="p-2 rounded-full hover:bg-neutral-100 relative">
+            {/* <RiNotification3Line className="text-neutral-600 w-5 h-5" /> */}
+            {/* <span className="absolute top-0 right-0 w-2 h-2 bg-primary-500 rounded-full"></span> */}
           </button>
         </div>
         <ModernDropdownSelector lang={lang} changeLanguage={changeLanguage} />
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-purple-100">
+          <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-100">
             <img
               src={profile}
               alt="profile"
@@ -84,8 +84,8 @@ const Navbar = ({
             />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-800">Hello</p>
-            <p className="text-xs text-gray-500">{name || email || "Kyrie"}</p>
+            <p className="text-sm font-medium text-neutral-800">Hello</p>
+            <p className="text-xs text-neutral-500">{name || email || "Kyrie"}</p>
           </div>
         </div>
       </div>

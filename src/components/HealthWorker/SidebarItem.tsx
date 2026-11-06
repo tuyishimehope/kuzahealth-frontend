@@ -21,12 +21,12 @@ const SidebarItem = ({
   const navigate = useNavigate();
 
   // Determine text color
-  const textColor = isActive ? "text-white" : "text-gray-700";
+  const textColor = isActive ? "text-white" : "text-neutral-700";
 
   // Determine background classes
   const bgClasses = isActive
-    ? "bg-purple-500 text-white rounded-md mx-2"
-    : "hover:bg-purple-100 hover:text-purple-600 rounded-md mx-2";
+    ? "bg-primary-500 text-white rounded-md mx-2"
+    : "hover:bg-primary-100 hover:text-primary-600 rounded-md mx-2";
 
   return (
     <motion.div
@@ -36,7 +36,7 @@ const SidebarItem = ({
         isCollapsed ? "justify-center" : ""
       }`}
     >
-      <div className={`text-md ${isActive ? "text-white" : "text-purple-500"}`}>
+      <div className={`text-md ${isActive ? "text-white" : "text-primary-500"}`}>
         {icon}
       </div>
 

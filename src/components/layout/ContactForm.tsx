@@ -177,10 +177,10 @@ const ContactForm: React.FC = () => {
           placeholder={placeholder}
           value={formData[name as keyof FormData] || ''}
           onChange={handleChange}
-          className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all ${
+          className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all ${
             errors[name] 
-              ? 'border-red-500 focus:ring-red-500' 
-              : 'border-white/10 focus:border-purple-500'
+              ? 'border-danger-500 focus:ring-danger-500' 
+              : 'border-white/10 focus:border-primary-500'
           }`}
           rows={6}
           {...rest}
@@ -193,16 +193,16 @@ const ContactForm: React.FC = () => {
           placeholder={placeholder}
           value={formData[name as keyof FormData] || ''}
           onChange={handleChange}
-          className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all ${
+          className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all ${
             errors[name] 
-              ? 'border-red-500 focus:ring-red-500' 
-              : 'border-white/10 focus:border-purple-500'
+              ? 'border-danger-500 focus:ring-danger-500' 
+              : 'border-white/10 focus:border-primary-500'
           }`}
           {...rest}
         />
       )}
       {errors[name] && (
-        <p className="mt-1 text-sm text-red-400">{errors[name]}</p>
+        <p className="mt-1 text-sm text-danger-400">{errors[name]}</p>
       )}
     </div>
   );
@@ -211,10 +211,10 @@ const ContactForm: React.FC = () => {
     <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg">
       {submitSuccess ? (
         <div className="text-center py-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-success-100 rounded-full mb-4">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              className="h-8 w-8 text-green-600" 
+              className="h-8 w-8 text-success-600" 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
@@ -267,8 +267,8 @@ const ContactForm: React.FC = () => {
           />
           
           {submitError && (
-            <div className="mb-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg">
-              <p className="text-red-200 text-sm">{submitError}</p>
+            <div className="mb-4 p-3 bg-danger-500/20 border border-danger-500/30 rounded-lg">
+              <p className="text-danger-200 text-sm">{submitError}</p>
             </div>
           )}
           
@@ -278,7 +278,7 @@ const ContactForm: React.FC = () => {
               size="lg"
               fullWidth
               isLoading={isSubmitting}
-              className="bg-purple-600 hover:bg-purple-700"
+              className="bg-primary-600 hover:bg-primary-700"
               type="submit"
             >
               Send Message

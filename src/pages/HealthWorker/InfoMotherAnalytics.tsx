@@ -12,10 +12,11 @@ import { axiosInstance } from "@/utils/axiosInstance";
 import { useTranslation } from "react-i18next"; // ✅ import i18n hook
 import type { Patient } from "./Mother/ViewPatient";
 import type { Child } from "./infants/ViewInfants";
+import { colors } from "@/theme/colors";
 
 // Colors
-const GENDER_COLORS: Record<string, string> = { Male: "#3b82f6", Female: "#ec4899" };
-const BLOOD_COLORS = ["#3b82f6","#10b981","#f59e0b","#ef4444","#06b6d4","#8b5cf6","#ec4899","#6366f1"];
+const GENDER_COLORS: Record<string, string> = { Male: colors.info[500], Female: colors.highlight[500] };
+const BLOOD_COLORS = colors.chart; // shared categorical palette (tokens.css --chart-*)
 const BLOOD_GROUPS = ["A+","A-","B+","B-","O+","O-","AB+","AB-"];
 
 // Tooltip component
@@ -23,11 +24,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   const { t } = useTranslation(); // ✅ use translation
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
-        <p className="font-medium text-gray-900">{label}</p>
-        <p className="text-sm text-gray-600">
+      <div className="bg-white p-3 border border-neutral-200 rounded-lg shadow-lg">
+        <p className="font-medium text-neutral-900">{label}</p>
+        <p className="text-sm text-neutral-600">
           {t("analytics.tooltip.count")}:{" "}
-          <span className="font-semibold text-blue-600">{payload[0].value}</span>
+          <span className="font-semibold text-info-600">{payload[0].value}</span>
         </p>
       </div>
     );
@@ -37,7 +38,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 // Stat card
 const StatCard = ({ icon: Icon, title, value, subtitle, color, trend }: any) => (
-  <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg border-0 bg-gradient-to-br from-white to-gray-50">
+  <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg border-0 bg-gradient-to-br from-white to-neutral-50">
     <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${color}`} />
     <CardContent className="p-6">
       <div className="flex items-center justify-between">
@@ -46,13 +47,13 @@ const StatCard = ({ icon: Icon, title, value, subtitle, color, trend }: any) => 
             <Icon className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-gray-600 uppercase tracking-wide">{title}</h3>
-            <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
-            {subtitle && <p className="text-xs text-gray-500 mt-1">{subtitle}</p>}
+            <h3 className="text-sm font-medium text-neutral-600 uppercase tracking-wide">{title}</h3>
+            <p className="text-2xl font-bold text-neutral-900 mt-1">{value}</p>
+            {subtitle && <p className="text-xs text-neutral-500 mt-1">{subtitle}</p>}
           </div>
         </div>
         {trend && (
-          <div className="flex items-center text-green-600 text-sm font-medium">
+          <div className="flex items-center text-success-600 text-sm font-medium">
             <TrendingUp className="h-4 w-4 mr-1" /> {trend}
           </div>
         )}
@@ -63,11 +64,11 @@ const StatCard = ({ icon: Icon, title, value, subtitle, color, trend }: any) => 
 
 // Chart card
 const ChartCard = ({ title, icon: Icon, children, className = "" }: any) => (
-  <Card className={`transition-all duration-300 hover:shadow-lg border-0 bg-gradient-to-br from-white to-gray-50 ${className}`}>
+  <Card className={`transition-all duration-300 hover:shadow-lg border-0 bg-gradient-to-br from-white to-neutral-50 ${className}`}>
     <CardContent className="p-6">
       <div className="flex items-center space-x-2 mb-4">
-        <Icon className="h-5 w-5 text-blue-600" />
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <Icon className="h-5 w-5 text-info-600" />
+        <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
       </div>
       {children}
     </CardContent>
@@ -128,15 +129,15 @@ const InfantMotherAnalytics = () => {
       .sort((a, b) => new Date(a.name).getTime() - new Date(b.name).getTime());
   }, [infants, totalMothers]);
 
-  if (loading) return <LoaderCircle className="animate-spin h-16 w-16 text-blue-500" />;
+  if (loading) return <LoaderCircle className="animate-spin h-16 w-16 text-info-500" />;
 
   return (
     <div className="p-4">
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <StatCard icon={Users} title={t("analytics.stats.totalMothers")} value={totalMothers} color="from-blue-500 to-blue-600" trend="+12%" />
-        <StatCard icon={Baby} title={t("analytics.stats.totalInfants")} value={totalInfants} color="from-green-500 to-emerald-600" trend="+18%" />
-        <StatCard icon={Activity} title={t("analytics.stats.avgPerMother")} value={averageInfantsPerMother} color="from-purple-500 to-purple-600" />
+        <StatCard icon={Users} title={t("analytics.stats.totalMothers")} value={totalMothers} color="from-info-500 to-info-600" trend="+12%" />
+        <StatCard icon={Baby} title={t("analytics.stats.totalInfants")} value={totalInfants} color="from-success-500 to-success-600" trend="+18%" />
+        <StatCard icon={Activity} title={t("analytics.stats.avgPerMother")} value={averageInfantsPerMother} color="from-primary-500 to-primary-600" />
       </div>
 
       {/* Charts */}
@@ -155,8 +156,8 @@ const InfantMotherAnalytics = () => {
         <ChartCard title={t("analytics.charts.bloodGroupDistribution")} icon={Heart}>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={bloodGroupDist} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-              <XAxis dataKey="name" tick={{ fill: "#6b7280", fontSize: 12 }} />
-              <YAxis allowDecimals={false} tick={{ fill: "#6b7280", fontSize: 12 }} />
+              <XAxis dataKey="name" tick={{ fill: colors.mutedForeground, fontSize: 12 }} />
+              <YAxis allowDecimals={false} tick={{ fill: colors.mutedForeground, fontSize: 12 }} />
               <Tooltip content={<CustomTooltip />} />
               <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                 {bloodGroupDist.map(entry => <Cell key={entry.name} fill={entry.color} />)}
@@ -169,12 +170,12 @@ const InfantMotherAnalytics = () => {
       <ChartCard title={t("analytics.charts.birthTrendsOverTime")} icon={Calendar}>
         <ResponsiveContainer width="100%" height={350}>
           <LineChart data={birthTrendData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-            <XAxis dataKey="name" tick={{ fill: "#6b7280", fontSize: 12 }} />
-            <YAxis tick={{ fill: "#6b7280", fontSize: 12 }} />
+            <XAxis dataKey="name" tick={{ fill: colors.mutedForeground, fontSize: 12 }} />
+            <YAxis tick={{ fill: colors.mutedForeground, fontSize: 12 }} />
             <Tooltip content={<CustomTooltip />} />
             <Legend />
-            <Line type="monotone" dataKey="value" stroke="#10b981" strokeWidth={3} dot={{ r: 6 }} activeDot={{ r: 8, fill: "#ffffff", stroke: "#10b981", strokeWidth: 2 }} />
-            <Line type="monotone" dataKey="avg" stroke="#3b82f6" strokeWidth={2} dot={{ r: 4 }} />
+            <Line type="monotone" dataKey="value" stroke={colors.success[500]} strokeWidth={3} dot={{ r: 6 }} activeDot={{ r: 8, fill: "#ffffff", stroke: colors.success[500], strokeWidth: 2 }} />
+            <Line type="monotone" dataKey="avg" stroke={colors.info[500]} strokeWidth={2} dot={{ r: 4 }} />
           </LineChart>
         </ResponsiveContainer>
       </ChartCard>

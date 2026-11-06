@@ -13,6 +13,7 @@ import { axiosInstance } from "@/utils/axiosInstance";
 import type { ApexOptions } from "apexcharts";
 import PatientChart from "../../components/HealthWorker/PatientChart";
 import { useTranslation } from "react-i18next";
+import { colors } from "@/theme/colors";
 
 // ---------- Types ----------
 export interface Patient {
@@ -66,22 +67,22 @@ const StatCard: React.FC<StatCardProps> = ({
         {icon}
       </div>
       <motion.div
-        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200"
+        className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200"
         whileTap={{ scale: 0.9 }}
       >
-        <RiArrowRightLine className="text-gray-500" />
+        <RiArrowRightLine className="text-neutral-500" />
       </motion.div>
     </div>
     <div className="flex items-center justify-between gap-4">
       <div className="flex-shrink-0">
-        <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wide">
+        <h3 className="text-neutral-500 text-sm font-medium uppercase tracking-wide">
           {title}
         </h3>
         <div className="flex items-baseline mt-1">
-          <span className="text-3xl md:text-4xl font-extrabold text-gray-900">
+          <span className="text-3xl md:text-4xl font-extrabold text-neutral-900">
             {count}
           </span>
-          <span className="text-gray-400 text-sm ml-2">{period}</span>
+          <span className="text-neutral-400 text-sm ml-2">{period}</span>
         </div>
       </div>
       {chartData.length > 0 && (
@@ -92,13 +93,13 @@ const StatCard: React.FC<StatCardProps> = ({
                 type="monotone"
                 dataKey="value"
                 stroke="none"
-                fill="#6366F1"
+                fill={colors.primary[500]}
                 fillOpacity={0.15}
               />
               <Line
                 type="monotone"
                 dataKey="value"
-                stroke="#6366F1"
+                stroke={colors.primary[500]}
                 strokeWidth={2}
                 dot={false}
               />
@@ -139,7 +140,7 @@ const Dashboard: React.FC = () => {
       toolbar: { show: false },
       fontFamily: "Inter, sans-serif",
     },
-    colors: ["#a854f7"],
+    colors: [colors.primary[500]],
     fill: {
       type: "gradient",
       gradient: {
@@ -169,19 +170,19 @@ const Dashboard: React.FC = () => {
     },
     tooltip: { x: { format: "MMM" } },
     grid: {
-      borderColor: "#f1f1f1",
+      borderColor: colors.neutral[100],
       row: { colors: ["transparent", "transparent"], opacity: 0.5 },
     },
     legend: { position: "top", horizontalAlign: "right" },
   };
 
   if (isLoading)
-    return <div className="text-center mt-20 text-gray-700">Loading...</div>;
+    return <div className="text-center mt-20 text-neutral-700">Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-neutral-100 p-6">
       <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-800">{t("dashboard.overview")}</h1>
+        <h1 className="text-3xl font-bold text-neutral-800">{t("dashboard.overview")}</h1>
       </div>
 
       {/* Stat Cards */}
@@ -191,7 +192,7 @@ const Dashboard: React.FC = () => {
           title={t("dashboard.alerts")}
           count={124}
           period="This Month"
-          color="bg-purple-500"
+          color="bg-primary-500"
           chartData={[
             { value: 5 },
             { value: 8 },
@@ -206,7 +207,7 @@ const Dashboard: React.FC = () => {
           title={t("dashboard.mothers")}
           count={safePatients.length}
           period="This Month"
-          color="bg-green-500"
+          color="bg-success-500"
           chartData={safePatients
             .slice(0, 6)
             .map(() => ({ value: Math.floor(Math.random() * 100) }))}
@@ -218,7 +219,7 @@ const Dashboard: React.FC = () => {
           // count={safePatients.filter((p) => p.highRisk).length}
           count={2}
           period="This Month"
-          color="bg-purple-400"
+          color="bg-primary-400"
           chartData={safePatients
             .slice(0, 6)
             .map(() => ({ value: Math.floor(Math.random() * 50) }))}
@@ -227,8 +228,8 @@ const Dashboard: React.FC = () => {
 
       {/* Charts & Map */}
       <div className="mb-8 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4">
             Mother Stats
           </h2>
           <PatientChart series={series} options={chartOptions} />

@@ -66,11 +66,11 @@ const AddParent = (): JSX.Element => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-neutral-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Add Mother</h1>
-          <p className="text-gray-600 max-w-md mx-auto">Fill in the Mother information below</p>
+          <h1 className="text-3xl font-bold text-neutral-900 mb-2">Add Mother</h1>
+          <p className="text-neutral-600 max-w-md mx-auto">Fill in the Mother information below</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-white p-8 rounded-2xl shadow">
@@ -163,7 +163,7 @@ const AddParent = (): JSX.Element => {
           </div>
 
           <div className="mt-6 flex gap-4">
-            <AnimatedButton type="submit" className="flex-1 bg-blue-600 text-white py-3 rounded-lg">
+            <AnimatedButton type="submit" className="flex-1 bg-primary-600 text-white py-3 rounded-lg">
               Add Patient
             </AnimatedButton>
         

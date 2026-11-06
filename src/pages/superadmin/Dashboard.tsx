@@ -107,7 +107,7 @@ const QuickActionCard: React.FC<QuickActionCardProps> = ({
   color,
 }) => (
   <div
-    className="bg-white rounded-2xl p-6 shadow hover:shadow-lg border border-gray-100 
+    className="bg-white rounded-2xl p-6 shadow hover:shadow-lg border border-neutral-100 
              transition-all duration-200 cursor-pointer group hover:-translate-y-1"
     onClick={onClick}
   >
@@ -119,12 +119,12 @@ const QuickActionCard: React.FC<QuickActionCardProps> = ({
         <Icon size={20} className="text-white" />
       </div>
       <div className="flex-1">
-        <h4 className="font-semibold text-gray-900 mb-1">{title}</h4>
-        <p className="text-sm text-gray-600">{description}</p>
+        <h4 className="font-semibold text-neutral-900 mb-1">{title}</h4>
+        <p className="text-sm text-neutral-600">{description}</p>
       </div>
       <div className="opacity-0 group-hover:opacity-100 transition-opacity">
         <svg
-          className="w-4 h-4 text-gray-400"
+          className="w-4 h-4 text-neutral-400"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -153,12 +153,12 @@ export const RecentActivities: React.FC<RecentActivitiesProps> = ({
   loading,
 }) => {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-neutral-900">
           Recent Activities
         </h3>
-        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+        <button className="text-info-600 hover:text-info-700 text-sm font-medium">
           View All
         </button>
       </div>
@@ -166,15 +166,15 @@ export const RecentActivities: React.FC<RecentActivitiesProps> = ({
         {loading ? (
           Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+              <div className="w-8 h-8 bg-neutral-200 rounded-full animate-pulse"></div>
               <div className="flex-1">
-                <div className="h-4 bg-gray-200 rounded animate-pulse mb-1"></div>
-                <div className="h-3 bg-gray-200 rounded animate-pulse w-24"></div>
+                <div className="h-4 bg-neutral-200 rounded animate-pulse mb-1"></div>
+                <div className="h-3 bg-neutral-200 rounded animate-pulse w-24"></div>
               </div>
             </div>
           ))
         ) : (
-          <div className="relative pl-6 border-l border-gray-200 space-y-4">
+          <div className="relative pl-6 border-l border-neutral-200 space-y-4">
             {activities.map((activity, i) => (
               <div key={i} className="flex items-start space-x-3">
                 <div
@@ -183,10 +183,10 @@ export const RecentActivities: React.FC<RecentActivitiesProps> = ({
                   <activity.icon size={14} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-neutral-900">
                     {activity.title}
                   </p>
-                  <p className="text-xs text-gray-500">{activity.time}</p>
+                  <p className="text-xs text-neutral-500">{activity.time}</p>
                 </div>
               </div>
             ))}
@@ -212,38 +212,38 @@ const UpcomingVisitsCard: React.FC<UpcomingVisitsCardProps> = ({
   visits,
   loading,
 }) => (
-  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+  <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
     <div className="flex items-center justify-between mb-4">
-      <h3 className="text-lg font-semibold text-gray-900">Upcoming Visits</h3>
+      <h3 className="text-lg font-semibold text-neutral-900">Upcoming Visits</h3>
     </div>
     <div className="space-y-3">
       {loading
         ? Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="p-3 bg-gray-50 rounded-lg animate-pulse">
-              <div className="h-4 bg-gray-200 rounded mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-32"></div>
+            <div key={i} className="p-3 bg-neutral-50 rounded-lg animate-pulse">
+              <div className="h-4 bg-neutral-200 rounded mb-2"></div>
+              <div className="h-3 bg-neutral-200 rounded w-32"></div>
             </div>
           ))
         : visits.slice(0, 5).map((visit, index) => (
             <div
               key={index}
-              className="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="p-3 bg-neutral-50 rounded-lg hover:bg-neutral-100 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-neutral-900">
                     {visit.type}
                   </p>
-                  <p className="text-xs text-gray-500">{visit.time}</p>
+                  <p className="text-xs text-neutral-500">{visit.time}</p>
                 </div>
                 <span
                   className={`px-2.5 py-1 rounded-full text-xs font-medium
   ${
     visit.status === "Confirmed"
-      ? "bg-green-100 text-green-700"
+      ? "bg-success-100 text-success-700"
       : visit.status === "Pending"
-      ? "bg-yellow-100 text-yellow-700"
-      : "bg-red-100 text-red-700"
+      ? "bg-warning-100 text-warning-700"
+      : "bg-danger-100 text-danger-700"
   }`}
                 >
                   {visit.status}
@@ -304,25 +304,25 @@ const Dashboard = () => {
       title: "New health worker registered",
       time: "2 hours ago",
       icon: UserPlus,
-      color: "bg-green-500",
+      color: "bg-success-500",
     },
     {
       title: "Visit completed in Gasabo",
       time: "4 hours ago",
       icon: CheckCircle2,
-      color: "bg-blue-500",
+      color: "bg-info-500",
     },
     {
       title: "High-risk patient flagged",
       time: "6 hours ago",
       icon: AlertCircle,
-      color: "bg-red-500",
+      color: "bg-danger-500",
     },
     {
       title: "Report generated",
       time: "1 day ago",
       icon: BarChart3,
-      color: "bg-purple-500",
+      color: "bg-primary-500",
     },
   ];
 
@@ -341,23 +341,23 @@ const Dashboard = () => {
     );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-neutral-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-neutral-900">
               Healthcare Dashboard
             </h1>
-            <p className="text-gray-600 mt-1">
+            <p className="text-neutral-600 mt-1">
               Monitor and manage healthcare operations
             </p>
           </div>
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 text-white 
-             hover:bg-blue-700 transition disabled:opacity-50 shadow-sm"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary-600 text-white 
+             hover:bg-primary-700 transition disabled:opacity-50 shadow-sm"
           >
             <RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />
             <span>Refresh</span>
@@ -366,7 +366,7 @@ const Dashboard = () => {
 
         {/* Quick Actions */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4">
             Quick Actions
           </h2>
 
@@ -375,7 +375,7 @@ const Dashboard = () => {
               title="Manage Health Workers"
               description="Add, update, or remove health worker accounts"
               icon={Users}
-              color="bg-green-600"
+              color="bg-success-600"
               onClick={() => navigate("/superadmin/health-workers")}
             />
 
@@ -383,7 +383,7 @@ const Dashboard = () => {
               title="Audit Logs"
               description="Review all system activity for compliance & HIPAA"
               icon={Activity}
-              color="bg-blue-600"
+              color="bg-info-600"
               onClick={() => navigate("/superadmin/audit")}
             />
 
@@ -391,7 +391,7 @@ const Dashboard = () => {
               title="Access Control"
               description="Assign roles, permissions, and security policies"
               icon={UserPlus}
-              color="bg-purple-600"
+              color="bg-primary-600"
               onClick={() => navigate("/superadmin/users")}
             />
 
@@ -399,7 +399,7 @@ const Dashboard = () => {
               title="Analytics & Reports"
               description="Generate insights on visits, workers, and patients"
               icon={BarChart3}
-              color="bg-orange-600"
+              color="bg-warning-600"
               onClick={() => console.log("Generate analytics")}
             />
 
@@ -407,7 +407,7 @@ const Dashboard = () => {
               title="Emergency Broadcast"
               description="Send alerts to all health workers instantly"
               icon={AlertCircle}
-              color="bg-red-600"
+              color="bg-danger-600"
               onClick={() => console.log("Send broadcast")}
             />
 
@@ -415,7 +415,7 @@ const Dashboard = () => {
               title="System Settings"
               description="Configure integrations, backups, and policies"
               icon={CheckCircle2}
-              color="bg-gray-700"
+              color="bg-neutral-700"
               onClick={() => console.log("System settings")}
             /> */}
           </div>

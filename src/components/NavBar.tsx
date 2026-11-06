@@ -14,14 +14,14 @@ const NavBar = () => {
     <div className="right-nav flex justify-between items-center">
       <ul className="flex space-x-4 mr-10">
         {navLinks.map((link,index) => (
-          <li key={index} className="hover:text-purple-500 text-lg text-white font-bold hover:cursor-pointer hover:underline hover:transition-all">
+          <li key={index} className="hover:text-primary-500 text-lg text-white font-bold hover:cursor-pointer hover:underline hover:transition-all">
             <a href={link.link}>{link.name}</a></li>
         ))}
         
       </ul>
       <Button
         name="Sign In"
-        className={`bg-btnSignIn px-4 py-2 rounded-md text-white hover:bg-purple-700`}
+        className={`bg-primary px-4 py-2 rounded-md text-white hover:bg-primary-700`}
         onClick={() => navigate("/auth/signin")}
       
       />

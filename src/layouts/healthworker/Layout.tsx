@@ -29,7 +29,7 @@ const HealthWorkerLayout: React.FC<LayoutProps> = () => {
   const toggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden relative">
+    <div className="flex h-screen bg-neutral-50 overflow-hidden relative">
       {/* Desktop sidebar */}
       {!isMobile && <Sidebar />}
 
@@ -50,7 +50,7 @@ const HealthWorkerLayout: React.FC<LayoutProps> = () => {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 left-0 h-full w-64 bg-purple-100 shadow-md z-40"
+              className="fixed top-0 left-0 h-full w-64 bg-primary-100 shadow-md z-40"
             >
               <Sidebar  />
             </motion.div>
@@ -63,14 +63,14 @@ const HealthWorkerLayout: React.FC<LayoutProps> = () => {
         {isMobile && (
           <button
             aria-label="Toggle sidebar"
-            className="absolute top-4 left-4 p-2 w-10 h-10 bg-white hover:bg-purple-600 hover:text-white rounded-full shadow-md z-50 transition-colors duration-200"
+            className="absolute top-4 left-4 p-2 w-10 h-10 bg-white hover:bg-primary-600 hover:text-white rounded-full shadow-md z-50 transition-colors duration-200"
             onClick={toggleSidebar}
           >
             <IoMenuOutline className="w-full h-full" />
           </button>
         )}
         <Navbar />
-        <main className="p-6 flex-1 overflow-auto bg-gray-50">
+        <main className="p-6 flex-1 overflow-auto bg-neutral-50">
           <Outlet />
         </main>
       </div>

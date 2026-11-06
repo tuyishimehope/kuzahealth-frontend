@@ -5,6 +5,7 @@ import Button from "../common/Button";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 import { ModernDropdownSelector } from "./useLanguageSelector";
+import { colors } from "@/theme/colors";
 
 interface NavLink {
   name: string;
@@ -56,7 +57,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold transition-colors duration-300"
-              style={{ color: isScrolled || isMenuOpen ? "#7c3aed" : "#ffffff" }}>
+              style={{ color: isScrolled || isMenuOpen ? colors.primary[600] : "#ffffff" }}>
           KuzaCare
         </Link>
 
@@ -69,8 +70,8 @@ const Navbar = () => {
               className={`font-medium transition-colors duration-200 ${
                 isScrolled
                   ? isActiveLink(link.path)
-                    ? "text-purple-600"
-                    : "text-gray-700 hover:text-purple-600"
+                    ? "text-primary-600"
+                    : "text-neutral-700 hover:text-primary-600"
                   : isActiveLink(link.path)
                   ? "text-white font-semibold"
                   : "text-white/80 hover:text-white"
@@ -93,7 +94,7 @@ const Navbar = () => {
           {/* <select
             value={lang}
             onChange={(e) => changeLanguage(e.target.value)}
-            className="px-2 py-1 rounded bg-white text-gray-800"
+            className="px-2 py-1 rounded bg-white text-neutral-800"
           >
             <option value="en">English</option>
             <option value="rw">Kinyarwanda</option>
@@ -112,17 +113,17 @@ const Navbar = () => {
           <div className="relative w-6 h-5">
             <span
               className={`absolute block h-0.5 w-6 transform transition duration-300 ease-in-out ${
-                isMenuOpen ? "rotate-45 translate-y-2.5 bg-gray-800" : isScrolled ? "bg-gray-800" : "bg-white"
+                isMenuOpen ? "rotate-45 translate-y-2.5 bg-neutral-800" : isScrolled ? "bg-neutral-800" : "bg-white"
               }`}
             />
             <span
               className={`absolute block h-0.5 mt-2 w-6 transform transition duration-300 ease-in-out ${
-                isMenuOpen ? "opacity-0" : isScrolled ? "bg-gray-800" : "bg-white"
+                isMenuOpen ? "opacity-0" : isScrolled ? "bg-neutral-800" : "bg-white"
               }`}
             />
             <span
               className={`absolute block h-0.5 mt-4 w-6 transform transition duration-300 ease-in-out ${
-                isMenuOpen ? "-rotate-45 -translate-y-2.5 bg-gray-800" : isScrolled ? "bg-gray-800" : "bg-white"
+                isMenuOpen ? "-rotate-45 -translate-y-2.5 bg-neutral-800" : isScrolled ? "bg-neutral-800" : "bg-white"
               }`}
             />
           </div>
@@ -142,7 +143,7 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={`text-xl transition-colors duration-200 ${
-                isActiveLink(link.path) ? "text-purple-600 font-semibold" : "text-gray-700 hover:text-purple-600"
+                isActiveLink(link.path) ? "text-primary-600 font-semibold" : "text-neutral-700 hover:text-primary-600"
               }`}
             >
               {link.name}
@@ -156,7 +157,7 @@ const Navbar = () => {
           <select
             value={lang}
             onChange={(e) => changeLanguage(e.target.value)}
-            className="px-2 py-1 rounded bg-gray-200 text-gray-800 mt-4"
+            className="px-2 py-1 rounded bg-neutral-200 text-neutral-800 mt-4"
           >
             <option value="en">English</option>
             <option value="rw">Kinyarwanda</option>

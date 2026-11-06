@@ -55,7 +55,7 @@ const Sidebar: React.FC<SidebarProps> = ({ desktopCollapsed = false }) => {
       {isMobile && (
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="fixed top-4 left-4 z-50 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-md"
+          className="fixed top-4 left-4 z-50 w-10 h-10 bg-primary-600 text-white rounded-full flex items-center justify-center shadow-md"
         >
           <IoMenuOutline className="w-6 h-6" />
         </button>
@@ -83,7 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({ desktopCollapsed = false }) => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className={`
                 ${isMobile ? "fixed top-0 left-0 z-50 h-full w-64" : "flex-shrink-0 h-full"}
-                bg-purple-100 shadow-md flex flex-col py-6
+                bg-primary-100 shadow-md flex flex-col py-6
               `}
               style={{ width: isMobile ? undefined : collapsed ? 80 : 250 }}
             >
@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ desktopCollapsed = false }) => {
                 {!isMobile && (
                   <button
                     onClick={() => setCollapsed(!collapsed)}
-                    className="p-1 rounded-full bg-white shadow-md text-purple-600 hover:bg-purple-200 transition-colors"
+                    className="p-1 rounded-full bg-white shadow-md text-primary-600 hover:bg-primary-200 transition-colors"
                   >
                     {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
                   </button>
@@ -187,7 +187,7 @@ const Sidebar: React.FC<SidebarProps> = ({ desktopCollapsed = false }) => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleLogout}
-                  className={`flex items-center justify-center w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 ${
+                  className={`flex items-center justify-center w-full py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 ${
                     isCollapsed ? "px-0" : "px-4"
                   }`}
                 >

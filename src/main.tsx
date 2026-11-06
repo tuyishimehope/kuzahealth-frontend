@@ -5,13 +5,16 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/route";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./i18n";
+import { AppThemeProvider } from "./theme/ThemeProvider";
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <AppThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </AppThemeProvider>
   </StrictMode>
 );

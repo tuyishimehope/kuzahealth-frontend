@@ -42,7 +42,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ onExpiry }) => {
   return (
     <div
       className={`flex items-center space-x-2 text-sm ${
-        isExpiring ? "text-red-500" : "text-gray-600"
+        isExpiring ? "text-danger-500" : "text-neutral-600"
       }`}
     >
       <svg
@@ -317,10 +317,10 @@ const OtpVerification = () => {
   const isFormValid = inputValues.join("").length === 6;
 
   return (
-    <div className="flex min-h-screen w-full bg-gray-50">
+    <div className="flex min-h-screen w-full bg-neutral-50">
       {/* Left side - Image Placeholder */}
       <div className="hidden md:block w-1/2 relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 via-purple-600/30 to-transparent" /> */}
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-600/40 via-primary-600/30 to-transparent" /> */}
 
         <img
           src={image}
@@ -344,9 +344,9 @@ const OtpVerification = () => {
         <div className="w-full max-w-md space-y-8">
           {/* Header Section */}
           <div className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+            <div className="mx-auto w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
               <svg
-                className="w-8 h-8 text-indigo-600"
+                className="w-8 h-8 text-primary-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -360,15 +360,15 @@ const OtpVerification = () => {
               </svg>
             </div>
 
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-neutral-900">
               Verify Your Email
             </h1>
 
             <div className="space-y-2">
-              <p className="text-gray-600">
+              <p className="text-neutral-600">
                 We've sent a 6-digit verification code to
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-neutral-500">
                 Enter the code below to continue
               </p>
             </div>
@@ -395,10 +395,10 @@ const OtpVerification = () => {
                         transition-all duration-200 focus:outline-none
                         ${
                           isExpired
-                            ? "border-red-300 bg-red-50 text-red-400 cursor-not-allowed"
+                            ? "border-danger-300 bg-danger-50 text-danger-400 cursor-not-allowed"
                             : inputValues[index]
-                            ? "border-indigo-500 bg-indigo-50 text-indigo-700 transform scale-105 shadow-md"
-                            : "border-gray-300 hover:border-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                            ? "border-primary-500 bg-primary-50 text-primary-700 transform scale-105 shadow-md"
+                            : "border-neutral-300 hover:border-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
                         }
                       `}
                       disabled={isExpired || loading}
@@ -408,7 +408,7 @@ const OtpVerification = () => {
               </div>
 
               {error && (
-                <div className="flex items-center justify-center space-x-2 text-red-500 text-sm bg-red-50 p-3 rounded-lg">
+                <div className="flex items-center justify-center space-x-2 text-danger-500 text-sm bg-danger-50 p-3 rounded-lg">
                   <svg
                     className="w-4 h-4 flex-shrink-0"
                     fill="none"
@@ -434,7 +434,7 @@ const OtpVerification = () => {
               </div>
 
               <div className="text-center">
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-neutral-600 mb-2">
                   Didn't receive the code?
                 </p>
                 <button
@@ -446,8 +446,8 @@ const OtpVerification = () => {
                     transition-all duration-200 px-3 py-1 rounded-md
                     ${
                       canResend && !resendLoading
-                        ? "text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 cursor-pointer"
-                        : "text-gray-400 cursor-not-allowed"
+                        ? "text-primary-600 hover:text-primary-700 hover:bg-primary-50 cursor-pointer"
+                        : "text-neutral-400 cursor-not-allowed"
                     }
                   `}
                 >
@@ -522,19 +522,19 @@ const OtpVerification = () => {
                   transition-all duration-200 flex items-center justify-center
                   ${
                     loading || isExpired || !isFormValid
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      ? "bg-neutral-400 cursor-not-allowed"
+                      : "bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   }
                 `}
               />
 
               {/* Helpful hints */}
               <div className="text-center space-y-2">
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-neutral-500">
                   💡 Tip: You can paste the entire code at once
                 </p>
                 {!isFormValid && inputValues.some((val) => val !== "") && (
-                  <p className="text-xs text-amber-600 bg-amber-50 p-2 rounded-md">
+                  <p className="text-xs text-warning-600 bg-warning-50 p-2 rounded-md">
                     Please enter all 6 digits to continue
                   </p>
                 )}
@@ -543,10 +543,10 @@ const OtpVerification = () => {
           </div>
 
           {/* Back to Login Link */}
-          <div className="text-center pt-4 border-t border-gray-200">
+          <div className="text-center pt-4 border-t border-neutral-200">
             <button
               onClick={handleBackToLogin}
-              className="inline-flex items-center space-x-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50"
+              className="inline-flex items-center space-x-2 text-sm text-neutral-600 hover:text-primary-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-neutral-50"
             >
               <svg
                 className="w-4 h-4"

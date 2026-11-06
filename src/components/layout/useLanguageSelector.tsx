@@ -69,28 +69,28 @@ export const ModernDropdownSelector = ({
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-gray-300 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        className="flex items-center gap-2 px-4 py-2.5 bg-white border border-neutral-200 rounded-lg shadow-sm hover:border-neutral-300 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-info-500 focus:border-transparent"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <Globe className="w-4 h-4 text-gray-500" />
-        <span className="text-sm font-medium text-gray-700">
+        <Globe className="w-4 h-4 text-neutral-500" />
+        <span className="text-sm font-medium text-neutral-700">
           {currentLanguage?.flag} {currentLanguage?.name}
         </span>
         <ChevronDown
-          className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
+          className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1">
+        <div className="absolute top-full mt-1 left-0 right-0 bg-white border border-neutral-200 rounded-lg shadow-lg z-50 py-1">
           {LANGUAGES.map((language) => (
             <button
               key={language.code}
               onClick={() => handleLanguageSelect(language.code)}
-              className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150"
+              className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors duration-150"
               role="option"
               aria-selected={currentLang === language.code}
             >
@@ -98,11 +98,11 @@ export const ModernDropdownSelector = ({
                 <span className="text-base">{language.flag}</span>
                 <div className="text-left">
                   <div className="font-medium">{language.name}</div>
-                  <div className="text-xs text-gray-500">{language.native}</div>
+                  <div className="text-xs text-neutral-500">{language.native}</div>
                 </div>
               </div>
               {currentLang === language.code && (
-                <Check className="w-4 h-4 text-blue-600" />
+                <Check className="w-4 h-4 text-info-600" />
               )}
             </button>
           ))}

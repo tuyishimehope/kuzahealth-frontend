@@ -33,7 +33,7 @@ const Input: React.FC<InputProps> = ({
 }) => (
   <div className="relative">
     {Icon && (
-      <Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+      <Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" />
     )}
     <input
       type={type}
@@ -46,12 +46,12 @@ const Input: React.FC<InputProps> = ({
         ${Icon ? "pl-11" : "pl-4"}
         ${
           error
-            ? "border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200"
-            : "border-gray-200 bg-white focus:border-indigo-500 focus:ring-indigo-200"
+            ? "border-danger-300 bg-danger-50 focus:border-danger-500 focus:ring-danger-200"
+            : "border-neutral-200 bg-white focus:border-primary-500 focus:ring-primary-200"
         }
         focus:outline-none focus:ring-2 focus:ring-opacity-50
-        disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed
-        placeholder:text-gray-400
+        disabled:bg-neutral-50 disabled:text-neutral-500 disabled:cursor-not-allowed
+        placeholder:text-neutral-400
       `}
       {...props}
     />
@@ -75,9 +75,9 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variants = {
-    primary: "bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm",
-    secondary: "bg-white hover:bg-gray-50 text-gray-700 border border-gray-200",
-    ghost: "hover:bg-gray-100 text-gray-600",
+    primary: "bg-primary-600 hover:bg-primary-700 text-white shadow-sm",
+    secondary: "bg-white hover:bg-neutral-50 text-neutral-700 border border-neutral-200",
+    ghost: "hover:bg-neutral-100 text-neutral-600",
   };
 
   const sizes = {
@@ -93,7 +93,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`
         ${variants[variant]} ${sizes[size]}
         rounded-lg font-medium transition-all duration-200
-        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
         disabled:opacity-50 disabled:cursor-not-allowed
         active:scale-[0.98] transform
         ${className}
@@ -193,19 +193,19 @@ const ForgotPassword = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50 flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center"
         >
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="h-8 w-8 text-green-600" />
+          <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 className="h-8 w-8 text-success-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+          <h2 className="text-2xl font-bold text-neutral-900 mb-3">
             Check your email
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-neutral-600 mb-8">
             We've sent a password reset link to <strong>{email}</strong>
           </p>
           <Button
@@ -221,7 +221,7 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50">
       <div className="flex min-h-screen">
         {/* Left side - Hero Image */}
         <motion.div
@@ -230,7 +230,7 @@ const ForgotPassword = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/90 via-purple-600/80 to-blue-700/90 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-600/90 via-primary-600/80 to-info-700/90 z-10" />
           <div
             className="w-full h-full bg-cover bg-center"
             style={{
@@ -247,7 +247,7 @@ const ForgotPassword = () => {
               <h1 className="text-4xl font-bold text-white mb-6">
                 Secure Account Recovery
               </h1>
-              <p className="text-xl text-indigo-100 leading-relaxed">
+              <p className="text-xl text-primary-100 leading-relaxed">
                 Don't worry, we've got you covered. Enter your email and we'll
                 send you a secure link to reset your password.
               </p>
@@ -267,16 +267,16 @@ const ForgotPassword = () => {
             <motion.div className="text-center lg:text-left">
               <button
                 onClick={() => navigate("/auth/signin")}
-                className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8 group"
+                className="inline-flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors mb-8 group"
               >
                 <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 Back to login
               </button>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-3">
                 Forgot your password?
               </h2>
-              <p className="text-gray-600">
+              <p className="text-neutral-600">
                 No problem. Just enter your email address and we'll send you a
                 link to reset it.
               </p>
@@ -287,7 +287,7 @@ const ForgotPassword = () => {
               <div className="space-y-2">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral-700"
                 >
                   Email address
                 </label>
@@ -309,7 +309,7 @@ const ForgotPassword = () => {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="flex items-center gap-2 text-red-600 text-sm"
+                      className="flex items-center gap-2 text-danger-600 text-sm"
                     >
                       <AlertCircle className="h-4 w-4 flex-shrink-0" />
                       {error}
@@ -330,11 +330,11 @@ const ForgotPassword = () => {
 
             {/* Footer */}
             <motion.div className="text-center">
-              <p className="text-gray-600">
+              <p className="text-neutral-600">
                 Remember your password?{" "}
                 <button
                   onClick={() => navigate("/auth/signin")}
-                  className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors"
+                  className="font-medium text-primary-600 hover:text-primary-500 transition-colors"
                 >
                   Sign in instead
                 </button>

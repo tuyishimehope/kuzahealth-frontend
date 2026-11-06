@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
+import { colors } from "@/theme/colors";
 
 export interface audit {
   id: string;
@@ -126,23 +127,23 @@ const Audit = () => {
 
   const getActionBadgeColor = (action: string) => {
     const colors = {
-      GET: "bg-blue-100 text-blue-800 border-blue-200",
-      POST: "bg-green-100 text-green-800 border-green-200",
-      PUT: "bg-yellow-100 text-yellow-800 border-yellow-200",
-      DELETE: "bg-red-100 text-red-800 border-red-200",
+      GET: "bg-info-100 text-info-800 border-info-200",
+      POST: "bg-success-100 text-success-800 border-success-200",
+      PUT: "bg-warning-100 text-warning-800 border-warning-200",
+      DELETE: "bg-danger-100 text-danger-800 border-danger-200",
     };
     return (
       colors[action as keyof typeof colors] ||
-      "bg-gray-100 text-gray-800 border-gray-200"
+      "bg-neutral-100 text-neutral-800 border-neutral-200"
     );
   };
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading audit logs...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info-600 mx-auto mb-4"></div>
+          <p className="text-neutral-600">Loading audit logs...</p>
         </div>
       </div>
     );
@@ -150,41 +151,41 @@ const Audit = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md">
-          <AlertTriangle className="h-8 w-8 text-red-600 mx-auto mb-4" />
-          <p className="text-red-800 text-center">Failed to load audit logs</p>
+      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+        <div className="bg-danger-50 border border-danger-200 rounded-lg p-6 max-w-md">
+          <AlertTriangle className="h-8 w-8 text-danger-600 mx-auto mb-4" />
+          <p className="text-danger-800 text-center">Failed to load audit logs</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-neutral-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
+      <div className="bg-white shadow-sm border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Shield className="h-8 w-8 text-blue-600" />
+              <Shield className="h-8 w-8 text-info-600" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-neutral-900">
                   HIPAA Audit Dashboard
                 </h1>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-neutral-600">
                   Monitor and track all system access events
                 </p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              {/* <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              {/* <button className="inline-flex items-center px-4 py-2 border border-neutral-300 rounded-md shadow-sm text-sm font-medium text-neutral-700 bg-white hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info-500">
                 <Download className="h-4 w-4 mr-2" />
                 Export
               </button> */}
               <select
                 value={selectedTimeRange}
                 onChange={(e) => setSelectedTimeRange(e.target.value)}
-                className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="rounded-md border-neutral-300 shadow-sm focus:border-info-500 focus:ring-info-500 text-sm"
               >
                 <option value="today">Today</option>
                 <option value="week">This Week</option>
@@ -200,14 +201,14 @@ const Audit = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {/* Total Events */}
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-sm border border-gray-200 p-6 relative">
+          <div className="bg-gradient-to-br from-info-50 to-info-100 rounded-lg shadow-sm border border-neutral-200 p-6 relative">
             <div className="flex items-center mb-4">
-              <Activity className="h-8 w-8 text-blue-600" />
+              <Activity className="h-8 w-8 text-info-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium text-neutral-600">
                   Total Events
                 </p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-2xl font-bold text-neutral-900">
                   {stats.total.toLocaleString()}
                 </p>
               </div>
@@ -218,8 +219,8 @@ const Audit = () => {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="#2563eb"
-                    fill="#93c5fd"
+                    stroke={colors.info[600]}
+                    fill={colors.info[300]}
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -228,14 +229,14 @@ const Audit = () => {
           </div>
 
           {/* Active Users */}
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-sm border border-gray-200 p-6 relative">
+          <div className="bg-gradient-to-br from-success-50 to-success-100 rounded-lg shadow-sm border border-neutral-200 p-6 relative">
             <div className="flex items-center mb-4">
-              <Users className="h-8 w-8 text-green-600" />
+              <Users className="h-8 w-8 text-success-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium text-neutral-600">
                   Active Users
                 </p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-2xl font-bold text-neutral-900">
                   {stats.users}
                 </p>
               </div>
@@ -246,8 +247,8 @@ const Audit = () => {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="#16a34a"
-                    fill="#86efac"
+                    stroke={colors.success[600]}
+                    fill={colors.success[300]}
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -256,14 +257,14 @@ const Audit = () => {
           </div>
 
           {/* Resources Accessed */}
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow-sm border border-gray-200 p-6 relative">
+          <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg shadow-sm border border-neutral-200 p-6 relative">
             <div className="flex items-center mb-4">
-              <Database className="h-8 w-8 text-purple-600" />
+              <Database className="h-8 w-8 text-primary-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium text-neutral-600">
                   Resources Accessed
                 </p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-2xl font-bold text-neutral-900">
                   {stats.resources.toLocaleString()}
                 </p>
               </div>
@@ -274,8 +275,8 @@ const Audit = () => {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="#9333ea"
-                    fill="#c4b5fd"
+                    stroke={colors.primary[600]}
+                    fill={colors.primary[300]}
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -284,14 +285,14 @@ const Audit = () => {
           </div>
 
           {/* Read Operations */}
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg shadow-sm border border-gray-200 p-6 relative">
+          <div className="bg-gradient-to-br from-warning-50 to-warning-100 rounded-lg shadow-sm border border-neutral-200 p-6 relative">
             <div className="flex items-center mb-4">
-              <Eye className="h-8 w-8 text-orange-600" />
+              <Eye className="h-8 w-8 text-warning-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium text-neutral-600">
                   Read Operations
                 </p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-2xl font-bold text-neutral-900">
                   {stats.actions.GET || 0}
                 </p>
               </div>
@@ -302,8 +303,8 @@ const Audit = () => {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="#ea580c"
-                    fill="#fdba74"
+                    stroke={colors.warning[600]}
+                    fill={colors.warning[300]}
                     strokeWidth={2}
                   />
                 </AreaChart>
@@ -313,28 +314,28 @@ const Audit = () => {
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-6 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border border-neutral-200 p-4 md:p-6 mb-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             {/* Search */}
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" />
               <input
                 type="text"
                 placeholder="Search users, resources, IPs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 sm:text-sm transition"
+                className="w-full pl-10 pr-4 py-2 rounded-lg border border-neutral-300 shadow-sm focus:border-info-500 focus:ring-2 focus:ring-info-500 focus:ring-offset-1 sm:text-sm transition"
               />
             </div>
 
             {/* Filters */}
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-2">
-                <Filter className="h-4 w-4 text-gray-500" />
+                <Filter className="h-4 w-4 text-neutral-500" />
                 <select
                   value={filterAction}
                   onChange={(e) => setFilterAction(e.target.value)}
-                  className="rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm transition"
+                  className="rounded-lg border-neutral-300 shadow-sm focus:border-info-500 focus:ring-2 focus:ring-info-500 sm:text-sm transition"
                 >
                   <option value="all">All Actions</option>
                   <option value="GET">GET</option>
@@ -345,11 +346,11 @@ const Audit = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <Database className="h-4 w-4 text-gray-500" />
+                <Database className="h-4 w-4 text-neutral-500" />
                 <select
                   value={filterResource}
                   onChange={(e) => setFilterResource(e.target.value)}
-                  className="rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm transition"
+                  className="rounded-lg border-neutral-300 shadow-sm focus:border-info-500 focus:ring-2 focus:ring-info-500 sm:text-sm transition"
                 >
                   <option value="all">All Resources</option>
                   <option value="patients">Patients</option>
@@ -369,7 +370,7 @@ const Audit = () => {
                     setFilterAction("all");
                     setFilterResource("all");
                   }}
-                  className="px-3 py-1.5 text-sm rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition"
+                  className="px-3 py-1.5 text-sm rounded-lg bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition"
                 >
                   Clear
                 </button>
@@ -379,48 +380,48 @@ const Audit = () => {
         </div>
 
         {/* Audit Log Table */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">
+        <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-neutral-200">
+            <h3 className="text-lg font-medium text-neutral-900">
               Audit Logs ({filteredData.length} entries)
             </h3>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-neutral-200">
+              <thead className="bg-neutral-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Timestamp
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     User
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Action
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Resource
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     IP Address
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                     Entity ID
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white divide-y divide-neutral-200">
                 {paginatedData.map((log) => (
-                  <tr key={log.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <tr key={log.id} className="hover:bg-neutral-50">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">
                       {formatDate(log.createdAt)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900 font-medium">
+                      <div className="text-sm text-neutral-900 font-medium">
                         {log.username}
                       </div>
-                      <div className="text-sm text-gray-500">{log.email}</div>
+                      <div className="text-sm text-neutral-500">{log.email}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
@@ -431,13 +432,13 @@ const Audit = () => {
                         {log.action}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900 font-mono">
+                    <td className="px-6 py-4 text-sm text-neutral-900 font-mono">
                       {log.resource}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-500 font-mono">
                       {log.ip}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-500 font-mono">
                       {log.entityId.slice(0, 15)}
                     </td>
                   </tr>
@@ -448,11 +449,11 @@ const Audit = () => {
 
           {filteredData.length === 0 && (
             <div className="text-center py-12">
-              <Search className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-medium text-gray-900">
+              <Search className="mx-auto h-12 w-12 text-neutral-400" />
+              <h3 className="mt-2 text-sm font-medium text-neutral-900">
                 No audit logs found
               </h3>
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-neutral-500">
                 Try adjusting your search criteria or filters.
               </p>
             </div>
@@ -460,9 +461,9 @@ const Audit = () => {
         </div>
 
         {paginatedData.length > 0 && (
-          <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 mt-6 rounded-lg shadow-sm">
+          <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-neutral-200 sm:px-6 mt-6 rounded-lg shadow-sm">
             <div className="hidden sm:flex sm:items-center sm:justify-between w-full">
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-neutral-700">
                 Showing{" "}
                 <span className="font-medium">
                   {(currentPage - 1) * itemsPerPage + 1}
@@ -478,10 +479,10 @@ const Audit = () => {
                 <button
                   onClick={() => goToPage(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 text-sm font-medium ${
+                  className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-neutral-300 text-sm font-medium ${
                     currentPage === 1
-                      ? "text-gray-300 bg-gray-100 cursor-not-allowed"
-                      : "text-gray-500 bg-white hover:bg-gray-50"
+                      ? "text-neutral-300 bg-neutral-100 cursor-not-allowed"
+                      : "text-neutral-500 bg-white hover:bg-neutral-50"
                   }`}
                 >
                   Previous
@@ -490,10 +491,10 @@ const Audit = () => {
                   <button
                     key={idx}
                     onClick={() => goToPage(idx + 1)}
-                    className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium ${
+                    className={`relative inline-flex items-center px-4 py-2 border border-neutral-300 text-sm font-medium ${
                       currentPage === idx + 1
-                        ? "bg-blue-50 text-blue-600"
-                        : "bg-white text-gray-500 hover:bg-gray-50"
+                        ? "bg-info-50 text-info-600"
+                        : "bg-white text-neutral-500 hover:bg-neutral-50"
                     }`}
                   >
                     {idx + 1}
@@ -502,10 +503,10 @@ const Audit = () => {
                 <button
                   onClick={() => goToPage(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 text-sm font-medium ${
+                  className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-neutral-300 text-sm font-medium ${
                     currentPage === totalPages
-                      ? "text-gray-300 bg-gray-100 cursor-not-allowed"
-                      : "text-gray-500 bg-white hover:bg-gray-50"
+                      ? "text-neutral-300 bg-neutral-100 cursor-not-allowed"
+                      : "text-neutral-500 bg-white hover:bg-neutral-50"
                   }`}
                 >
                   Next

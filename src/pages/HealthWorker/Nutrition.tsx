@@ -28,6 +28,7 @@ import {
 import React, { useState } from "react";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { useTranslation } from "react-i18next";
+import { alpha, colors } from "@/theme/colors";
 
 ChartJS.register(
   CategoryScale,
@@ -125,12 +126,12 @@ const StatsCard = ({
   icon: React.ReactNode;
   color: string;
 }) => (
-  <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+  <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-sm font-medium text-gray-600">{title}</p>
-        <p className="text-3xl font-bold text-gray-900">{value}</p>
-        <p className="text-sm text-green-600 flex items-center mt-1">
+        <p className="text-sm font-medium text-neutral-600">{title}</p>
+        <p className="text-3xl font-bold text-neutral-900">{value}</p>
+        <p className="text-sm text-success-600 flex items-center mt-1">
           {subtitle}
         </p>
       </div>
@@ -140,34 +141,34 @@ const StatsCard = ({
 );
 
 const NutrientCard = ({ nutrient }: { nutrient: (typeof NUTRIENTS)[0] }) => (
-  <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+  <div className="border border-neutral-200 rounded-lg p-4 hover:shadow-md transition-shadow">
     <div className="flex items-center justify-between mb-3">
-      <h3 className="font-semibold text-gray-900">{nutrient.name}</h3>
+      <h3 className="font-semibold text-neutral-900">{nutrient.name}</h3>
       <span
         className={`px-2 py-1 rounded-full text-xs font-medium ${
           nutrient.importance === "Critical"
-            ? "bg-red-100 text-red-800"
-            : "bg-orange-100 text-orange-800"
+            ? "bg-danger-100 text-danger-800"
+            : "bg-warning-100 text-warning-800"
         }`}
       >
         {nutrient.importance}
       </span>
     </div>
-    <p className="text-sm text-gray-600 mb-3">{nutrient.description}</p>
+    <p className="text-sm text-neutral-600 mb-3">{nutrient.description}</p>
     <div className="space-y-2 text-sm">
       <div>
-        <span className="font-medium text-gray-700">Daily Intake:</span>
-        <span className="ml-2 text-indigo-600 font-semibold">
+        <span className="font-medium text-neutral-700">Daily Intake:</span>
+        <span className="ml-2 text-primary-600 font-semibold">
           {nutrient.recommendedIntake}
         </span>
       </div>
       <div>
-        <span className="font-medium text-gray-700">Sources:</span>
+        <span className="font-medium text-neutral-700">Sources:</span>
         <div className="flex flex-wrap gap-1 mt-1">
           {nutrient.sources.map((source, idx) => (
             <span
               key={idx}
-              className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs"
+              className="bg-neutral-100 text-neutral-700 px-2 py-1 rounded-full text-xs"
             >
               {source}
             </span>
@@ -185,7 +186,7 @@ const QuickActionButton = ({
   icon: React.ReactNode;
   label: string;
 }) => (
-  <button className="w-full text-left p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex items-center space-x-3">
+  <button className="w-full text-left p-3 bg-neutral-50 hover:bg-neutral-100 rounded-lg transition-colors flex items-center space-x-3">
     {icon}
     <span className="text-sm font-medium">{label}</span>
   </button>
@@ -248,20 +249,20 @@ const MaternalNutritionDashboard = () => {
   const {t} = useTranslation()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-info-50 to-primary-100">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white shadow-sm border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
-              <div className="bg-indigo-600 p-2 rounded-lg">
+              <div className="bg-primary-600 p-2 rounded-lg">
                 <Heart className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-neutral-900">
                   {t("nutritionCenter")}
                 </h1>
-                <p className="text-sm text-gray-600">{t("healthWorkerDashboard")}</p>
+                <p className="text-sm text-neutral-600">{t("healthWorkerDashboard")}</p>
               </div>
             </div>
           </div>
@@ -279,8 +280,8 @@ const MaternalNutritionDashboard = () => {
                 <TrendingUp className="h-4 w-4 mr-1" /> +12% from last month
               </>
             }
-            icon={<Users className="h-6 w-6 text-blue-600" />}
-            color="bg-blue-100"
+            icon={<Users className="h-6 w-6 text-info-600" />}
+            color="bg-info-100"
           />
           <StatsCard
             title="High Risk Cases"
@@ -290,8 +291,8 @@ const MaternalNutritionDashboard = () => {
                 <AlertCircle className="h-4 w-4 mr-1" /> Needs attention
               </>
             }
-            icon={<AlertCircle className="h-6 w-6 text-orange-600" />}
-            color="bg-orange-100"
+            icon={<AlertCircle className="h-6 w-6 text-warning-600" />}
+            color="bg-warning-100"
           />
           <StatsCard
             title="Messages Sent"
@@ -301,8 +302,8 @@ const MaternalNutritionDashboard = () => {
                 <CheckCircle className="h-4 w-4 mr-1" /> 94% delivery rate
               </>
             }
-            icon={<MessageCircle className="h-6 w-6 text-green-600" />}
-            color="bg-green-100"
+            icon={<MessageCircle className="h-6 w-6 text-success-600" />}
+            color="bg-success-100"
           />
           <StatsCard
             title="Avg Compliance"
@@ -312,8 +313,8 @@ const MaternalNutritionDashboard = () => {
                 <Activity className="h-4 w-4 mr-1" /> Above target
               </>
             }
-            icon={<Activity className="h-6 w-6 text-purple-600" />}
-            color="bg-purple-100"
+            icon={<Activity className="h-6 w-6 text-primary-600" />}
+            color="bg-primary-100"
           />
         </div>
 
@@ -322,22 +323,22 @@ const MaternalNutritionDashboard = () => {
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
             {/* Patient Messaging */}
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
               <div className="flex items-center space-x-2 mb-6">
-                <Stethoscope className="h-5 w-5 text-indigo-600" />
-                <h2 className="text-lg font-semibold text-gray-900">
+                <Stethoscope className="h-5 w-5 text-primary-600" />
+                <h2 className="text-lg font-semibold text-neutral-900">
                   {t("patientCommunication")}
                 </h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-neutral-700 mb-2">
                     {t("selectPatient")}
                   </label>
                   <select
                     value={selectedMother}
                     onChange={(e) => setSelectedMother(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full border border-neutral-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="">{t("choosePatient")}</option>
                     {mothers.map((m) => (
@@ -351,13 +352,13 @@ const MaternalNutritionDashboard = () => {
                 {selectedMother && (
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">
                         {t("quickMessage")}
                       </label>
                       <select
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        className="w-full border border-neutral-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                       >
                         <option value="">Select a message...</option>
                         {PRESET_MESSAGES.map((msg, idx) => (
@@ -372,8 +373,8 @@ const MaternalNutritionDashboard = () => {
                       disabled={!selectedMother || !message}
                       className={`w-full px-4 py-2 rounded-lg flex items-center justify-center space-x-2 transition-colors ${
                         selectedMother && message
-                          ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                          : "bg-gray-300 text-gray-600 cursor-not-allowed"
+                          ? "bg-primary-600 text-white hover:bg-primary-700"
+                          : "bg-neutral-300 text-neutral-600 cursor-not-allowed"
                       }`}
                     >
                       <Send className="h-4 w-4" />
@@ -385,19 +386,19 @@ const MaternalNutritionDashboard = () => {
             </div>
 
             {/* Nutritional Guidelines */}
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-semibold text-neutral-900">
                   {t("nutritionalGuidelines")}
                 </h2>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-400" />
                   <input
                     type="text"
                     placeholder="Search nutrients..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
               </div>
@@ -411,8 +412,8 @@ const MaternalNutritionDashboard = () => {
 
           {/* Right Column - Analytics & Actions */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+              <h3 className="text-lg font-semibold text-neutral-900 mb-4">
                 {t("riskDistribution")}
               </h3>
               <div className="h-48">
@@ -422,7 +423,7 @@ const MaternalNutritionDashboard = () => {
                     datasets: [
                       {
                         data: [65, 25, 10],
-                        backgroundColor: ["#10B981", "#F59E0B", "#EF4444"],
+                        backgroundColor: [colors.success[500], colors.warning[500], colors.danger[500]],
                         borderWidth: 0,
                       },
                     ],
@@ -432,8 +433,8 @@ const MaternalNutritionDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+              <h3 className="text-lg font-semibold text-neutral-900 mb-4">
                 {t("complianceTrends")}
               </h3>
               <div className="h-48">
@@ -444,8 +445,8 @@ const MaternalNutritionDashboard = () => {
                       {
                         label: "Supplement Compliance (%)",
                         data: [85, 92, 88, 95],
-                        borderColor: "#4F46E5",
-                        backgroundColor: "rgba(79,70,229,0.1)",
+                        borderColor: colors.primary[600],
+                        backgroundColor: alpha("primary-600", 0.1),
                         borderWidth: 3,
                         fill: true,
                         tension: 0.4,
@@ -457,20 +458,20 @@ const MaternalNutritionDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+              <h3 className="text-lg font-semibold text-neutral-900 mb-4">
                 {t('quickActions')}
               </h3>
               <QuickActionButton
-                icon={<Calendar className="h-5 w-5 text-indigo-600" />}
+                icon={<Calendar className="h-5 w-5 text-primary-600" />}
                 label={t("scheduleFollowUp")}
               />
               <QuickActionButton
-                icon={<AlertCircle className="h-5 w-5 text-orange-600" />}
+                icon={<AlertCircle className="h-5 w-5 text-warning-600" />}
                 label={t("flagHighRisk")}
               />
               {/* <QuickActionButton
-                icon={<MessageCircle className="h-5 w-5 text-green-600" />}
+                icon={<MessageCircle className="h-5 w-5 text-success-600" />}
                 label="Bulk Messaging"
               /> */}
             </div>
@@ -478,8 +479,8 @@ const MaternalNutritionDashboard = () => {
         </div>
 
         {/* Nutrition Chart */}
-        <div className="mt-8 bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">
+        <div className="mt-8 bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+          <h3 className="text-lg font-semibold text-neutral-900 mb-6">
             {t("scheduleFollowUp")}
           </h3>
           <div className="h-80">
@@ -496,13 +497,7 @@ const MaternalNutritionDashboard = () => {
                   {
                     label: "Recommended (mg/day)",
                     data: [0.4, 27, 1000, 0.015, 0.3],
-                    backgroundColor: [
-                      "#4F46E5",
-                      "#059669",
-                      "#DC2626",
-                      "#D97706",
-                      "#7C3AED",
-                    ],
+                    backgroundColor: colors.chart.slice(0, 5),
                     borderWidth: 0,
                     borderRadius: 8,
                   },

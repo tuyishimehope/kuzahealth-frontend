@@ -8,6 +8,7 @@ import {
     Tooltip,
   } from "chart.js";
   import { Bar } from "react-chartjs-2";
+import { alpha } from "@/theme/colors";
   
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
   
@@ -56,8 +57,8 @@ import {
       {
         label: "Recommended Doses",
         data: [1, 1, 1, 3, 2], // Number of doses
-        backgroundColor: "rgba(255, 99, 132, 0.6)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: alpha("highlight-500", 0.6),
+        borderColor: alpha("highlight-500", 1),
         borderWidth: 1,
       },
     ],
@@ -86,7 +87,7 @@ import {
       y: {
         beginAtZero: true,
         grid: {
-          color: 'rgba(200, 200, 200, 0.5)',
+          color: alpha("neutral-300", 0.5),
         },
         ticks: {
           color: 'gray',
@@ -102,7 +103,7 @@ import {
   
   const Vaccination = () => {
     return (
-      <div className="p-6 bg-gray-50">
+      <div className="p-6 bg-neutral-50">
         <h1 className="text-3xl font-bold mb-4 text-center">
           Maternal Vaccination Information
         </h1>
@@ -120,8 +121,8 @@ import {
               <h3 id={`vaccine-${index}`} className="text-lg font-bold mb-2">
                 {vaccine.name}
               </h3>
-              <p className="text-gray-700">{vaccine.description}</p>
-              <p className="font-semibold text-gray-800 mt-2">
+              <p className="text-neutral-700">{vaccine.description}</p>
+              <p className="font-semibold text-neutral-800 mt-2">
                 <strong>Recommended Doses:</strong> {vaccine.recommendedDoses}
               </p>
             </div>

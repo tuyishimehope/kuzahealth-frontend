@@ -57,7 +57,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="font-sans bg-gray-50">
+    <div className="font-sans bg-neutral-50">
       {/* Hero Section */}
       <Section
         id="home"
@@ -76,7 +76,7 @@ const Home = () => {
             <source src={heroVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/70 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/70 to-black/40"></div>
         </div>
 
         {/* Navigation */}
@@ -85,7 +85,7 @@ const Home = () => {
         {/* Hero Content */}
         <div className="container mx-auto px-6 lg:px-8 relative z-10 h-full flex items-center">
           <div className="max-w-2xl space-y-6">
-            <div className="inline-block px-3 py-1 rounded-full bg-purple-500/20 backdrop-blur-sm border border-purple-500/30">
+            <div className="inline-block px-3 py-1 rounded-full bg-primary-500/20 backdrop-blur-sm border border-primary-500/30">
               <span className="text-white font-medium text-sm">
                 Maternal & Child Healthcare
               </span>
@@ -100,12 +100,12 @@ const Home = () => {
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-primary-600 hover:bg-primary-700"
                 onClick={() => navigate("/auth/signin")}
               >
                 {t("button.getStarted")}
               </Button>
-              {/* <button className="flex items-center px-6 py-4 text-white hover:text-purple-200 transition-colors duration-300">
+              {/* <button className="flex items-center px-6 py-4 text-white hover:text-primary-200 transition-colors duration-300">
                 <span className="mr-2">Learn more</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -150,22 +150,22 @@ const Home = () => {
         <div className="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-12">
           {/* Left Content */}
           <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
-            <span className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 font-medium text-sm">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary-100 text-primary-700 font-medium text-sm">
               Our Mission
             </span>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 tracking-tight leading-tight">
               Health Services for Your Well-being
             </h2>
 
-            <div className="mx-auto lg:mx-0 w-16 h-1 bg-purple-500 rounded-full"></div>
+            <div className="mx-auto lg:mx-0 w-16 h-1 bg-primary-500 rounded-full"></div>
 
-            <p className="text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="text-neutral-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
               We provide an extensive array of health services designed to cater
               to your unique health needs.
             </p>
 
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
               At HealVritue, we are dedicated to improving maternal and child
               health outcomes by leveraging technology and innovative solutions.
               Our goal is to provide essential resources, education, and support
@@ -176,7 +176,7 @@ const Home = () => {
             <Button
               variant="primary"
               size="lg"
-              className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto"
+              className="bg-primary-600 hover:bg-primary-700 w-full sm:w-auto"
             >
               Explore Our Services
             </Button>
@@ -184,8 +184,8 @@ const Home = () => {
 
           {/* Right Image */}
           <div className="lg:w-1/2 relative flex justify-center">
-            <div className="absolute -top-6 -left-6 w-48 h-48 md:w-64 md:h-64 bg-purple-200 rounded-full blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 md:w-64 md:h-64 bg-blue-200 rounded-full blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div className="absolute -top-6 -left-6 w-48 h-48 md:w-64 md:h-64 bg-primary-200 rounded-full blur-3xl opacity-30 animate-blob"></div>
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 md:w-64 md:h-64 bg-info-200 rounded-full blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
             <img
               src={aboutImage}
@@ -224,7 +224,7 @@ const Home = () => {
           <Button
             variant="primary"
             size="lg"
-            className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto"
+            className="bg-primary-600 hover:bg-primary-700 w-full sm:w-auto"
           >
             View All Services
           </Button>
@@ -235,23 +235,23 @@ const Home = () => {
       <Section id="cta" background="white">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 space-y-6">
-            <div className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium">
+            <div className="inline-block px-4 py-2 rounded-full bg-primary-100 text-primary-700 font-medium">
               Join HealVirtue
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 leading-tight">
               Every life matters,
               <br />
               Every child thrives.
             </h2>
-            <div className="w-20 h-1 bg-purple-500 rounded-full"></div>
-            <p className="text-xl text-gray-600 italic">
+            <div className="w-20 h-1 bg-primary-500 rounded-full"></div>
+            <p className="text-xl text-neutral-600 italic">
               Care • Listen • Learn • Repeat
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 variant="primary"
                 size="lg"
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-primary-600 hover:bg-primary-700"
               >
                 Get Started
               </Button>
@@ -262,8 +262,8 @@ const Home = () => {
           </div>
           <div className="lg:w-1/2">
             <div className="relative">
-              <div className="absolute -top-6 -left-6 w-64 h-64 bg-purple-200 rounded-full filter blur-3xl opacity-30 animate-blob"></div>
-              <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-blue-200 rounded-full filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+              <div className="absolute -top-6 -left-6 w-64 h-64 bg-primary-200 rounded-full filter blur-3xl opacity-30 animate-blob"></div>
+              <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-info-200 rounded-full filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
               <img
                 src={ctnImage}
                 alt="Call to Action"
@@ -306,7 +306,7 @@ const Home = () => {
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-purple-600"
+                  className="h-6 w-6 text-primary-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -327,7 +327,7 @@ const Home = () => {
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-purple-600"
+                  className="h-6 w-6 text-primary-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -354,7 +354,7 @@ const Home = () => {
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-purple-600"
+                  className="h-6 w-6 text-primary-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

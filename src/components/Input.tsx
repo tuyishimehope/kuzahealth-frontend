@@ -17,7 +17,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         value={value}
         onChange={onChange}
         ref={ref} // attach the forwarded ref
-        className={`input bg-gray-100 px-2 py-2 rounded-md ${className}`}
+        className={`input bg-neutral-100 px-2 py-2 rounded-md ${className}`}
         {...props} // spread additional props
       />
     );

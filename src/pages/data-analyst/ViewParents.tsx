@@ -38,6 +38,7 @@ import {
 } from "mantine-react-table";
 import { useMemo, useState } from "react";
 import type { Child } from "../HealthWorker/infants/ViewInfants";
+import { colors } from "@/theme/colors";
 
 export interface Patient {
   id: string;
@@ -186,7 +187,7 @@ const ViewParents = () => {
         header: "Blood Group",
         size: 100,
         Cell: ({ cell }) => (
-          <Badge variant="outline" color="violet" size="sm">
+          <Badge variant="outline" color="brand" size="sm">
             {cell.getValue<string>()}
           </Badge>
         ),
@@ -218,7 +219,7 @@ const ViewParents = () => {
         Cell: ({ row }) => (
           <Button
             size="xs"
-            color="violet"
+            color="brand"
             variant="outline"
             onClick={() => handleViewInfant(row.original)}
           >
@@ -255,8 +256,8 @@ const ViewParents = () => {
         }}
       >
         <Stack align="center">
-          <Loader size="lg" color="violet" />
-          <Text size="lg" color="violet.7">
+          <Loader size="lg" color="brand" />
+          <Text size="lg" color="brand.7">
             Loading parents data...
           </Text>
         </Stack>
@@ -312,14 +313,14 @@ const ViewParents = () => {
           <Group spacing="sm">
             <ThemeIcon
               size="xl"
-              color="violet"
+              color="brand"
               variant="gradient"
               gradient={{ from: "violet", to: "purple" }}
             >
               <IconUsers size={24} />
             </ThemeIcon>
             <div>
-              <Title order={1} color="violet.8">
+              <Title order={1} color="brand.8">
                 Parents Management
               </Title>
               <Text color="dimmed" size="sm">
@@ -342,11 +343,11 @@ const ViewParents = () => {
                 >
                   Total Patients
                 </Text>
-                <Text size="xl" weight={700} color="violet.7">
+                <Text size="xl" weight={700} color="brand.7">
                   {stats.totalPatients}
                 </Text>
               </div>
-              <ThemeIcon size="lg" color="violet" variant="light">
+              <ThemeIcon size="lg" color="brand" variant="light">
                 <IconUsers size={20} />
               </ThemeIcon>
             </Group>
@@ -403,16 +404,16 @@ const ViewParents = () => {
         >
           {patients.length === 0 ? (
             <Stack align="center" spacing="md" p="xl">
-              <ThemeIcon size="xl" color="violet" variant="light">
+              <ThemeIcon size="xl" color="brand" variant="light">
                 <IconUsers size={32} />
               </ThemeIcon>
-              <Title order={3} color="violet.7">
+              <Title order={3} color="brand.7">
                 No patients found
               </Title>
               <Text color="dimmed" align="center">
                 Get started by adding your first patient to the system
               </Text>
-              <Button color="violet" leftIcon={<IconUserPlus size={16} />}>
+              <Button color="brand" leftIcon={<IconUserPlus size={16} />}>
                 Add First Patient
               </Button>
             </Stack>
@@ -450,7 +451,7 @@ const ViewParents = () => {
           closeButtonProps={{ "aria-label": "Close infants modal" }}
           styles={{
             header: {
-              borderBottom: "1px solid #e9ecef",
+              borderBottom: `1px solid ${colors.neutral[200]}`,
               paddingBottom: "1rem",
             },
             body: { paddingTop: "1rem" },
@@ -467,8 +468,8 @@ const ViewParents = () => {
                   withBorder
                   style={{
                     background:
-                      "linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%)",
-                    border: "1px solid #e3f2fd",
+                      `linear-gradient(135deg, ${colors.primary[50]} 0%, #ffffff 100%)`,
+                    border: `1px solid ${colors.info[50]}`,
                   }}
                 >
                   <Stack spacing="md">
@@ -612,7 +613,7 @@ const ViewParents = () => {
                         <ThemeIcon
                           size="sm"
                           variant="light"
-                          color="violet"
+                          color="brand"
                           radius="sm"
                         >
                           <IconClock size={14} />

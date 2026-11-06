@@ -111,7 +111,7 @@ const AddMotherForm: React.FC = () => {
     placeholder?: string;
   }) => (
     <div className="mb-4">
-      <label htmlFor={name} className="block text-gray-700 font-medium mb-1">
+      <label htmlFor={name} className="block text-neutral-700 font-medium mb-1">
         {label}:
       </label>
 
@@ -119,8 +119,8 @@ const AddMotherForm: React.FC = () => {
         <select
           id={name}
           {...register(name)}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-            error ? "border-red-500" : "border-gray-300"
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+            error ? "border-danger-500" : "border-neutral-300"
           }`}
         >
           <option value="">Select {label}</option>
@@ -136,14 +136,14 @@ const AddMotherForm: React.FC = () => {
           type={type}
           placeholder={placeholder}
           {...register(name)}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-            error ? "border-red-500" : "border-gray-300"
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+            error ? "border-danger-500" : "border-neutral-300"
           }`}
         />
       )}
 
       {error && (
-        <p className="mt-1 text-sm text-red-600 flex items-center">
+        <p className="mt-1 text-sm text-danger-600 flex items-center">
           <FaInfoCircle className="mr-1" size={14} />
           {error}
         </p>
@@ -154,11 +154,11 @@ const AddMotherForm: React.FC = () => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 max-w-6xl mx-auto">
       <div className="flex items-center mb-6">
-        <h1 className="text-2xl font-bold text-purple-800">Add Mother</h1>
-        <div className="ml-4 flex items-center text-gray-500 text-sm">
+        <h1 className="text-2xl font-bold text-primary-800">Add Mother</h1>
+        <div className="ml-4 flex items-center text-neutral-500 text-sm">
           <span>Patient Management</span>
           <IoChevronForwardOutline className="mx-1" />
-          <span className="text-purple-600">Add Mother</span>
+          <span className="text-primary-600">Add Mother</span>
         </div>
       </div>
 
@@ -166,7 +166,7 @@ const AddMotherForm: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 bg-green-100 text-green-700 p-4 rounded-md flex items-center"
+          className="mb-6 bg-success-100 text-success-700 p-4 rounded-md flex items-center"
         >
           <IoSaveOutline size={20} className="mr-2" />
           Patient information has been successfully saved!
@@ -177,8 +177,8 @@ const AddMotherForm: React.FC = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 md:grid-cols-2 gap-x-6"
       >
-        <div className="md:col-span-2 p-4 bg-purple-50 rounded-md mb-6">
-          <h2 className="text-lg font-semibold text-purple-700 mb-4">
+        <div className="md:col-span-2 p-4 bg-primary-50 rounded-md mb-6">
+          <h2 className="text-lg font-semibold text-primary-700 mb-4">
             Personal Information
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
@@ -241,8 +241,8 @@ const AddMotherForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="md:col-span-2 p-4 bg-purple-50 rounded-md mb-6">
-          <h2 className="text-lg font-semibold text-purple-700 mb-4">
+        <div className="md:col-span-2 p-4 bg-primary-50 rounded-md mb-6">
+          <h2 className="text-lg font-semibold text-primary-700 mb-4">
             Emergency Contact
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
@@ -270,8 +270,8 @@ const AddMotherForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="md:col-span-2 p-4 bg-purple-50 rounded-md mb-6">
-          <h2 className="text-lg font-semibold text-purple-700 mb-4">
+        <div className="md:col-span-2 p-4 bg-primary-50 rounded-md mb-6">
+          <h2 className="text-lg font-semibold text-primary-700 mb-4">
             Location Information
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
@@ -314,8 +314,8 @@ const AddMotherForm: React.FC = () => {
             disabled={isLoading}
             className={`px-8 py-3 rounded-md font-medium flex items-center ${
               isLoading
-                ? "bg-purple-300 cursor-not-allowed"
-                : "bg-purple-600 hover:bg-purple-700"
+                ? "bg-primary-300 cursor-not-allowed"
+                : "bg-primary-600 hover:bg-primary-700"
             } text-white transition-colors duration-200`}
           >
             {isSubmitting ? (

@@ -284,7 +284,7 @@ const AddSchedule = () => {
         variants={containerVariants}
       >
         <Group position="apart" mb="lg">
-          <Title order={2} className="text-purple-700">
+          <Title order={2} className="text-primary-700">
             Add New Schedule
           </Title>
         </Group>
@@ -323,7 +323,7 @@ const AddSchedule = () => {
                       nothingFound="No matching mother"
                       maxDropdownHeight={200} // sets max height for dropdown
                       withinPortal // ensures dropdown overlays correctly
-                      classNames={{ input: "bg-gray-50 hover:bg-gray-100" }}
+                      classNames={{ input: "bg-neutral-50 hover:bg-neutral-100" }}
                     />
                   )}
                 />
@@ -346,7 +346,7 @@ const AddSchedule = () => {
                         required
                         radius="md"
                         size="md"
-                        classNames={{ input: "bg-gray-50 hover:bg-gray-100" }}
+                        classNames={{ input: "bg-neutral-50 hover:bg-neutral-100" }}
                       />
                     )}
                   />
@@ -366,7 +366,7 @@ const AddSchedule = () => {
                         required
                         radius="md"
                         size="md"
-                        classNames={{ input: "bg-gray-50 hover:bg-gray-100" }}
+                        classNames={{ input: "bg-neutral-50 hover:bg-neutral-100" }}
                       />
                     )}
                   />
@@ -398,7 +398,7 @@ const AddSchedule = () => {
                         required
                         radius="md"
                         size="md"
-                        classNames={{ input: "bg-gray-50 hover:bg-gray-100" }}
+                        classNames={{ input: "bg-neutral-50 hover:bg-neutral-100" }}
                       />
                     )}
                   />
@@ -418,7 +418,7 @@ const AddSchedule = () => {
                         required
                         radius="md"
                         size="md"
-                        classNames={{ input: "bg-gray-50 hover:bg-gray-100" }}
+                        classNames={{ input: "bg-neutral-50 hover:bg-neutral-100" }}
                       />
                     )}
                   />
@@ -440,7 +440,7 @@ const AddSchedule = () => {
                       required
                       radius="md"
                       size="md"
-                      classNames={{ input: "bg-gray-50 hover:bg-gray-100" }}
+                      classNames={{ input: "bg-neutral-50 hover:bg-neutral-100" }}
                     />
                   )}
                 />
@@ -452,14 +452,14 @@ const AddSchedule = () => {
                   <Button
                     variant="light"
                     onClick={handleReset}
-                    className="bg-purple-50 text-purple-700 hover:bg-purple-100"
+                    className="bg-primary-50 text-primary-700 hover:bg-primary-100"
                     disabled={createScheduleMutation.isPending}
                   >
                     Reset Form
                   </Button>
                   <Button
                     type="submit"
-                    className="bg-purple-600 hover:bg-purple-500 text-white"
+                    className="bg-primary-600 hover:bg-primary-500 text-white"
                     loading={createScheduleMutation.isPending}
                     disabled={!isValid}
                   >

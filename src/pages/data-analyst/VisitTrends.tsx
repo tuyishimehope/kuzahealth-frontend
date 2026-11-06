@@ -13,6 +13,7 @@ import {
   Legend,
   CartesianGrid,
 } from "recharts";
+import { colors } from "@/theme/colors";
 
 interface Visit {
   id: string;
@@ -66,10 +67,10 @@ function VisitTrendsChart({ data }: { data: VisitTrendPoint[] }) {
         <YAxis allowDecimals={false} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="scheduled" stackId="a" fill="#3b82f6" />
-        <Bar dataKey="completed" stackId="a" fill="#22c55e" />
-        <Bar dataKey="cancelled" stackId="a" fill="#ef4444" />
-        <Bar dataKey="noShow" stackId="a" fill="#f59e0b" />
+        <Bar dataKey="scheduled" stackId="a" fill={colors.info[500]} />
+        <Bar dataKey="completed" stackId="a" fill={colors.success[500]} />
+        <Bar dataKey="cancelled" stackId="a" fill={colors.danger[500]} />
+        <Bar dataKey="noShow" stackId="a" fill={colors.warning[500]} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -87,7 +88,7 @@ export default function VisitTrends() {
   const trends = data ? transformVisitsToTrends(data) : [];
 
   if (isLoading) return <div className="p-4">Loading visit trends...</div>;
-  if (isError) return <div className="p-4 text-red-500">Failed to load visit trends</div>;
+  if (isError) return <div className="p-4 text-danger-500">Failed to load visit trends</div>;
 
   return (
     <motion.div
@@ -98,9 +99,9 @@ export default function VisitTrends() {
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold flex items-center gap-2">
-          <Activity className="w-5 h-5 text-blue-500" /> Visit Trends
+          <Activity className="w-5 h-5 text-info-500" /> Visit Trends
         </h2>
-        <button onClick={() => refetch()} className="p-2 rounded-lg hover:bg-gray-100">
+        <button onClick={() => refetch()} className="p-2 rounded-lg hover:bg-neutral-100">
           <RefreshCw className="w-4 h-4" />
         </button>
       </div>
@@ -108,10 +109,10 @@ export default function VisitTrends() {
       <VisitTrendsChart data={trends} />
 
       <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
-        <div className="text-green-600">Completed: {trends.at(-1)?.completed ?? 0}</div>
-        <div className="text-red-600">Cancelled: {trends.at(-1)?.cancelled ?? 0}</div>
-        <div className="text-blue-600">Scheduled: {trends.at(-1)?.scheduled ?? 0}</div>
-        <div className="text-orange-500">No Show: {trends.at(-1)?.noShow ?? 0}</div>
+        <div className="text-success-600">Completed: {trends.at(-1)?.completed ?? 0}</div>
+        <div className="text-danger-600">Cancelled: {trends.at(-1)?.cancelled ?? 0}</div>
+        <div className="text-info-600">Scheduled: {trends.at(-1)?.scheduled ?? 0}</div>
+        <div className="text-warning-500">No Show: {trends.at(-1)?.noShow ?? 0}</div>
       </div>
     </motion.div>
   );

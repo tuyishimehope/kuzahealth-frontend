@@ -34,6 +34,7 @@ import { AppointmentHistoryTab } from "./AppointmentHistoryTab";
 import { ChildRecord } from "./ChildRecord";
 import { PatientInformationTab } from "./PatientInformationTab";
 import { PregnancyRecordTab } from "./PregancyRecordTab";
+import { colors } from "@/theme/colors";
 
 type Patient = {
   id: string;
@@ -252,7 +253,7 @@ const PatientDetailPage = ({
     <Box
       p="md"
       sx={{
-        background: theme.fn.linearGradient(45, "#f6f9fc", "#edf2f7"),
+        background: theme.fn.linearGradient(45, colors.neutral[50], colors.neutral[100]),
         minHeight: "100vh",
       }}
     >
@@ -260,7 +261,7 @@ const PatientDetailPage = ({
         <Group position="apart" mb="lg">
           <Button
             variant="subtle"
-            className="text-purple-500"
+            className="text-primary-500"
             leftIcon={
               <IconArrowRight style={{ transform: "rotate(180deg)" }} />
             }
@@ -271,7 +272,7 @@ const PatientDetailPage = ({
           {/* <Button
             variant="light"
             leftIcon={<IconEdit size={16} />}
-            color="purple"
+            color="brand"
           >
             Edit Patient
           </Button> */}
@@ -283,7 +284,7 @@ const PatientDetailPage = ({
               <Avatar
                 size={80}
                 radius={80}
-                color="purple"
+                color="brand"
                 sx={{ fontSize: 32 }}
               >
                 {patient.firstName.charAt(0)}
@@ -293,7 +294,7 @@ const PatientDetailPage = ({
                 <Group spacing="xs">
                   <Badge
                     variant="filled"
-                    color="indigo"
+                    color="brand"
                     leftSection={<IconId size={14} />}
                   >
                     {patient.firstName} {patient.lastName}

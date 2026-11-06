@@ -12,11 +12,11 @@ const SuperAdminLayout = () => {
   const toggleCollapse = () => setCollapsed(!collapsed);
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-neutral-50">
       {/* Desktop Sidebar */}
       <div
         className={cn(
-          "hidden md:block transition-all duration-300 ease-in-out border-r border-gray-200",
+          "hidden md:block transition-all duration-300 ease-in-out border-r border-neutral-200",
           collapsed ? "w-16" : "w-64"
         )}
       >
@@ -29,7 +29,7 @@ const SuperAdminLayout = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-gray-50">
+      <div className="flex-1 flex flex-col overflow-hidden bg-neutral-50">
         {/* Pass mobile toggle to Navbar */}
         <Navbar menuOpen={sidebarOpen} setMenuOpen={setSidebarOpen} />
 

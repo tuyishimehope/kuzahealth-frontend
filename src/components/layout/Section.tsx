@@ -35,11 +35,11 @@ interface SectionProps {
  */
 const BACKGROUND_CLASSES: Record<string, string> = {
   white: 'bg-white',
-  light: 'bg-gray-50',
-  dark: 'bg-gray-900 text-white',
-  primary: 'bg-purple-900 text-white',
-  gradient: 'bg-gradient-to-b from-gray-50 to-white',
-  'gradient-dark': 'bg-gradient-to-r from-purple-900 to-purple-800 text-white',
+  light: 'bg-neutral-50',
+  dark: 'bg-neutral-900 text-white',
+  primary: 'bg-primary-900 text-white',
+  gradient: 'bg-gradient-to-b from-neutral-50 to-white',
+  'gradient-dark': 'bg-gradient-to-r from-primary-900 to-primary-800 text-white',
 };
 
 /**

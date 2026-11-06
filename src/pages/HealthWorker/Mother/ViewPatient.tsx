@@ -18,6 +18,7 @@ import {
 } from "mantine-react-table";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { colors } from "@/theme/colors";
 import { useTranslation } from "react-i18next"; // ✅ translation hook
 
 export interface Patient {
@@ -121,7 +122,7 @@ const MaritimePatientDashboard = () => {
         <Button
           size="xs"
           variant="subtle"
-          color="purple"
+          color="brand"
           leftIcon={<IconEye size={14} />}
           onClick={() =>
             navigate(`/healthworker/view-patient/${row.original.id}`)
@@ -148,7 +149,7 @@ const MaritimePatientDashboard = () => {
       <Group ml="xs">
         <Button
           leftIcon={<IconPlus size={20} />}
-          color="violet"
+          color="brand"
           onClick={() => navigate("/healthworker/patient")}
         >
           {t("patient.newMother")}
@@ -184,7 +185,7 @@ const MaritimePatientDashboard = () => {
     <Box
       p="md"
       sx={{
-        background: theme.fn.linearGradient(45, "#f6f9fc", "#edf2f7"),
+        background: theme.fn.linearGradient(45, colors.neutral[50], colors.neutral[100]),
         height: "100vh",
       }}
     >

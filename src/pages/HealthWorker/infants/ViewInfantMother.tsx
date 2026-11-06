@@ -57,7 +57,7 @@ const InfoItem = ({ icon, label, value, variant = "default", color }: any) => {
   const displayValue = value || "-";
   return (
     <Group spacing="sm" noWrap>
-      <div style={{ color: color || 'var(--mantine-color-gray-6)' }}>{icon}</div>
+      <div style={{ color: color || 'rgb(var(--neutral-600))' }}>{icon}</div>
       <div style={{ flex: 1 }}>
         <Text size="xs" color="dimmed" mb={2}>{label}</Text>
         {variant === "badge" && value ? (
@@ -124,7 +124,7 @@ const ViewInfantMother = () => {
         <Card withBorder radius="lg" shadow="sm" p="xl">
           <Center style={{ minHeight: 200 }}>
             <Stack align="center" spacing="md">
-              <Loader size="xl" color="purple" variant="dots" />
+              <Loader size="xl" color="brand" variant="dots" />
               <Text color="dimmed">Loading infant and mother details...</Text>
             </Stack>
           </Center>
@@ -148,14 +148,14 @@ const ViewInfantMother = () => {
       {/* Header */}
       <Group position="apart" mb="xl" align="flex-start">
         <div>
-          <Title order={1} mb="xs" color="purple">
+          <Title order={1} mb="xs" color="brand">
             <Group spacing="sm">
               <IconBabyCarriage size={32} />
               {infant?.firstName} {infant?.lastName}
             </Group>
           </Title>
           <Group spacing="md">
-            <Badge variant="light" color="purple" size="lg">{calculateAge(infant?.dateOfBirth)}</Badge>
+            <Badge variant="light" color="brand" size="lg">{calculateAge(infant?.dateOfBirth)}</Badge>
             <Badge variant="filled" color={infant?.gender === 'male' ? 'blue' : 'pink'} size="lg">{infant?.gender}</Badge>
           </Group>
         </div>
@@ -179,9 +179,9 @@ const ViewInfantMother = () => {
         <Grid.Col span={12} md={6}>
           <Card withBorder shadow="sm" radius="lg" h="100%" p="lg">
             <Group spacing="sm" mb="lg">
-              <Avatar size="md" color="purple" variant="light"><IconBabyCarriage size={24} /></Avatar>
+              <Avatar size="md" color="brand" variant="light"><IconBabyCarriage size={24} /></Avatar>
               <div>
-                <Title order={3} color="purple">Infant Details</Title>
+                <Title order={3} color="brand">Infant Details</Title>
                 <Text size="sm" color="dimmed">Birth and health information</Text>
               </div>
             </Group>
@@ -189,7 +189,7 @@ const ViewInfantMother = () => {
             <Stack spacing="lg">
               <Grid gutter="md">
                 <Grid.Col span={12}>
-                  <InfoItem icon={<IconUser size={16} />} label="Full Name" value={`${infant?.firstName || ''} ${infant?.lastName || ''}`} variant="highlight" color="purple" />
+                  <InfoItem icon={<IconUser size={16} />} label="Full Name" value={`${infant?.firstName || ''} ${infant?.lastName || ''}`} variant="highlight" color="brand" />
                 </Grid.Col>
                 <Grid.Col span={6}>
                   <InfoItem icon={<IconCalendar size={16} />} label="Date of Birth" value={infant?.dateOfBirth ? new Date(infant.dateOfBirth).toLocaleDateString() : null} />
@@ -238,7 +238,7 @@ const ViewInfantMother = () => {
                     <InfoItem icon={<IconDroplet size={16} />} label="Blood Group" value={mother.bloodGroup} variant="badge" color="red" />
                   </Grid.Col>
                   <Grid.Col span={6}>
-                    <InfoItem icon={<IconHeart size={16} />} label="Marital Status" value={mother.maritalStatus} variant="badge" color="grape" />
+                    <InfoItem icon={<IconHeart size={16} />} label="Marital Status" value={mother.maritalStatus} variant="badge" color="brand" />
                   </Grid.Col>
                 </Grid>
               </Stack>

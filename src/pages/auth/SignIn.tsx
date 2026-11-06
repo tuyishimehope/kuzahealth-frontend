@@ -11,6 +11,7 @@ import image from "../../assets/signin.png";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { colors } from "@/theme/colors";
 const api = import.meta.env.VITE_API_BASE_URL_DEV;
 const signInSchema = z.object({
   email: z.string().min(1, "Please enter email address or phone number"),
@@ -148,13 +149,13 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="flex min-h-screen w-full bg-gradient-to-br from-neutral-50 to-neutral-100">
       <Toaster 
         position="top-right"
         toastOptions={{
           style: {
             background: 'white',
-            border: '1px solid #e5e7eb',
+            border: `1px solid ${colors.border}`,
           },
         }}
       />
@@ -167,7 +168,7 @@ const SignIn = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 via-purple-600/30 to-transparent"
+          className="absolute inset-0 bg-gradient-to-br from-primary-600/40 via-primary-600/30 to-transparent"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 1 }}
@@ -211,11 +212,11 @@ const SignIn = () => {
             >
               <div className="text-center">
                 <motion.div
-                  className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full mx-auto mb-4"
+                  className="w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full mx-auto mb-4"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 />
-                <p className="text-gray-600 font-medium">
+                <p className="text-neutral-600 font-medium">
                   {formStep === 'submitting' && "Sending OTP..."}
                   {formStep === 'success' && "Success! Redirecting..."}
                 </p>
@@ -232,14 +233,14 @@ const SignIn = () => {
         >
           <motion.div className="text-center mb-10" variants={itemVariants}>
             <motion.div
-              className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Lock className="w-8 h-8 text-indigo-600" />
+              <Lock className="w-8 h-8 text-primary-600" />
             </motion.div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">{t("signin.subtitle")}</h1>
-            <p className="text-gray-500 leading-relaxed">
+            <h1 className="text-3xl font-bold text-neutral-800 mb-2">{t("signin.subtitle")}</h1>
+            <p className="text-neutral-500 leading-relaxed">
               {t("signin.subdescription")}
             </p>
           </motion.div>
@@ -251,7 +252,7 @@ const SignIn = () => {
           >
             {/* Email Input with enhanced styling */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <label className="text-sm font-medium text-neutral-700 flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                {t("signin.email-address")}
               </label>
@@ -260,15 +261,15 @@ const SignIn = () => {
                   {...register("email")}
                   type="text"
                   placeholder="you@example.com"
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
                     errors.email 
-                      ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
-                      : 'border-gray-300 hover:border-gray-400'
+                      ? 'border-danger-300 focus:ring-danger-500 focus:border-danger-500' 
+                      : 'border-neutral-300 hover:border-neutral-400'
                   }`}
                   disabled={isSubmitting}
                 />
                 {watchedEmail && !errors.email && (
-                  <CheckCircle2 className="absolute right-3 top-3.5 w-5 h-5 text-green-500" />
+                  <CheckCircle2 className="absolute right-3 top-3.5 w-5 h-5 text-success-500" />
                 )}
               </div>
               <AnimatePresence>
@@ -277,7 +278,7 @@ const SignIn = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-sm text-red-600 flex items-center gap-2"
+                    className="text-sm text-danger-600 flex items-center gap-2"
                   >
                     <AlertCircle className="w-4 h-4" />
                     {errors.email.message}
@@ -288,7 +289,7 @@ const SignIn = () => {
 
             {/* Password Input with enhanced styling */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <label className="text-sm font-medium text-neutral-700 flex items-center gap-2">
                 <Lock className="w-4 h-4" />
                 {t("signin.password")}
               </label>
@@ -297,17 +298,17 @@ const SignIn = () => {
                   {...register("password")}
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
                     errors.password 
-                      ? 'border-red-300 focus:ring-red-500 focus:border-red-500' 
-                      : 'border-gray-300 hover:border-gray-400'
+                      ? 'border-danger-300 focus:ring-danger-500 focus:border-danger-500' 
+                      : 'border-neutral-300 hover:border-neutral-400'
                   }`}
                   disabled={isSubmitting}
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-3 top-3.5 text-gray-500 hover:text-gray-700 transition-colors"
+                  className="absolute right-3 top-3.5 text-neutral-500 hover:text-neutral-700 transition-colors"
                   disabled={isSubmitting}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -319,7 +320,7 @@ const SignIn = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-sm text-red-600 flex items-center gap-2"
+                    className="text-sm text-danger-600 flex items-center gap-2"
                   >
                     <AlertCircle className="w-4 h-4" />
                     {errors.password.message}
@@ -332,7 +333,7 @@ const SignIn = () => {
             <motion.div className="flex justify-end" variants={itemVariants}>
               <motion.a
                 href="/auth/forgot-password"
-                className="text-sm text-indigo-600 hover:text-indigo-800 transition-colors font-medium"
+                className="text-sm text-primary-600 hover:text-primary-800 transition-colors font-medium"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -346,8 +347,8 @@ const SignIn = () => {
               disabled={isSubmitting || !isFormValid}
               className={`w-full py-3 px-4 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 ${
                 isFormValid && !isSubmitting
-                  ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
+                  : 'bg-neutral-300 text-neutral-500 cursor-not-allowed'
               }`}
               whileHover={isFormValid && !isSubmitting ? { scale: 1.02 } : {}}
               whileTap={isFormValid && !isSubmitting ? { scale: 0.98 } : {}}
@@ -373,8 +374,8 @@ const SignIn = () => {
               disabled={isSubmitting}
               className={`w-full py-3 px-4 rounded-lg font-medium border-2 transition-all duration-200 ${
                 isSubmitting
-                  ? 'border-gray-300 text-gray-400 cursor-not-allowed'
-                  : 'border-indigo-600 text-indigo-600 hover:bg-indigo-50'
+                  ? 'border-neutral-300 text-neutral-400 cursor-not-allowed'
+                  : 'border-primary-600 text-primary-600 hover:bg-primary-50'
               }`}
               whileHover={!isSubmitting ? { scale: 1.02 } : {}}
               whileTap={!isSubmitting ? { scale: 0.98 } : {}}
@@ -385,15 +386,15 @@ const SignIn = () => {
 
           {/* Sign Up Link */}
           {/* <motion.div className="text-center mt-8" variants={itemVariants}>
-            <p className="text-gray-600">
+            <p className="text-neutral-600">
               Don't have an account?{" "}
               <motion.button
                 onClick={() => !isSubmitting && navigate("/auth/signup")}
                 disabled={isSubmitting}
                 className={`font-medium transition-colors ${
                   isSubmitting
-                    ? 'text-gray-400 cursor-not-allowed'
-                    : 'text-indigo-600 hover:text-indigo-800'
+                    ? 'text-neutral-400 cursor-not-allowed'
+                    : 'text-primary-600 hover:text-primary-800'
                 }`}
                 whileHover={!isSubmitting ? { scale: 1.05 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.95 } : {}}

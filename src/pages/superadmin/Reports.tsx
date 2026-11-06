@@ -24,6 +24,7 @@ import {
 } from "@mui/x-charts";
 import { useQuery } from "@tanstack/react-query";
 import React, { useMemo } from "react";
+import { colors } from "@/theme/colors";
 
 // Data types
 interface HealthWorker {
@@ -437,7 +438,7 @@ export default function Dashboard() {
                 },
               ]}
               height={300}
-              colors={["#f44336", "#ff9800", "#2196f3", "#4caf50"]}
+              colors={[colors.danger[500], colors.warning[500], colors.info[500], colors.success[500]]}
               slotProps={{
                 legend: {
                   direction: "horizontal",
@@ -466,19 +467,19 @@ export default function Dashboard() {
                 {
                   data: analytics.monthlyCompleted,
                   label: "Completed",
-                  color: "#4caf50",
+                  color: colors.success[500],
                   curve: "monotoneX",
                 },
                 {
                   data: analytics.monthlyScheduled,
                   label: "Scheduled",
-                  color: "#2196f3",
+                  color: colors.info[500],
                   curve: "monotoneX",
                 },
                 {
                   data: analytics.monthlyCancelled,
                   label: "Cancelled",
-                  color: "#f44336",
+                  color: colors.danger[500],
                   curve: "monotoneX",
                 },
               ]}
@@ -506,7 +507,7 @@ export default function Dashboard() {
                   tickLabelStyle: { angle: 45, fontSize: 10 },
                 },
               ]}
-              series={[{ dataKey: "count", color: "#9c27b0" }]}
+              series={[{ dataKey: "count", color: colors.primary[600] }]}
               height={320}
               margin={{ left: 40, right: 20, top: 20, bottom: 80 }}
             />
@@ -546,7 +547,7 @@ export default function Dashboard() {
               series={[
                 {
                   label: "Performance",
-                  color: "#00bcd4",
+                  color: colors.info[400],
                   datasetKeys: {
                     x: "workload",
                     y: "performance",

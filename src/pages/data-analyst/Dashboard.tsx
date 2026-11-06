@@ -40,6 +40,7 @@ import {
   LineChart as IconLineChart,
 } from "lucide-react";
 import VisitTrends from "./VisitTrends";
+import { colors } from "@/theme/colors";
 // Enhanced type definitions
 interface HealthWorker {
   id: string;
@@ -108,38 +109,38 @@ const StatCard: React.FC<StatCardProps> = ({
   loading,
   subtitle,
 }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group">
+  <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100 hover:shadow-lg transition-all duration-300 group">
     <div className="flex items-start justify-between">
       <div className="flex-1">
         <div className="flex items-center space-x-2 mb-2">
-          <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+          <h4 className="text-sm font-semibold text-neutral-600 uppercase tracking-wide">
             {title}
           </h4>
         </div>
 
         {loading ? (
           <div className="space-y-2">
-            <div className="h-8 bg-gray-200 rounded-lg animate-pulse w-20"></div>
-            <div className="h-4 bg-gray-200 rounded animate-pulse w-16"></div>
+            <div className="h-8 bg-neutral-200 rounded-lg animate-pulse w-20"></div>
+            <div className="h-4 bg-neutral-200 rounded animate-pulse w-16"></div>
           </div>
         ) : (
           <div className="space-y-2">
             <div className="flex items-baseline space-x-3">
-              <h3 className="text-3xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors">
+              <h3 className="text-3xl font-bold text-neutral-900 group-hover:text-neutral-700 transition-colors">
                 {value}
               </h3>
               {trend && (
                 <div className="flex items-center space-x-1">
                   {trend.isUp ? (
-                    <TrendingUp size={16} className="text-emerald-500" />
+                    <TrendingUp size={16} className="text-success-500" />
                   ) : (
-                    <TrendingDown size={16} className="text-red-500" />
+                    <TrendingDown size={16} className="text-danger-500" />
                   )}
                   <span
                     className={`text-xs font-semibold px-2 py-1 rounded-full ${
                       trend.isUp
-                        ? "bg-emerald-50 text-emerald-700"
-                        : "bg-red-50 text-red-700"
+                        ? "bg-success-50 text-success-700"
+                        : "bg-danger-50 text-danger-700"
                     }`}
                   >
                     {trend.isUp ? "+" : ""}
@@ -148,7 +149,7 @@ const StatCard: React.FC<StatCardProps> = ({
                 </div>
               )}
             </div>
-            {subtitle && <p className="text-sm text-gray-500">{subtitle}</p>}
+            {subtitle && <p className="text-sm text-neutral-500">{subtitle}</p>}
           </div>
         )}
       </div>
@@ -170,41 +171,41 @@ export const VisitTrendsChart = ({
   data: any[];
   loading: boolean;
 }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+  <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100">
     <div className="flex items-center justify-between mb-6">
       <div className="flex items-center space-x-3">
-        <div className="p-2 bg-blue-100 rounded-lg">
-          <IconLineChart size={20} className="text-blue-600" />
+        <div className="p-2 bg-info-100 rounded-lg">
+          <IconLineChart size={20} className="text-info-600" />
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">Visit Trends</h3>
-          <p className="text-sm text-gray-500">Monthly visit statistics</p>
+          <h3 className="text-lg font-semibold text-neutral-900">Visit Trends</h3>
+          <p className="text-sm text-neutral-500">Monthly visit statistics</p>
         </div>
       </div>
     </div>
 
     {loading ? (
-      <div className="h-80 bg-gray-100 rounded-lg animate-pulse"></div>
+      <div className="h-80 bg-neutral-100 rounded-lg animate-pulse"></div>
     ) : (
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id="completedGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#10B981" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
+              <stop offset="5%" stopColor={colors.success[500]} stopOpacity={0.3} />
+              <stop offset="95%" stopColor={colors.success[500]} stopOpacity={0} />
             </linearGradient>
             <linearGradient id="scheduledGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
+              <stop offset="5%" stopColor={colors.info[500]} stopOpacity={0.3} />
+              <stop offset="95%" stopColor={colors.info[500]} stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-          <XAxis dataKey="month" stroke="#6B7280" fontSize={12} />
-          <YAxis stroke="#6B7280" fontSize={12} />
+          <CartesianGrid strokeDasharray="3 3" stroke={colors.border} />
+          <XAxis dataKey="month" stroke={colors.mutedForeground} fontSize={12} />
+          <YAxis stroke={colors.mutedForeground} fontSize={12} />
           <Tooltip
             contentStyle={{
               backgroundColor: "white",
-              border: "1px solid #E5E7EB",
+              border: `1px solid ${colors.border}`,
               borderRadius: "8px",
               boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
             }}
@@ -213,7 +214,7 @@ export const VisitTrendsChart = ({
           <Area
             type="monotone"
             dataKey="completed"
-            stroke="#10B981"
+            stroke={colors.success[500]}
             strokeWidth={2}
             fill="url(#completedGradient)"
             name="Completed Visits"
@@ -221,7 +222,7 @@ export const VisitTrendsChart = ({
           <Area
             type="monotone"
             dataKey="scheduled"
-            stroke="#3B82F6"
+            stroke={colors.info[500]}
             strokeWidth={2}
             fill="url(#scheduledGradient)"
             name="Scheduled Visits"
@@ -240,20 +241,20 @@ const RiskDistributionChart = ({
   data: any[];
   loading: boolean;
 }) => {
-  const COLORS = ["#EF4444", "#10B981", "#F59E0B", "#8B5CF6"];
+  const COLORS = [colors.danger[500], colors.success[500], colors.warning[500], colors.primary[500]];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+    <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-red-100 rounded-lg">
-            <IconPieChart size={20} className="text-red-600" />
+          <div className="p-2 bg-danger-100 rounded-lg">
+            <IconPieChart size={20} className="text-danger-600" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-neutral-900">
               Risk Distribution
             </h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-neutral-500">
               Patient risk assessment breakdown
             </p>
           </div>
@@ -261,7 +262,7 @@ const RiskDistributionChart = ({
       </div>
 
       {loading ? (
-        <div className="h-80 bg-gray-100 rounded-lg animate-pulse"></div>
+        <div className="h-80 bg-neutral-100 rounded-lg animate-pulse"></div>
       ) : (
         <ResponsiveContainer width="100%" height={300}>
           <RechartsPieChart>
@@ -285,7 +286,7 @@ const RiskDistributionChart = ({
             <Tooltip
               contentStyle={{
                 backgroundColor: "white",
-                border: "1px solid #E5E7EB",
+                border: `1px solid ${colors.border}`,
                 borderRadius: "8px",
                 boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
               }}
@@ -512,18 +513,18 @@ const Dashboard = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-red-200 max-w-md w-full text-center">
-          <AlertTriangle size={48} className="text-red-500 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-gray-900 mb-2">
+      <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-6">
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-danger-200 max-w-md w-full text-center">
+          <AlertTriangle size={48} className="text-danger-500 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-neutral-900 mb-2">
             Error Loading Dashboard
           </h2>
-          <p className="text-gray-600 mb-4">
+          <p className="text-neutral-600 mb-4">
             Failed to load dashboard data. Please try again.
           </p>
           <button
             onClick={() => refetch()}
-            className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            className="px-6 py-2 bg-danger-600 text-white rounded-lg hover:bg-danger-700 transition-colors"
           >
             Retry
           </button>
@@ -533,11 +534,11 @@ const Dashboard = () => {
   }
 
   const locationData = [
-    { region: "Kigali City", percentage: 25, color: "bg-purple-500" },
-    { region: "North Province", percentage: 20, color: "bg-pink-500" },
-    { region: "South Province", percentage: 22, color: "bg-purple-400" },
-    { region: "East Province", percentage: 32, color: "bg-green-500" },
-    { region: "West Province", percentage: 18, color: "bg-lime-500" },
+    { region: "Kigali City", percentage: 25, color: "bg-primary-500" },
+    { region: "North Province", percentage: 20, color: "bg-highlight-500" },
+    { region: "South Province", percentage: 22, color: "bg-primary-400" },
+    { region: "East Province", percentage: 32, color: "bg-success-500" },
+    { region: "West Province", percentage: 18, color: "bg-success-500" },
   ];
 
   type ProgressBarProps = { label: string; percentage: number; color: string };
@@ -549,12 +550,12 @@ const Dashboard = () => {
   }) => (
     <div className="mb-5">
       <div className="flex justify-between items-center mb-1">
-        <span className="text-sm font-medium text-gray-700">{label}</span>
-        <span className="text-sm font-semibold text-gray-900">
+        <span className="text-sm font-medium text-neutral-700">{label}</span>
+        <span className="text-sm font-semibold text-neutral-900">
           {percentage}%
         </span>
       </div>
-      <div className="w-full bg-gray-100 rounded-full h-4 overflow-hidden shadow-inner">
+      <div className="w-full bg-neutral-100 rounded-full h-4 overflow-hidden shadow-inner">
         <motion.div
           className={`${color} h-4 rounded-full shadow-md`}
           initial={{ width: 0 }}
@@ -566,19 +567,19 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100">
       <div className="max-w-7xl mx-auto p-6">
         {/* Enhanced Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <div className="p-3 bg-blue-600 rounded-2xl">
+            <div className="p-3 bg-info-600 rounded-2xl">
               <Heart size={32} className="text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-1">
+              <h1 className="text-4xl font-bold text-neutral-900 mb-1">
                 Healthcare Analytics Dashboard
               </h1>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-neutral-600">
                 Comprehensive maternal & infant care monitoring with advanced
                 analytics
               </p>
@@ -587,15 +588,15 @@ const Dashboard = () => {
 
           <div className="flex items-center space-x-4">
             <div className="text-right">
-              <p className="text-sm text-gray-500">Last updated</p>
-              <p className="text-sm font-semibold text-gray-900">
+              <p className="text-sm text-neutral-500">Last updated</p>
+              <p className="text-sm font-semibold text-neutral-900">
                 {new Date().toLocaleString()}
               </p>
             </div>
             <button
               onClick={() => refetch()}
               disabled={isFetching}
-              className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="flex items-center space-x-2 px-6 py-3 bg-primary-600 text-white rounded-xl hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               <RefreshCw
                 size={18}
@@ -612,12 +613,12 @@ const Dashboard = () => {
             Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+                className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100"
               >
                 <div className="animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded w-24 mb-4"></div>
-                  <div className="h-8 bg-gray-200 rounded w-16 mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-20"></div>
+                  <div className="h-4 bg-neutral-200 rounded w-24 mb-4"></div>
+                  <div className="h-8 bg-neutral-200 rounded w-16 mb-2"></div>
+                  <div className="h-3 bg-neutral-200 rounded w-20"></div>
                 </div>
               </div>
             ))
@@ -628,7 +629,7 @@ const Dashboard = () => {
                 value={analytics.totalHealthWorkers}
                 subtitle={`${analytics.totalHealthWorkers} total`}
                 icon={UserCheck}
-                color="bg-blue-500"
+                color="bg-info-500"
                 trend={analytics.trends.healthWorkers}
                 loading={isLoading}
               />
@@ -637,7 +638,7 @@ const Dashboard = () => {
                 value={analytics.totalParents.toLocaleString()}
                 subtitle={`${analytics.highRiskParents} high-risk`}
                 icon={Users}
-                color="bg-emerald-500"
+                color="bg-success-500"
                 trend={analytics.trends.parents}
                 loading={isLoading}
               />
@@ -646,7 +647,7 @@ const Dashboard = () => {
                 value={analytics.totalInfants.toLocaleString()}
                 subtitle={`${analytics.recentInfants} this month`}
                 icon={Baby}
-                color="bg-purple-500"
+                color="bg-primary-500"
                 trend={analytics.trends.infants}
                 loading={isLoading}
               />
@@ -655,7 +656,7 @@ const Dashboard = () => {
                 value={analytics.scheduledVisits}
                 subtitle={`${analytics.urgentVisits} urgent`}
                 icon={Calendar}
-                color="bg-amber-500"
+                color="bg-warning-500"
                 trend={analytics.trends.visits}
                 loading={isLoading}
               />
@@ -664,7 +665,7 @@ const Dashboard = () => {
                 value={analytics.completedVisits}
                 subtitle="This period"
                 icon={CheckCircle}
-                color="bg-green-500"
+                color="bg-success-500"
                 loading={isLoading}
               />
               <StatCard
@@ -672,7 +673,7 @@ const Dashboard = () => {
                 value={`${analytics.completionRate.toFixed(1)}%`}
                 subtitle="Visit completion"
                 icon={Activity}
-                color="bg-indigo-500"
+                color="bg-primary-500"
                 loading={isLoading}
               />
               <StatCard
@@ -680,7 +681,7 @@ const Dashboard = () => {
                 value={`${analytics.avgSatisfaction.toFixed(1)}/10`}
                 subtitle="Patient satisfaction"
                 icon={Heart}
-                color="bg-pink-500"
+                color="bg-highlight-500"
                 loading={isLoading}
               />
               <StatCard
@@ -691,7 +692,7 @@ const Dashboard = () => {
                 ).toFixed(1)}%`}
                 subtitle="High-risk cases"
                 icon={Shield}
-                color="bg-red-500"
+                color="bg-danger-500"
                 loading={isLoading}
               />
             </>
@@ -718,16 +719,16 @@ const Dashboard = () => {
 
         {/* Regional Coverage & Map */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <BarChart3 size={20} className="text-green-600" />
+              <div className="p-2 bg-success-100 rounded-lg">
+                <BarChart3 size={20} className="text-success-600" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-neutral-900">
                   Health Coverage by Region
                 </h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-neutral-500">
                   Regional distribution analysis
                 </p>
               </div>
@@ -741,21 +742,21 @@ const Dashboard = () => {
               />
             ))}
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="p-2 bg-indigo-100 rounded-lg">
-                <Activity size={20} className="text-indigo-600" />
+              <div className="p-2 bg-primary-100 rounded-lg">
+                <Activity size={20} className="text-primary-600" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-neutral-900">
                   Geographic Coverage
                 </h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-neutral-500">
                   Service area visualization
                 </p>
               </div>
             </div>
-            <div className="h-80 rounded-xl overflow-hidden shadow-inner border border-gray-200">
+            <div className="h-80 rounded-xl overflow-hidden shadow-inner border border-neutral-200">
               <Map />
             </div>
           </div>

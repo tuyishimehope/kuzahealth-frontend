@@ -48,7 +48,7 @@ const Navbar = ({ menuOpen, setMenuOpen }: NavbarProp) => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-purple-900 hover:bg-purple-100 mr-2"
+            className="md:hidden text-primary-900 hover:bg-primary-100 mr-2"
             onClick={handleMenu}
           >
             <Menu className="h-5 w-5" />
@@ -56,33 +56,33 @@ const Navbar = ({ menuOpen, setMenuOpen }: NavbarProp) => {
 
           {/* Logo & title */}
           <div className="flex items-center space-x-2">
-            <h1 className="text-lg font-medium text-purple-900">Kuza Care</h1>
-            <span className="hidden md:inline text-gray-400">|</span>
-            <span className="hidden md:inline text-sm text-gray-500">Super Admin Portal</span>
+            <h1 className="text-lg font-medium text-primary-900">Kuza Care</h1>
+            <span className="hidden md:inline text-neutral-400">|</span>
+            <span className="hidden md:inline text-sm text-neutral-500">Super Admin Portal</span>
           </div>
         </div>
 
         {/* Right */}
         <div className="flex items-center space-x-2">
           {/* Time */}
-          <span className="hidden md:block px-3 text-sm text-gray-500">{currentTime}</span>
+          <span className="hidden md:block px-3 text-sm text-neutral-500">{currentTime}</span>
 
           {/* Notifications */}
           <Button
             variant="ghost"
             size="icon"
-            className="text-gray-500 hover:text-purple-900 hover:bg-purple-100 relative"
+            className="text-neutral-500 hover:text-primary-900 hover:bg-primary-100 relative"
           >
             <Bell className="h-5 w-5" />
-            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-purple-600" />
+            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-primary-600" />
           </Button>
 
           {/* Profile */}
           <Button
             variant="ghost"
-            className="text-gray-700 hover:text-purple-900 hover:bg-purple-100 flex items-center space-x-2 rounded-full"
+            className="text-neutral-700 hover:text-primary-900 hover:bg-primary-100 flex items-center space-x-2 rounded-full"
           >
-            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-purple-700 to-purple-900 flex items-center justify-center text-white font-medium">
+            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary-700 to-primary-900 flex items-center justify-center text-white font-medium">
               AK
             </div>
             <span className="hidden md:inline text-sm font-medium">Admin</span>

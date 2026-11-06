@@ -116,7 +116,7 @@ const ViewInfants = () => {
       header: "Infant",
       Cell: ({ row }) => (
         <Group spacing="sm" noWrap>
-          <Avatar size="md" color="purple" radius="xl">
+          <Avatar size="md" color="brand" radius="xl">
             <IconBabyCarriage size={20} />
           </Avatar>
           <Stack spacing={0}>
@@ -156,7 +156,7 @@ const ViewInfants = () => {
             <Group spacing="xs" noWrap>
               <IconCalendar
                 size={14}
-                style={{ color: "var(--mantine-color-gray-6)" }}
+                style={{ color: "rgb(var(--neutral-600))" }}
               />
               <Text size="sm" weight={500}>
                 {calculateAge(dob)}
@@ -184,7 +184,7 @@ const ViewInfants = () => {
             icon={
               <IconScale
                 size={14}
-                style={{ color: "var(--mantine-color-blue-6)" }}
+                style={{ color: "rgb(var(--info-600))" }}
               />
             }
             label="Birth Weight"
@@ -195,7 +195,7 @@ const ViewInfants = () => {
             icon={
               <IconRuler
                 size={14}
-                style={{ color: "var(--mantine-color-green-6)" }}
+                style={{ color: "rgb(var(--success-600))" }}
               />
             }
             label="Birth Height"
@@ -210,7 +210,7 @@ const ViewInfants = () => {
         <Tooltip label="View infant details and medical records" position="top">
           <ActionIcon
             variant="filled"
-            color="purple"
+            color="brand"
             size="lg"
             onClick={() =>
               navigate(`/healthworker/view-infants/${row.original.id}`)
@@ -244,7 +244,7 @@ const ViewInfants = () => {
     mantineTableContainerProps: { style: { minHeight: isLoading ? 400 : 550 } },
     mantineTableHeadCellProps: {
       style: {
-        backgroundColor: "var(--mantine-color-gray-0)",
+        backgroundColor: "rgb(var(--neutral-50))",
         fontWeight: 600,
       },
     },
@@ -262,7 +262,7 @@ const ViewInfants = () => {
       {/* Header */}
       <Group position="apart" mb="lg" align="center">
         <div>
-          <Title order={2} color="purple" mb={4}>
+          <Title order={2} color="brand" mb={4}>
             <Group spacing="sm">
               <IconBabyCarriage size={28} />
               Infants Registry
@@ -320,7 +320,7 @@ const ViewInfants = () => {
         <Card withBorder radius="lg" shadow="sm" p="xl" mt="md">
           <Center>
             <Stack align="center" spacing="md">
-              <Avatar size={80} color="purple" variant="light">
+              <Avatar size={80} color="brand" variant="light">
                 <IconBabyCarriage size={40} />
               </Avatar>
               <div style={{ textAlign: "center" }}>
@@ -333,7 +333,7 @@ const ViewInfants = () => {
                 <Button
                   leftIcon={<IconPlus size={16} />}
                   variant="light"
-                  color="purple"
+                  color="brand"
                   onClick={() => navigate("/healthworker/add-infant")}
                 >
                   Add First Infant

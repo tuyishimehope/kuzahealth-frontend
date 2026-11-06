@@ -20,6 +20,7 @@ import { useQuery } from "@tanstack/react-query";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import logo1 from "@/assets/logo1.png";
+import { colors } from "@/theme/colors";
 
 export interface Patient {
   id: string;
@@ -222,8 +223,8 @@ const ViewParents = () => {
         <Button
           leftIcon={<IconDownload size={20} />}
           variant="filled"
-          color="purple"
-          className="bg-purple-600 hover:bg-purple-500"
+          color="brand"
+          className="bg-primary-600 hover:bg-primary-500"
           onClick={handleExportPDF}
         >
           Export PDF
@@ -261,7 +262,7 @@ const ViewParents = () => {
     <Box
       p="md"
       sx={{
-        background: theme.fn.linearGradient(45, "#f6f9fc", "#edf2f7"),
+        background: theme.fn.linearGradient(45, colors.neutral[50], colors.neutral[100]),
         minHeight: "100vh",
       }}
     >

@@ -59,10 +59,10 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
       className={({ isActive }) =>
         cn(
           "group relative flex items-center transition-all duration-300 ease-out rounded-xl",
-          "focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:ring-offset-2 focus:ring-offset-white",
+          "focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:ring-offset-2 focus:ring-offset-white",
           isActive
-            ? "bg-gradient-to-r from-purple-500  to-purple-600 text-white shadow-lg shadow-purple-500/25 transform scale-[0.98]"
-            : "text-slate-600 hover:bg-slate-50 hover:text-slate-800 hover:shadow-md hover:shadow-slate-200/50 hover:-translate-y-0.5",
+            ? "bg-gradient-to-r from-primary-500  to-primary-600 text-white shadow-lg shadow-primary-500/25 transform scale-[0.98]"
+            : "text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 hover:shadow-md hover:shadow-neutral-200/50 hover:-translate-y-0.5",
           collapsed ? "justify-center px-2 py-3 mx-1" : "px-4 py-3 mx-0"
         )
       }
@@ -83,7 +83,7 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
                 collapsed ? "h-5 w-5" : "h-5 w-5",
                 isActive 
                   ? "text-white drop-shadow-sm" 
-                  : "text-slate-500 group-hover:text-slate-700 group-hover:scale-110"
+                  : "text-neutral-500 group-hover:text-neutral-700 group-hover:scale-110"
               )} 
             />
             
@@ -98,7 +98,7 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
             <div className="flex flex-col ml-3 min-w-0 flex-1 animate-in slide-in-from-left-2 duration-300">
               <span className={cn(
                 "text-sm font-semibold tracking-tight truncate transition-colors duration-200",
-                isActive ? "text-white" : "text-slate-700 group-hover:text-slate-900"
+                isActive ? "text-white" : "text-neutral-700 group-hover:text-neutral-900"
               )}>
                 {link.label}
               </span>
@@ -106,8 +106,8 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
                 <span className={cn(
                   "text-xs truncate transition-colors duration-200 mt-0.5",
                   isActive 
-                    ? "text-purple-100" 
-                    : "text-slate-400 group-hover:text-slate-500"
+                    ? "text-primary-100" 
+                    : "text-neutral-400 group-hover:text-neutral-500"
                 )}>
                   {link.description}
                 </span>
@@ -117,26 +117,26 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
 
           {/* Hover indicator line */}
           {!isActive && (
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-purple-500 rounded-r-full transition-all duration-300 group-hover:h-8" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-primary-500 rounded-r-full transition-all duration-300 group-hover:h-8" />
           )}
 
           {/* Active state background glow */}
           {isActive && !collapsed && (
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-transparent rounded-xl -z-10 animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-400/20 to-transparent rounded-xl -z-10 animate-pulse" />
           )}
 
           {/* Tooltip for collapsed state */}
           {collapsed && (
             <div className={cn(
-              "absolute left-full ml-2 px-3 py-2 bg-slate-900 text-white text-sm rounded-lg shadow-lg",
+              "absolute left-full ml-2 px-3 py-2 bg-neutral-900 text-white text-sm rounded-lg shadow-lg",
               "opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200",
               "whitespace-nowrap z-50 pointer-events-none",
               "before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:-translate-x-1",
-              "before:border-4 before:border-transparent before:border-r-slate-900"
+              "before:border-4 before:border-transparent before:border-r-neutral-900"
             )}>
               <div className="font-medium">{link.label}</div>
               {link.description && (
-                <div className="text-xs text-slate-300 mt-0.5">{link.description}</div>
+                <div className="text-xs text-neutral-300 mt-0.5">{link.description}</div>
               )}
             </div>
           )}
@@ -147,12 +147,12 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
 };
 
   const SidebarFooter = () => (
-    <div className="border-t border-slate-200 p-3 w-full">
+    <div className="border-t border-neutral-200 p-3 w-full">
       <Button
         variant="ghost"
         className={cn(
           "flex items-center transition-colors w-full",
-          collapsed ? "justify-center px-0 py-4" : "px-4 py-4 text-slate-600 hover:bg-red-50 hover:text-red-600"
+          collapsed ? "justify-center px-0 py-4" : "px-4 py-4 text-neutral-600 hover:bg-danger-50 hover:text-danger-600"
         )}
         onClick={() => setMenuOpen(false)}
       >
@@ -165,19 +165,19 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
   const SidebarContent = () => (
     <div
       className={cn(
-        "h-full flex flex-col bg-gradient-to-b from-slate-50 to-white shadow-lg border-r border-slate-200 relative",
+        "h-full flex flex-col bg-gradient-to-b from-neutral-50 to-white shadow-lg border-r border-neutral-200 relative",
         collapsed ? "items-center" : "items-start"
       )}
     >
       {/* Brand */}
-      <div className={cn("px-4 py-6 border-b border-slate-200 flex items-center", collapsed ? "justify-center" : "justify-start space-x-3")}>
+      <div className={cn("px-4 py-6 border-b border-neutral-200 flex items-center", collapsed ? "justify-center" : "justify-start space-x-3")}>
         <div className="h-10 w-10 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-md">
           <img src={logo} alt="logo" className="h-6 w-6" />
         </div>
         {!collapsed && (
           <div>
-            <h2 className="font-bold text-slate-800 text-lg">Kuza Care</h2>
-            <p className="text-xs text-slate-500">Data analyst Portal</p>
+            <h2 className="font-bold text-neutral-800 text-lg">Kuza Care</h2>
+            <p className="text-xs text-neutral-500">Data analyst Portal</p>
           </div>
         )}
       </div>
@@ -193,10 +193,10 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
         <Button
           variant="outline"
           size="sm"
-          className="absolute -right-3 top-20 h-6 w-6 rounded-full p-0 bg-white border-2 border-slate-200 shadow-md"
+          className="absolute -right-3 top-20 h-6 w-6 rounded-full p-0 bg-white border-2 border-neutral-200 shadow-md"
           onClick={onCollapse}
         >
-          {collapsed ? <ChevronRight className="h-3 w-3 text-slate-600" /> : <ChevronLeft className="h-3 w-3 text-slate-600" />}
+          {collapsed ? <ChevronRight className="h-3 w-3 text-neutral-600" /> : <ChevronLeft className="h-3 w-3 text-neutral-600" />}
         </Button>
       )}
     </div>
@@ -206,10 +206,10 @@ const SidebarLink = ({ link }: { link: typeof sidebarLinks[0] }) => {
     <Button
       variant="outline"
       size="sm"
-      className="fixed top-4 left-4 z-50 h-10 w-10 rounded-lg p-0 bg-red-500 border-2 border-slate-200 shadow-lg md:hidden"
+      className="fixed top-4 left-4 z-50 h-10 w-10 rounded-lg p-0 bg-danger-500 border-2 border-neutral-200 shadow-lg md:hidden"
       onClick={() => setMenuOpen(!menuOpen)}
     >
-      {menuOpen ? <X className="h-5 w-5 text-slate-600" /> : <Menu className="h-5 w-5 text-slate-600" />}
+      {menuOpen ? <X className="h-5 w-5 text-neutral-600" /> : <Menu className="h-5 w-5 text-neutral-600" />}
     </Button>
   );
 

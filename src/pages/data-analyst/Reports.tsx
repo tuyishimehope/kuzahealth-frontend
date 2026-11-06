@@ -3,6 +3,7 @@ import { Box, Paper, Typography, CircularProgress, Alert } from "@mui/material";
 import { BarChart, LineChart, PieChart } from "@mui/x-charts";
 import KPICard from "./KPICard";
 import { axiosInstance } from "@/utils/axiosInstance";
+import { colors } from "@/theme/colors";
 
 // -------------------- API --------------------
 const fetchHealthWorkers = async () =>
@@ -114,7 +115,7 @@ export default function Dashboard() {
               count: d.value,
             }))}
             xAxis={[{ scaleType: "band", dataKey: "category" }]}
-            series={[{ dataKey: "count", color: "#4caf50" }]}
+            series={[{ dataKey: "count", color: colors.success[500] }]}
             height={320}
           />
         </Paper>
@@ -131,7 +132,7 @@ export default function Dashboard() {
               },
             ]}
             series={[
-              { data: [5, 10, 8, 12, 7, 9], label: "Visits", color: "#2196f3" },
+              { data: [5, 10, 8, 12, 7, 9], label: "Visits", color: colors.info[500] },
             ]}
             height={320}
           />

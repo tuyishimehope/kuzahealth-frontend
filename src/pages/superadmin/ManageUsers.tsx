@@ -23,6 +23,7 @@ import {
 } from "mantine-react-table";
 import { useMemo, useState } from "react";
 import logo1 from "@/assets/logo1.png"; 
+import { alpha, colors } from "@/theme/colors";
 
 
 export interface User {
@@ -238,7 +239,7 @@ const handleExportPdf = () => {
     },
     mantineTableHeadProps: {
       style: {
-        backgroundColor: "rgba(248, 250, 252, 0.8)",
+        backgroundColor: alpha("neutral-50", 0.8),
         backdropFilter: "blur(8px)",
       },
     },
@@ -252,14 +253,14 @@ const handleExportPdf = () => {
         <Button
           leftIcon={<Download size={16} />}
           variant="light"
-          color="indigo"
+          color="brand"
           onClick={handleExportPdf}
           size="sm"
           radius="md"
           style={{
             backgroundColor: "rgba(255, 255, 255, 0.8)",
             backdropFilter: "blur(8px)",
-            border: "1px solid rgba(99, 102, 241, 0.2)",
+            border: `1px solid ${alpha("primary-500", 0.2)}`,
           }}
         >
           Export PDF
@@ -270,7 +271,7 @@ const handleExportPdf = () => {
       <Tooltip label="Edit User" position="left">
         <ActionIcon
           variant="light"
-          color="violet"
+          color="brand"
           size="sm"
           radius="md"
           onClick={() => {
@@ -280,7 +281,7 @@ const handleExportPdf = () => {
           style={{
             backgroundColor: "rgba(255, 255, 255, 0.8)",
             backdropFilter: "blur(8px)",
-            border: "1px solid rgba(139, 69, 199, 0.2)",
+            border: `1px solid ${alpha("primary-600", 0.2)}`,
           }}
         >
           <Edit size={14} />
@@ -302,7 +303,7 @@ const handleExportPdf = () => {
       className="min-h-screen p-6"
       style={{
         background:
-          "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)",
+          `linear-gradient(135deg, ${colors.neutral[50]} 0%, ${colors.neutral[200]} 50%, ${colors.neutral[300]} 100%)`,
         backgroundAttachment: "fixed",
       }}
     >
@@ -321,7 +322,7 @@ const handleExportPdf = () => {
         <Group position="apart" align="flex-start">
           <div>
             <Group spacing="sm" mb="xs">
-              <Shield size={28} color="#6366f1" />
+              <Shield size={28} color={colors.primary[500]} />
               <Title order={1} c="gray.8" fw={700}>
                 User Management
               </Title>
@@ -339,13 +340,13 @@ const handleExportPdf = () => {
               style={{
                 background: "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(12px)",
-                border: "1px solid rgba(99, 102, 241, 0.1)",
-                boxShadow: "0 4px 16px rgba(99, 102, 241, 0.1)",
+                border: `1px solid ${alpha("primary-500", 0.1)}`,
+                boxShadow: `0 4px 16px ${alpha("primary-500", 0.1)}`,
                 minWidth: "120px",
               }}
             >
               <Group spacing="sm">
-                <Users size={20} color="#6366f1" />
+                <Users size={20} color={colors.primary[500]} />
                 <div>
                   <Text c="gray.8" fw={700} size="lg">
                     {stats.totalUsers}
@@ -363,13 +364,13 @@ const handleExportPdf = () => {
               style={{
                 background: "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(12px)",
-                border: "1px solid rgba(16, 185, 129, 0.1)",
-                boxShadow: "0 4px 16px rgba(16, 185, 129, 0.1)",
+                border: `1px solid ${alpha("success-500", 0.1)}`,
+                boxShadow: `0 4px 16px ${alpha("success-500", 0.1)}`,
                 minWidth: "120px",
               }}
             >
               <Group spacing="sm">
-                <Activity size={20} color="#10b981" />
+                <Activity size={20} color={colors.success[500]} />
                 <div>
                   <Text c="gray.8" fw={700} size="lg">
                     {stats.activeUsers}
@@ -387,13 +388,13 @@ const handleExportPdf = () => {
               style={{
                 background: "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(12px)",
-                border: "1px solid rgba(139, 69, 199, 0.1)",
-                boxShadow: "0 4px 16px rgba(139, 69, 199, 0.1)",
+                border: `1px solid ${alpha("primary-600", 0.1)}`,
+                boxShadow: `0 4px 16px ${alpha("primary-600", 0.1)}`,
                 minWidth: "120px",
               }}
             >
               <Group spacing="sm">
-                <Shield size={20} color="#8b45c7" />
+                <Shield size={20} color={colors.primary[600]} />
                 <div>
                   <Text c="gray.8" fw={700} size="lg">
                     {stats.adminUsers}
@@ -452,8 +453,8 @@ const handleExportPdf = () => {
               p="md"
               radius="md"
               style={{
-                background: "rgba(248, 250, 252, 0.8)",
-                border: "1px solid rgba(226, 232, 240, 0.5)",
+                background: alpha("neutral-50", 0.8),
+                border: `1px solid ${alpha("neutral-200", 0.5)}`,
               }}
             >
               <Text fw={600} c="gray.8" mb="xs">
@@ -483,9 +484,9 @@ const handleExportPdf = () => {
                 input: {
                   backgroundColor: "rgba(255, 255, 255, 0.8)",
                   backdropFilter: "blur(8px)",
-                  borderColor: "rgba(226, 232, 240, 0.8)",
+                  borderColor: alpha("neutral-200", 0.8),
                   "&:focus": {
-                    borderColor: "#6366f1",
+                    borderColor: colors.primary[500],
                     backgroundColor: "rgba(255, 255, 255, 0.95)",
                   },
                 },
@@ -507,9 +508,9 @@ const handleExportPdf = () => {
                 input: {
                   backgroundColor: "rgba(255, 255, 255, 0.8)",
                   backdropFilter: "blur(8px)",
-                  borderColor: "rgba(226, 232, 240, 0.8)",
+                  borderColor: alpha("neutral-200", 0.8),
                   "&:focus": {
-                    borderColor: "#6366f1",
+                    borderColor: colors.primary[500],
                     backgroundColor: "rgba(255, 255, 255, 0.95)",
                   },
                 },
@@ -527,7 +528,7 @@ const handleExportPdf = () => {
               </Button>
               <Button
                 variant="filled"
-                color="indigo"
+                color="brand"
                 onClick={() => {
                   mutation.mutate({
                     id: selectedUser.id,

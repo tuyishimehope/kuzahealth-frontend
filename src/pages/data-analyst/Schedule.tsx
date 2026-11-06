@@ -52,6 +52,7 @@ import { useMemo, useState } from "react";
 import { RiCalendarScheduleLine } from "react-icons/ri";
 import { Patient } from "./ViewParents";
 import { HealthWorker } from "../superadmin/ViewHealthWorkers";
+import { colors } from "@/theme/colors";
 
 export interface Schedule {
   id: string;
@@ -239,7 +240,7 @@ const Schedule = () => {
         size: 200,
         Cell: ({ cell }) => (
           <Group spacing="sm">
-            <ThemeIcon variant="light" color="purple" size="sm">
+            <ThemeIcon variant="light" color="brand" size="sm">
               <IconStethoscope size={14} />
             </ThemeIcon>
             <Text size="sm" fw={500}>
@@ -330,7 +331,7 @@ const Schedule = () => {
           <Tooltip label="View details" position="top">
             <ActionIcon
               variant="light"
-              color="purple"
+              color="brand"
               size="md"
               radius="md"
               onClick={() => handleViewDetails(row.original)}
@@ -366,12 +367,12 @@ const Schedule = () => {
       withBorder: false,
       sx: {
         "& thead tr th": {
-          backgroundColor: "#f8f4ff",
-          color: "#6b21a8",
+          backgroundColor: colors.primary[50],
+          color: colors.primary[800],
           fontWeight: 600,
         },
         "& tbody tr:hover": {
-          backgroundColor: "#faf5ff",
+          backgroundColor: colors.primary[50],
         },
       },
     },
@@ -384,14 +385,14 @@ const Schedule = () => {
     },
     mantineTopToolbarProps: {
       sx: {
-        backgroundColor: "#fafafa",
-        borderBottom: "1px solid #e5e5e5",
+        backgroundColor: colors.neutral[50],
+        borderBottom: `1px solid ${colors.neutral[200]}`,
       },
     },
     mantineBottomToolbarProps: {
       sx: {
-        backgroundColor: "#fafafa",
-        borderTop: "1px solid #e5e5e5",
+        backgroundColor: colors.neutral[50],
+        borderTop: `1px solid ${colors.neutral[200]}`,
       },
     },
   });
@@ -457,7 +458,7 @@ const Schedule = () => {
           <Group spacing="md">
             <Badge
               variant="light"
-              color="purple"
+              color="brand"
               size="lg"
               leftSection={<RiCalendarScheduleLine size={16} />}
             >
@@ -500,9 +501,9 @@ const Schedule = () => {
           radius="md"
           sx={{
             "& .mantine-TextInput-input": {
-              border: "2px solid #e5e7eb",
+              border: `2px solid ${colors.border}`,
               "&:focus": {
-                borderColor: "#9333ea",
+                borderColor: colors.primary[600],
               },
             },
           }}
@@ -520,7 +521,7 @@ const Schedule = () => {
           onClose={close}
           title={
             <Group spacing="sm">
-              <RiCalendarScheduleLine size={24} color="purple" />
+              <RiCalendarScheduleLine size={24} color="brand" />
               <Title order={3} c="purple.8">
                 Schedule Details
               </Title>
@@ -602,7 +603,7 @@ const Schedule = () => {
                 </Title>
                 <Stack spacing="md">
                   <Group spacing="sm">
-                    <IconCalendar size={18} color="purple" />
+                    <IconCalendar size={18} color="brand" />
                     <Text fw={500}>Date:</Text>
                     <Text c="dimmed">
                       {new Date(
@@ -616,7 +617,7 @@ const Schedule = () => {
                     </Text>
                   </Group>
                   <Group spacing="sm">
-                    <IconClock size={18} color="purple" />
+                    <IconClock size={18} color="brand" />
                     <Text fw={500}>Time:</Text>
                     <Text c="dimmed">
                       {new Date(
@@ -629,7 +630,7 @@ const Schedule = () => {
                     </Text>
                   </Group>
                   <Group spacing="sm">
-                    <IconMapPin size={18} color="purple" />
+                    <IconMapPin size={18} color="brand" />
                     <Text fw={500}>Location:</Text>
                     <Text c="dimmed">{selectedSchedule.location}</Text>
                   </Group>

@@ -10,7 +10,7 @@ import { useState } from "react";
 
 // Skeleton Loader
 const Skeleton = ({ className }: { className: string }) => (
-  <div className={`animate-pulse bg-gray-200 rounded ${className}`} />
+  <div className={`animate-pulse bg-neutral-200 rounded ${className}`} />
 );
 
 // API Calls
@@ -64,20 +64,20 @@ const Profile = () => {
   const tabs = [{ id: "profile", name: "Profile", icon: User }];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-neutral-50">
       <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-3xl font-bold text-neutral-900">Settings</h1>
+            <p className="text-neutral-600 mt-1">
               Manage your preferences and profile information
             </p>
           </div>
           {hasChanges && (
             <button
               onClick={handleSave}
-              className="flex items-center space-x-2 bg-violet-600 text-white px-4 py-2 rounded-lg hover:bg-violet-700 transition-colors"
+              className="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
             >
               <Save className="w-4 h-4" />
               <span>Save Changes</span>
@@ -95,8 +95,8 @@ const Profile = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-full flex items-center space-x-3 px-3 py-2 text-left rounded-lg transition-colors ${
                     activeTab === tab.id
-                      ? "bg-violet-50 text-violet-700 border-r-2 border-violet-700"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "bg-primary-50 text-primary-700 border-r-2 border-primary-700"
+                      : "text-neutral-700 hover:bg-neutral-50"
                   }`}
                 >
                   <tab.icon className="w-5 h-5" />
@@ -120,14 +120,14 @@ const Profile = () => {
               )}
 
               {isError && (
-                <p className="text-red-600">Failed to load profile data.</p>
+                <p className="text-danger-600">Failed to load profile data.</p>
               )}
 
               {!isLoading && localProfile && activeTab === "profile" && (
                 <>
                   <div className="flex items-center space-x-3 mb-6">
-                    <User className="w-6 h-6 text-violet-600" />
-                    <h2 className="text-xl font-semibold text-gray-900">
+                    <User className="w-6 h-6 text-primary-600" />
+                    <h2 className="text-xl font-semibold text-neutral-900">
                       Profile Settings
                     </h2>
                   </div>
@@ -164,7 +164,7 @@ const Profile = () => {
                     <InputField
                       label="Email"
                       type="email"
-                      icon={<Mail className="w-5 h-5 text-gray-400" />}
+                      icon={<Mail className="w-5 h-5 text-neutral-400" />}
                       value={localProfile.email}
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
@@ -175,7 +175,7 @@ const Profile = () => {
                     <InputField
                       label="Phone Number"
                       type="tel"
-                      icon={<Phone className="w-5 h-5 text-gray-400" />}
+                      icon={<Phone className="w-5 h-5 text-neutral-400" />}
                       value={localProfile.phoneNumber}
                       onChange={(e) =>
                         handleInputChange("phoneNumber", e.target.value)
@@ -277,7 +277,7 @@ const InputField = ({
   icon?: React.ReactNode;
 }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2">
+    <label className="block text-sm font-medium text-neutral-700 mb-2">
       {label}
     </label>
     <div className="relative">
@@ -288,7 +288,7 @@ const InputField = ({
         onChange={onChange}
         className={`w-full ${
           icon ? "pl-10" : "pl-3"
-        } pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent`}
+        } pr-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent`}
       />
     </div>
   </div>
@@ -307,13 +307,13 @@ const SelectField = ({
   options: string[];
 }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2">
+    <label className="block text-sm font-medium text-neutral-700 mb-2">
       {label}
     </label>
     <select
       value={value || ""}
       onChange={onChange}
-      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+      className="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
     >
       {options.map((opt) => (
         <option key={opt} value={opt}>

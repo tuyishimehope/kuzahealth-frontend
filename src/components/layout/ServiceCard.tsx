@@ -45,7 +45,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const cardContent = (
     <>
       <div className="relative overflow-hidden rounded-t-xl group-hover:shadow-lg transition-all duration-300">
-        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         {image && (
           <img 
             src={image} 
@@ -54,23 +54,23 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           />
         )}
         {icon && (
-          <div className="flex items-center justify-center h-48 bg-purple-100">
-            <div className="text-purple-600 text-6xl">
+          <div className="flex items-center justify-center h-48 bg-primary-100">
+            <div className="text-primary-600 text-6xl">
               {icon}
             </div>
           </div>
         )}
       </div>
 
-      <div className="p-6 bg-white group-hover:bg-purple-50 transition-colors duration-300 rounded-b-xl">
-        <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+      <div className="p-6 bg-white group-hover:bg-primary-50 transition-colors duration-300 rounded-b-xl">
+        <h3 className="text-xl font-bold text-neutral-800 mb-3 group-hover:text-primary-600 transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-gray-600 mb-4">
+        <p className="text-neutral-600 mb-4">
           {description}
         </p>
         <div className="flex justify-end">
-          <span className="inline-flex items-center text-purple-600 font-medium group-hover:translate-x-1 transition-transform duration-300">
+          <span className="inline-flex items-center text-primary-600 font-medium group-hover:translate-x-1 transition-transform duration-300">
             Learn more
             <svg 
               xmlns="http://www.w3.org/2000/svg" 

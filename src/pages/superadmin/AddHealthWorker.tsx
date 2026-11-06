@@ -131,17 +131,17 @@ const AddHealthWorker = (): JSX.Element => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-violet-100 rounded-full mb-4">
-            <User className="w-8 h-8 text-violet-600" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+            <User className="w-8 h-8 text-primary-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-neutral-900 mb-2">
             Register Health Worker
           </h1>
-          <p className="text-gray-600 max-w-md mx-auto">
+          <p className="text-neutral-600 max-w-md mx-auto">
             Create a new account for healthcare professionals to access the
             system
           </p>
@@ -149,12 +149,12 @@ const AddHealthWorker = (): JSX.Element => {
 
         {/* Form Container */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-            <div className="px-8 py-6 border-b border-gray-100 bg-gray-50">
-              <h2 className="text-xl font-semibold text-gray-800">
+          <div className="bg-white rounded-2xl shadow-xl border border-neutral-100 overflow-hidden">
+            <div className="px-8 py-6 border-b border-neutral-100 bg-neutral-50">
+              <h2 className="text-xl font-semibold text-neutral-800">
                 Personal Information
               </h2>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-neutral-600 mt-1">
                 Please fill in all required fields marked with *
               </p>
             </div>
@@ -194,9 +194,9 @@ const AddHealthWorker = (): JSX.Element => {
               </div>
 
               {/* Contact & Location Section */}
-              <div className="border-t border-gray-100 pt-8 mb-8">
-                <h3 className="text-lg font-medium text-gray-800 mb-6 flex items-center gap-2">
-                  <Phone size={20} className="text-gray-500" />
+              <div className="border-t border-neutral-100 pt-8 mb-8">
+                <h3 className="text-lg font-medium text-neutral-800 mb-6 flex items-center gap-2">
+                  <Phone size={20} className="text-neutral-500" />
                   Contact & Location Details
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -245,9 +245,9 @@ const AddHealthWorker = (): JSX.Element => {
               </div>
 
               {/* Security Section */}
-              <div className="border-t border-gray-100 pt-8 mb-8">
-                <h3 className="text-lg font-medium text-gray-800 mb-6 flex items-center gap-2">
-                  <Shield size={20} className="text-gray-500" />
+              <div className="border-t border-neutral-100 pt-8 mb-8">
+                <h3 className="text-lg font-medium text-neutral-800 mb-6 flex items-center gap-2">
+                  <Shield size={20} className="text-neutral-500" />
                   Security Information
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -270,11 +270,11 @@ const AddHealthWorker = (): JSX.Element => {
               </div>
 
               {/* Password Requirements */}
-              <div className="bg-violet-50 border border-violet-200 rounded-lg p-4 mb-8">
-                <h4 className="text-sm font-medium text-violet-800 mb-2">
+              <div className="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-8">
+                <h4 className="text-sm font-medium text-primary-800 mb-2">
                   Password Requirements:
                 </h4>
-                <ul className="text-xs text-violet-700 space-y-1">
+                <ul className="text-xs text-primary-700 space-y-1">
                   <li>• At least 6 characters long</li>
                   <li>• Include both letters and numbers</li>
                   <li>• Use special characters for added security</li>
@@ -282,18 +282,18 @@ const AddHealthWorker = (): JSX.Element => {
               </div>
 
               {/* Submit Button */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-100 ">
+              <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-neutral-100 ">
                 <motion.div className="flex-1 pt-4" variants={itemVariants}>
                   <AnimatedButton
                     type="submit"
-                    className="flex-1 bg-gradient-to-r from-violet-600 to-indigo-600 text-white py-3 px-8 rounded-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="flex-1 bg-gradient-to-r from-primary-600 to-primary-600 text-white py-3 px-8 rounded-lg hover:from-primary-700 hover:to-primary-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     Create Health Worker Account
                   </AnimatedButton>
                 </motion.div>
                 <button
                   type="button"
-                  className=" px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium"
+                  className=" px-6 py-3 border border-neutral-300 text-neutral-700 rounded-lg hover:bg-neutral-50 transition-colors duration-200 font-medium"
                 >
                   Cancel
                 </button>
@@ -302,7 +302,7 @@ const AddHealthWorker = (): JSX.Element => {
           </div>
         </form>
         {/* Footer */}
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 text-sm text-neutral-500">
           <p>
             By creating an account, you agree to our Terms of Service and
             Privacy Policy

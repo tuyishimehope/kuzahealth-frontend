@@ -88,25 +88,25 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={containerClasses}>
       {badge && (
-        <div className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium mb-4">
+        <div className="inline-block px-4 py-2 rounded-full bg-primary-100 text-primary-700 font-medium mb-4">
           {badge}
         </div>
       )}
       
-      <h2 className={`font-bold text-gray-200 mb-4 ${TITLE_CLASSES[titleSize]}`}>
+      <h2 className={`font-bold text-neutral-200 mb-4 ${TITLE_CLASSES[titleSize]}`}>
         {title}
       </h2>
       
       {withDivider && (
         <div
-          className={`w-20 h-1 bg-purple-500 rounded-full mb-6 ${
+          className={`w-20 h-1 bg-primary-500 rounded-full mb-6 ${
             align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : ''
           }`}
         />
       )}
       
       {subtitle && (
-        <p className="text-gray-300 text-lg">
+        <p className="text-neutral-300 text-lg">
           {subtitle}
         </p>
       )}

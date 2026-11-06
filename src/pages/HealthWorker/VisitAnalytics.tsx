@@ -19,24 +19,16 @@ import {
 import ErrorState from "./ErrorState";
 import LoadingSpinner from "./LoadingSpinner";
 import type { Schedule } from "./Schedule/ViewSchedule";
+import { colors } from "@/theme/colors";
 
-const COLORS = [
-  "#3b82f6",
-  "#10b981",
-  "#f59e0b",
-  "#ef4444",
-  "#06b6d4",
-  "#8b5cf6",
-  "#ec4899",
-  "#6366f1",
-];
+const COLORS = colors.chart; // shared categorical palette (tokens.css --chart-*)
 
 const COMMUNICATION_COLORS: Record<string, string> = {
-  phone: "#3b82f6",
-  email: "#10b981",
-  video: "#8b5cf6",
-  "in-person": "#06b6d4",
-  sms: "#f59e0b",
+  phone: colors.info[500],
+  email: colors.success[500],
+  video: colors.primary[500],
+  "in-person": colors.info[400],
+  sms: colors.warning[500],
 };
 
 interface ChartCardProps {
@@ -54,12 +46,12 @@ const ChartCard: FC<ChartCardProps> = ({
   className = "",
   actions,
 }) => (
-  <Card className={`transition-all duration-300 hover:shadow-lg border-0 bg-gradient-to-br from-white to-gray-50 ${className}`}>
+  <Card className={`transition-all duration-300 hover:shadow-lg border-0 bg-gradient-to-br from-white to-neutral-50 ${className}`}>
     <CardContent className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-2">
-          <Icon className="h-5 w-5 text-blue-600" />
-          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+          <Icon className="h-5 w-5 text-info-600" />
+          <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
         </div>
         {actions && <div className="flex items-center space-x-2">{actions}</div>}
       </div>
@@ -77,12 +69,12 @@ interface CustomTooltipProps {
 const CustomTooltip: FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (!active || !payload || payload.length === 0) return null;
   return (
-    <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
-      <p className="font-medium text-gray-900 mb-2">{label}</p>
+    <div className="bg-white p-4 border border-neutral-200 rounded-lg shadow-lg">
+      <p className="font-medium text-neutral-900 mb-2">{label}</p>
       {payload.map((entry, index) => (
         <div key={index} className="flex items-center space-x-2">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-neutral-600">
             {entry.name}: <span className="font-semibold">{entry.value}</span>
           </span>
         </div>
@@ -155,9 +147,9 @@ export default function VisitAnalytics() {
                   <stop offset="95%" stopColor={COLORS[0]} stopOpacity={0.1} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: "#6b7280", fontSize: 12 }} />
-              <YAxis allowDecimals={false} axisLine={false} tickLine={false} tick={{ fill: "#6b7280", fontSize: 12 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke={colors.border} />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: colors.mutedForeground, fontSize: 12 }} />
+              <YAxis allowDecimals={false} axisLine={false} tickLine={false} tick={{ fill: colors.mutedForeground, fontSize: 12 }} />
               <Tooltip content={<CustomTooltip />} />
               <Area type="monotone" dataKey="value" stroke={COLORS[0]} strokeWidth={2} fill="url(#colorVisits)" />
             </AreaChart>

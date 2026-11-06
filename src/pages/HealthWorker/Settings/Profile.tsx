@@ -16,27 +16,27 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-4xl font-bold mb-6 text-center text-primaryColor">My Profile</h1>
+    <div className="p-6 bg-neutral-100 min-h-screen">
+      <h1 className="text-4xl font-bold mb-6 text-center text-primary">My Profile</h1>
       <div className="flex justify-between items-center p-4 bg-white shadow-lg rounded-lg">
         <div className="flex items-center gap-6">
-          <img src={profile} alt="Profile" className="w-16 h-16 rounded-full border-2 border-primaryColor" />
+          <img src={profile} alt="Profile" className="w-16 h-16 rounded-full border-2 border-primary" />
           <div>
-            <p className="text-2xl font-bold text-textColorPurple">Mary Doe</p>
-            <p className="text-lg text-textColorPurple">Community Health Worker</p>
-            <p className="text-lg text-textColorPurple">Kavumo, Kicukiro</p>
+            <p className="text-2xl font-bold text-primary-800">Mary Doe</p>
+            <p className="text-lg text-primary-800">Community Health Worker</p>
+            <p className="text-lg text-primary-800">Kavumo, Kicukiro</p>
           </div>
         </div>
         <Button
           name="Edit"
-          className="bg-bgBtnPurple text-white px-5 py-2 rounded-full transition duration-200 hover:bg-bgBtnPurpleHover"
+          className="bg-primary text-white px-5 py-2 rounded-full transition duration-200 hover:bg-primary-700"
           onClick={handleEditClick}
         />
       </div>
 
       {/* Personal Information Section */}
       <div className="mt-8 p-4 bg-white shadow-lg rounded-lg">
-        <h2 className="text-xl font-semibold text-textColorPurple mb-4">Personal Information</h2>
+        <h2 className="text-xl font-semibold text-primary-800 mb-4">Personal Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             { label: "First Name", value: "Mary" },
@@ -46,8 +46,8 @@ const Profile = () => {
             { label: "Bio", value: "Community Health Worker" },
             { label: "Password", value: "......." },
           ].map((info) => (
-            <div key={info.label} className="bg-primaryColor bg-opacity-20 p-3 rounded-md">
-              <p className="text-textColorPurple text-opacity-50">{info.label}</p>
+            <div key={info.label} className="bg-primary-100 bg-opacity-20 p-3 rounded-md">
+              <p className="text-primary-800 text-opacity-50">{info.label}</p>
               <p className="text-lg">{info.value}</p>
             </div>
           ))}
@@ -56,7 +56,7 @@ const Profile = () => {
 
       {/* Address Section */}
       <div className="mt-8 p-4 bg-white shadow-lg rounded-lg">
-        <h2 className="text-xl font-semibold text-textColorPurple mb-4">Address</h2>
+        <h2 className="text-xl font-semibold text-primary-800 mb-4">Address</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             { label: "Province", value: "Kigali" },
@@ -65,8 +65,8 @@ const Profile = () => {
             { label: "Cell", value: "Nkoko" },
             { label: "Village", value: "Kavumu" },
           ].map((address) => (
-            <div key={address.label} className="bg-primaryColor bg-opacity-20 p-3 rounded-md">
-              <p className="text-textColorPurple text-opacity-50">{address.label}</p>
+            <div key={address.label} className="bg-primary-100 bg-opacity-20 p-3 rounded-md">
+              <p className="text-primary-800 text-opacity-50">{address.label}</p>
               <p className="text-lg">{address.value}</p>
             </div>
           ))}
@@ -90,13 +90,13 @@ const Profile = () => {
               {field.label}:
               <input
                 type={field.type}
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-primaryColor transition duration-200"
+                className="border border-neutral-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-primaryColor transition duration-200"
               />
             </label>
           ))}
           <button
             type="submit"
-            className="bg-bgBtnPurple text-white px-6 py-2 rounded-full mt-4 transition duration-200 hover:bg-bgBtnPurpleHover"
+            className="bg-primary text-white px-6 py-2 rounded-full mt-4 transition duration-200 hover:bg-primary-700"
             onClick={handleCloseModal}
           >
             Save Changes

@@ -1,5 +1,6 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { colors } from "@/theme/colors";
 
 const data = [
   { name: 'Jan', users: 400, revenue: 2400 },
@@ -40,8 +41,8 @@ const SuperAdmin = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="users" stroke="#8884d8" />
-            <Line type="monotone" dataKey="revenue" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="users" stroke={colors.primary[500]} />
+            <Line type="monotone" dataKey="revenue" stroke={colors.success[400]} />
           </LineChart>
         </ResponsiveContainer>
       </div>

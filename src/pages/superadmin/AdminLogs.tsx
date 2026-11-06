@@ -47,35 +47,35 @@ export default function AdminLogs() {
       : logs.filter((log) => log.level === selectedLevel);
 
   const levelColors: Record<string, string> = {
-    INFO: "text-blue-400",
-    WARN: "text-yellow-400",
-    ERROR: "text-red-400",
-    DEBUG: "text-gray-400",
+    INFO: "text-info-400",
+    WARN: "text-warning-400",
+    ERROR: "text-danger-400",
+    DEBUG: "text-neutral-400",
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-neutral-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
+      <div className="bg-white shadow-sm border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Terminal className="h-8 w-8 text-blue-600" />
+            <Terminal className="h-8 w-8 text-info-600" />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Backend Logs</h1>
-              <p className="text-sm text-gray-600">
+              <h1 className="text-2xl font-bold text-neutral-900">Backend Logs</h1>
+              <p className="text-sm text-neutral-600">
                 Monitor server-side requests, errors, and runtime events.
               </p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            {/* <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+            {/* <button className="inline-flex items-center px-4 py-2 border border-neutral-300 rounded-md shadow-sm text-sm font-medium text-neutral-700 bg-white hover:bg-neutral-50">
               <Download className="h-4 w-4 mr-2" />
               Export
             </button> */}
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+              className="rounded-md border-neutral-300 shadow-sm focus:border-info-500 focus:ring-info-500 text-sm"
             >
               <option value="ALL">All</option>
               <option value="INFO">Info</option>
@@ -89,15 +89,15 @@ export default function AdminLogs() {
 
       {/* Logs List */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="bg-black text-gray-100 rounded-lg shadow-md p-4 font-mono text-sm h-[600px] overflow-y-auto">
+        <div className="bg-black text-neutral-100 rounded-lg shadow-md p-4 font-mono text-sm h-[600px] overflow-y-auto">
           {isLoading ? (
-            <p className="text-gray-400">Loading logs...</p>
+            <p className="text-neutral-400">Loading logs...</p>
           ) : filteredLogs.length === 0 ? (
-            <p className="text-gray-500">No logs available.</p>
+            <p className="text-neutral-500">No logs available.</p>
           ) : (
             filteredLogs.map((log, idx) => (
               <div key={idx} className="mb-2">
-                <span className="text-gray-500 mr-2">{log.timestamp}</span>
+                <span className="text-neutral-500 mr-2">{log.timestamp}</span>
                 <span className={`font-semibold ${levelColors[log.level]} mr-2`}>
                   [{log.level}]
                 </span>

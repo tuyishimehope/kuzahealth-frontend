@@ -53,13 +53,13 @@ const AddInfant = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50 py-4 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50 py-4 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
             <svg
-              className="w-8 h-8 text-purple-600"
+              className="w-8 h-8 text-primary-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -72,23 +72,23 @@ const AddInfant = () => {
               />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-neutral-900 mb-2">
             {t("Register New Infant")}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-neutral-600">
             {t("Please fill in the infant's information below")}
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl border border-neutral-200 overflow-hidden">
           <div className="p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
               {/* Personal Information Section */}
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-3 border-b border-gray-200">
+                <div className="flex items-center gap-3 pb-3 border-b border-neutral-200">
                   <svg
-                    className="w-5 h-5 text-purple-600"
+                    className="w-5 h-5 text-primary-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -100,20 +100,20 @@ const AddInfant = () => {
                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     />
                   </svg>
-                  <h2 className="text-xl font-semibold text-gray-900">
+                  <h2 className="text-xl font-semibold text-neutral-900">
                     {t("Personal Information")}
                   </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
-                      {t("First Name")} <span className="text-red-500">*</span>
+                    <label className="block text-sm font-medium text-neutral-700">
+                      {t("First Name")} <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -128,13 +128,13 @@ const AddInfant = () => {
                       </div>
                       <input
                         {...register("firstName")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none"
+                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
                         placeholder="Enter first name"
                       />
                     </div>
                     {errors.firstName && (
-                      <p className="text-red-600 text-sm flex items-center gap-1">
-                        <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                      <p className="text-danger-600 text-sm flex items-center gap-1">
+                        <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                           !
                         </span>
                         {errors.firstName.message}
@@ -143,13 +143,13 @@ const AddInfant = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
-                      {t("Last Name")} <span className="text-red-500">*</span>
+                    <label className="block text-sm font-medium text-neutral-700">
+                      {t("Last Name")} <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -164,13 +164,13 @@ const AddInfant = () => {
                       </div>
                       <input
                         {...register("lastName")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none"
+                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
                         placeholder="Enter last name"
                       />
                     </div>
                     {errors.lastName && (
-                      <p className="text-red-600 text-sm flex items-center gap-1">
-                        <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                      <p className="text-danger-600 text-sm flex items-center gap-1">
+                        <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                           !
                         </span>
                         {errors.lastName.message}
@@ -181,14 +181,14 @@ const AddInfant = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-neutral-700">
                       {t("Date of Birth")}{" "}
-                      <span className="text-red-500">*</span>
+                      <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -204,12 +204,12 @@ const AddInfant = () => {
                       <input
                         type="date"
                         {...register("dateOfBirth")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none"
+                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
                       />
                     </div>
                     {errors.dateOfBirth && (
-                      <p className="text-red-600 text-sm flex items-center gap-1">
-                        <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                      <p className="text-danger-600 text-sm flex items-center gap-1">
+                        <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                           !
                         </span>
                         {errors.dateOfBirth.message}
@@ -218,13 +218,13 @@ const AddInfant = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
-                      {t("Gender")} <span className="text-red-500">*</span>
+                    <label className="block text-sm font-medium text-neutral-700">
+                      {t("Gender")} <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -239,7 +239,7 @@ const AddInfant = () => {
                       </div>
                       <select
                         {...register("gender")}
-                        className="block w-full pl-10 pr-8 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none appearance-none bg-white cursor-pointer"
+                        className="block w-full pl-10 pr-8 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none appearance-none bg-white cursor-pointer"
                       >
                         <option value="">{t("Select gender")}</option>
                         <option value="FEMALE">{t("Female")}</option>
@@ -247,7 +247,7 @@ const AddInfant = () => {
                       </select>
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -262,8 +262,8 @@ const AddInfant = () => {
                       </div>
                     </div>
                     {errors.gender && (
-                      <p className="text-red-600 text-sm flex items-center gap-1">
-                        <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                      <p className="text-danger-600 text-sm flex items-center gap-1">
+                        <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                           !
                         </span>
                         {errors.gender.message}
@@ -275,9 +275,9 @@ const AddInfant = () => {
 
               {/* Birth Measurements Section */}
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-3 border-b border-gray-200">
+                <div className="flex items-center gap-3 pb-3 border-b border-neutral-200">
                   <svg
-                    className="w-5 h-5 text-purple-600"
+                    className="w-5 h-5 text-primary-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -289,21 +289,21 @@ const AddInfant = () => {
                       d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
                     />
                   </svg>
-                  <h2 className="text-xl font-semibold text-gray-900">
+                  <h2 className="text-xl font-semibold text-neutral-900">
                     {t("Birth Measurements")}
                   </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-neutral-700">
                       {t("Birth Weight (kg)")}{" "}
-                      <span className="text-red-500">*</span>
+                      <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -320,13 +320,13 @@ const AddInfant = () => {
                         type="number"
                         step="0.1"
                         {...register("birthWeight")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none"
+                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
                         placeholder="Weight in kg (e.g., 3.2)"
                       />
                     </div>
                     {errors.birthWeight && (
-                      <p className="text-red-600 text-sm flex items-center gap-1">
-                        <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                      <p className="text-danger-600 text-sm flex items-center gap-1">
+                        <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                           !
                         </span>
                         {errors.birthWeight.message}
@@ -335,14 +335,14 @@ const AddInfant = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-neutral-700">
                       {t("Birth Height (cm)")}
-                      <span className="text-red-500">*</span>
+                      <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-neutral-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -359,13 +359,13 @@ const AddInfant = () => {
                         type="number"
                         step="0.1"
                         {...register("birthHeight")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none"
+                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
                         placeholder="Height in cm (e.g., 50.0)"
                       />
                     </div>
                     {errors.birthHeight && (
-                      <p className="text-red-600 text-sm flex items-center gap-1">
-                        <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                      <p className="text-danger-600 text-sm flex items-center gap-1">
+                        <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                           !
                         </span>
                         {errors.birthHeight.message}
@@ -375,13 +375,13 @@ const AddInfant = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-neutral-700">
                     {t("Blood Group")}
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <svg
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-neutral-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -396,13 +396,13 @@ const AddInfant = () => {
                     </div>
                     <input
                       {...register("bloodGroup")}
-                      className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none"
+                      className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
                       placeholder="e.g., A+, B-, O+, AB-"
                     />
                   </div>
                   {errors.bloodGroup && (
-                    <p className="text-red-600 text-sm flex items-center gap-1">
-                      <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                    <p className="text-danger-600 text-sm flex items-center gap-1">
+                      <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                         !
                       </span>
                       {errors.bloodGroup.message}
@@ -413,9 +413,9 @@ const AddInfant = () => {
 
               {/* Additional Information Section */}
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-3 border-b border-gray-200">
+                <div className="flex items-center gap-3 pb-3 border-b border-neutral-200">
                   <svg
-                    className="w-5 h-5 text-purple-600"
+                    className="w-5 h-5 text-primary-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -427,19 +427,19 @@ const AddInfant = () => {
                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  <h2 className="text-xl font-semibold text-gray-900">
+                  <h2 className="text-xl font-semibold text-neutral-900">
                     {t("Additional Information")}
                   </h2>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
-                    {t("Mother")} <span className="text-red-500">*</span>
+                  <label className="block text-sm font-medium text-neutral-700">
+                    {t("Mother")} <span className="text-danger-500">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                       <svg
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-neutral-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -454,7 +454,7 @@ const AddInfant = () => {
                     </div>
                     <select
                       {...register("motherId")}
-                      className="block w-full pl-10 pr-8 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none appearance-none bg-white cursor-pointer"
+                      className="block w-full pl-10 pr-8 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none appearance-none bg-white cursor-pointer"
                     >
                       <option value="">{t("Select mother")}</option>
                       {mothers.map((mother) => (
@@ -465,7 +465,7 @@ const AddInfant = () => {
                     </select>
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                       <svg
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-neutral-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -480,8 +480,8 @@ const AddInfant = () => {
                     </div>
                   </div>
                   {errors.motherId && (
-                    <p className="text-red-600 text-sm flex items-center gap-1">
-                      <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-xs">
+                    <p className="text-danger-600 text-sm flex items-center gap-1">
+                      <span className="w-4 h-4 rounded-full bg-danger-100 flex items-center justify-center text-xs">
                         !
                       </span>
                       {errors.motherId.message}
@@ -490,13 +490,13 @@ const AddInfant = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-neutral-700">
                     {t("Special Conditions")}
                   </label>
                   <div className="relative">
                     <div className="absolute top-3 left-3 pointer-events-none">
                       <svg
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-neutral-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -511,7 +511,7 @@ const AddInfant = () => {
                     </div>
                     <textarea
                       {...register("specialConditions")}
-                      className="block w-full pl-10 pr-3 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-gray-400 focus:outline-none resize-none"
+                      className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none resize-none"
                       placeholder="Any special medical conditions, allergies, or notes..."
                       rows={4}
                     />
@@ -520,14 +520,14 @@ const AddInfant = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-6 border-t border-gray-200">
+              <div className="pt-6 border-t border-neutral-200">
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className={`w-full flex items-center justify-center gap-3 py-4 px-6 text-base font-semibold rounded-lg shadow-lg transition-all duration-200 ease-in-out ${
                     isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed text-white"
-                      : "bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white hover:shadow-xl transform hover:-translate-y-0.5"
+                      ? "bg-neutral-400 cursor-not-allowed text-white"
+                      : "bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white hover:shadow-xl transform hover:-translate-y-0.5"
                   }`}
                 >
                   {isSubmitting ? (
@@ -560,7 +560,7 @@ const AddInfant = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 text-sm text-neutral-500">
           {t("All fields marked with * are required")}
         </div>
       </div>

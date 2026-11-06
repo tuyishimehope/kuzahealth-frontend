@@ -210,7 +210,7 @@ const ViewSchedule = () => {
           <Button
             leftIcon={<IconPlus size={rem(16)} />}
             onClick={() => navigate("/healthworker/schedule")}
-            className="bg-purple-600 hover:bg-purple-500"
+            className="bg-primary-600 hover:bg-primary-500"
             disabled={isLoading}
           >
             Add New Schedule
@@ -268,7 +268,7 @@ const ViewSchedule = () => {
               }
             />
             <Button
-              color="violet"
+              color="brand"
               onClick={async () => {
                 try {
                   await axiosInstance.post("/api/visit-notes", newVisitNote);
@@ -346,7 +346,7 @@ const ViewSchedule = () => {
                         <td>
                           <Badge
                             color={getStatusColor(schedule.status)}
-                            className="text-purple-500"
+                            className="text-primary-500"
                           >
                             {schedule.status}
                           </Badge>
@@ -354,7 +354,7 @@ const ViewSchedule = () => {
                         <td>
                           <Group spacing={4} position="right" noWrap>
                             <ActionIcon
-                              color="violet"
+                              color="brand"
                               onClick={() => handleViewDetails(schedule)}
                             >
                               <IconEye size={rem(16)} />
@@ -362,8 +362,8 @@ const ViewSchedule = () => {
 
                             <Button
                               size="xs"
-                              color="purple"
-                              className="bg-purple-600 hover:bg-purple-500"
+                              color="brand"
+                              className="bg-primary-600 hover:bg-primary-500"
                               onClick={() => handleAddVisitNote(schedule)}
                             >
                               Add Visit Note
@@ -504,7 +504,7 @@ const ViewSchedule = () => {
                 p="md" 
                 withBorder 
                 radius="md"
-                style={{ borderLeft: '4px solid var(--mantine-color-blue-5)' }}
+                style={{ borderLeft: '4px solid rgb(var(--info-500))' }}
               >
                 <Stack spacing="sm">
                   {note.observation && (
@@ -536,7 +536,7 @@ const ViewSchedule = () => {
                   
                   {note.attachments?.length > 0 && (
                     <div>
-                      <Text weight={500} size="sm" color="purple.7">
+                      <Text weight={500} size="sm" color="brand.7">
                         Attachments
                       </Text>
                       <Group spacing="xs">
@@ -545,7 +545,7 @@ const ViewSchedule = () => {
                             key={i} 
                             size="sm" 
                             variant="outline" 
-                            color="purple"
+                            color="brand"
                           >
                             {attachment}
                           </Badge>
@@ -642,7 +642,7 @@ const ViewSchedule = () => {
                 />
               )}
 
-              <Button color="violet" onClick={handleSaveEdit}>
+              <Button color="brand" onClick={handleSaveEdit}>
                 Save Changes
               </Button>
             </Stack>
