@@ -149,7 +149,7 @@ const AddHealthWorker = (): JSX.Element => {
 
         {/* Form Container */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="bg-white rounded-2xl shadow-xl border border-neutral-100 overflow-hidden">
+          <div className="bg-card rounded-2xl shadow-xl border border-border overflow-hidden">
             <div className="px-8 py-6 border-b border-neutral-100 bg-neutral-50">
               <h2 className="text-xl font-semibold text-neutral-800">
                 Personal Information

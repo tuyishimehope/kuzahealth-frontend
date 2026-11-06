@@ -153,7 +153,7 @@ const AddMotherForm: React.FC = () => {
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 max-w-6xl mx-auto">
+    <div className="bg-card rounded-2xl shadow-soft p-6 max-w-6xl mx-auto border border-border">
       <div className="flex items-center mb-6">
         <h1 className="text-2xl font-bold text-primary-800">
           {t("motherForm.title")}

@@ -108,7 +108,7 @@ const Profile = () => {
 
           {/* Main Content */}
           <div className="flex-1">
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
               {isLoading && (
                 <div className="space-y-4">
                   <Skeleton className="h-6 w-1/3" />

@@ -7,11 +7,11 @@ import type { Variants } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock, AlertCircle, CheckCircle2 } from "lucide-react";
-import image from "../../assets/signin.png";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { colors } from "@/theme/colors";
+import AuthShowcase from "@/components/auth/AuthShowcase";
 const api = import.meta.env.VITE_API_BASE_URL_DEV;
 const signInSchema = z.object({
   email: z.string().min(1, "Please enter email address or phone number"),
@@ -149,7 +149,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full bg-gradient-to-br from-neutral-50 to-neutral-100">
+    <div className="flex min-h-screen w-full bg-background">
       <Toaster 
         position="top-right"
         toastOptions={{
@@ -160,40 +160,9 @@ const SignIn = () => {
         }}
       />
       
-      {/* Left side - Image with enhanced animations */}
-      <motion.div
-        className="hidden md:block w-1/2 relative overflow-hidden"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {/* <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-primary-600/40 via-primary-600/30 to-transparent"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1 }}
-        /> */}
-        
-        <img
-          src={image}
-          alt="Healthcare Sign In"
-          className="h-screen object-cover w-full"
-        />
-        
-        <motion.div
-          className="absolute bottom-10 left-10 text-white max-w-md"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          <h2 className="text-4xl font-bold drop-shadow-lg mb-3">{t("signin.title")}</h2>
-          <p className="text-lg drop-shadow-lg opacity-90 leading-relaxed">
-            {t("signin.description")}
-          </p>
-        </motion.div>
-      </motion.div>
+      <AuthShowcase title={t("signin.title")} description={t("signin.description")} />
 
-      {/* Right side - Enhanced form */}
+        {/* Right side - Enhanced form */}
       <motion.div
         className="flex flex-col items-center justify-center p-6 md:p-16 w-full md:w-1/2 relative"
         initial={{ opacity: 0, x: 50 }}

@@ -51,6 +51,14 @@ export default {
           [1, 2, 3, 4, 5, 6, 7, 8].map((i) => [i, v(`chart-${i}`)])
         ),
       },
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Inter Tight", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        soft: "0 1px 2px rgb(var(--neutral-900) / 0.04), 0 8px 24px -12px rgb(var(--neutral-900) / 0.12)",
+        float: "0 24px 60px -24px rgb(var(--primary-900) / 0.35)",
+      },
       backgroundImage: {
         heroImage: "url(./assets/image.png) !important",
         heroVideo: "url(./assets/heroVide.mp4)",

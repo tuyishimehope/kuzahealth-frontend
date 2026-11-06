@@ -17,22 +17,22 @@ const SuperAdmin = () => {
       
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        <div className="bg-white shadow-md rounded-lg p-4">
+        <div className="bg-card shadow-soft rounded-2xl p-4 border border-border">
           <h2 className="text-lg font-semibold">Total Users</h2>
           <p className="text-3xl font-bold">1,200</p>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-4">
+        <div className="bg-card shadow-soft rounded-2xl p-4 border border-border">
           <h2 className="text-lg font-semibold">Monthly Revenue</h2>
           <p className="text-3xl font-bold">$25,000</p>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-4">
+        <div className="bg-card shadow-soft rounded-2xl p-4 border border-border">
           <h2 className="text-lg font-semibold">Active Sessions</h2>
           <p className="text-3xl font-bold">320</p>
         </div>
       </div>
       
       {/* Chart */}
-      <div className="bg-white shadow-md rounded-lg p-6">
+      <div className="bg-card shadow-soft rounded-2xl p-6 border border-border">
         <h2 className="text-lg font-semibold mb-4">User and Revenue Growth</h2>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>

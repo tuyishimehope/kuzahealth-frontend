@@ -107,8 +107,7 @@ const QuickActionCard: React.FC<QuickActionCardProps> = ({
   color,
 }) => (
   <div
-    className="bg-white rounded-2xl p-6 shadow hover:shadow-lg border border-neutral-100 
-             transition-all duration-200 cursor-pointer group hover:-translate-y-1"
+    className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-lg border border-border transition-all duration-200 cursor-pointer group hover:-translate-y-1"
     onClick={onClick}
   >
     <div className="flex items-center space-x-4">
@@ -153,7 +152,7 @@ export const RecentActivities: React.FC<RecentActivitiesProps> = ({
   loading,
 }) => {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
+    <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-neutral-900">
           Recent Activities
@@ -212,7 +211,7 @@ const UpcomingVisitsCard: React.FC<UpcomingVisitsCardProps> = ({
   visits,
   loading,
 }) => (
-  <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
+  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
     <div className="flex items-center justify-between mb-4">
       <h3 className="text-lg font-semibold text-neutral-900">Upcoming Visits</h3>
     </div>

@@ -10,12 +10,12 @@ import {
   Eye,
   EyeOff,
   Lock,
-  Shield,
 } from "lucide-react";
 import React, { forwardRef, useId, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
+import AuthShowcase from "@/components/auth/AuthShowcase";
 
 const schema = z
   .object({
@@ -385,11 +385,11 @@ const CreateNewPassword = () => {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center"
+          className="max-w-md w-full bg-card rounded-2xl shadow-xl p-8 text-center border border-border"
         >
           <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="h-8 w-8 text-success-600" />
@@ -415,39 +415,12 @@ const CreateNewPassword = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50">
+    <div className="min-h-screen bg-background">
       <div className="flex min-h-screen">
-        {/* Left side - Hero Image */}
-        <motion.div
-          className="hidden lg:flex lg:w-1/2 relative overflow-hidden"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-600/90 via-primary-600/80 to-info-700/90 z-10" />
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
-            }}
-          />
-          <div className="absolute inset-0 z-20 flex flex-col justify-center px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <Shield className="h-16 w-16 text-white mb-8" />
-              <h1 className="text-4xl font-bold text-white mb-6">
-                Secure Your Account
-              </h1>
-              <p className="text-xl text-primary-100 leading-relaxed">
-                Create a strong password to protect your account. We'll guide
-                you through creating something secure yet memorable.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
+        <AuthShowcase
+          title="Choose a new password"
+          description="Pick something strong and memorable to protect your patients' records."
+        />
 
         {/* Right side - Form */}
         <motion.div

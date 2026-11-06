@@ -56,7 +56,7 @@ const StatCard: React.FC<StatCardProps> = ({
   chartData = [],
 }) => (
   <motion.div
-    className="bg-white rounded-2xl shadow-sm p-6 flex flex-col cursor-pointer"
+    className="bg-card rounded-2xl shadow-soft p-6 flex flex-col cursor-pointer border border-border"
     whileHover={{ y: -6, boxShadow: "0 15px 25px rgba(0,0,0,0.12)" }}
     transition={{ duration: 0.3, ease: "easeOut" }}
   >
@@ -228,7 +228,7 @@ const Dashboard: React.FC = () => {
 
       {/* Charts & Map */}
       <div className="mb-8 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
+        <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
           <h2 className="text-xl font-semibold text-neutral-900 mb-4">
             Mother Stats
           </h2>

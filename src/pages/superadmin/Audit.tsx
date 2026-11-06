@@ -314,7 +314,7 @@ const Audit = () => {
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-white rounded-xl shadow-sm border border-neutral-200 p-4 md:p-6 mb-6">
+        <div className="bg-card rounded-2xl shadow-soft border border-border p-4 md:p-6 mb-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             {/* Search */}
             <div className="relative flex-1">
@@ -380,7 +380,7 @@ const Audit = () => {
         </div>
 
         {/* Audit Log Table */}
-        <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
+        <div className="bg-card rounded-2xl shadow-soft border border-border overflow-hidden">
           <div className="px-6 py-4 border-b border-neutral-200">
             <h3 className="text-lg font-medium text-neutral-900">
               Audit Logs ({filteredData.length} entries)
@@ -461,7 +461,7 @@ const Audit = () => {
         </div>
 
         {paginatedData.length > 0 && (
-          <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-neutral-200 sm:px-6 mt-6 rounded-lg shadow-sm">
+          <div className="bg-card px-4 py-3 flex items-center justify-between border-t border-border sm:px-6 mt-6 rounded-2xl shadow-soft border">
             <div className="hidden sm:flex sm:items-center sm:justify-between w-full">
               <p className="text-sm text-neutral-700">
                 Showing{" "}

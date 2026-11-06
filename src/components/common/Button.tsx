@@ -60,14 +60,14 @@ const Button: React.FC<ButtonProps> = ({
   const sizeClasses = {
     sm: 'py-2 px-4 text-sm rounded-lg',
     md: 'py-3 px-6 text-base rounded-lg',
-    lg: 'py-4 px-8 text-lg rounded-full',
+    lg: 'py-3.5 px-7 text-base rounded-full',
   };
   
   // Variant classes
   const variantClasses = {
-    primary: 'bg-primary-600 hover:bg-primary-700 text-white shadow-md hover:shadow-lg focus:ring-primary-500',
-    secondary: 'bg-info-600 hover:bg-info-700 text-white shadow-md hover:shadow-lg focus:ring-info-500',
-    outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
+    primary: 'bg-primary hover:bg-primary-700 text-primary-foreground shadow-sm hover:shadow-float focus:ring-ring',
+    secondary: 'bg-brand-navy hover:bg-primary-900 text-white shadow-sm focus:ring-ring',
+    outline: 'border border-border bg-card text-foreground hover:bg-muted focus:ring-ring',
     text: 'text-primary-600 hover:text-primary-700 hover:bg-primary-50 focus:ring-primary-500',
   };
   

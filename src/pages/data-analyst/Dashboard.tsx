@@ -109,7 +109,7 @@ const StatCard: React.FC<StatCardProps> = ({
   loading,
   subtitle,
 }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100 hover:shadow-lg transition-all duration-300 group">
+  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border hover:shadow-lg transition-all duration-300 group">
     <div className="flex items-start justify-between">
       <div className="flex-1">
         <div className="flex items-center space-x-2 mb-2">
@@ -171,7 +171,7 @@ export const VisitTrendsChart = ({
   data: any[];
   loading: boolean;
 }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100">
+  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
     <div className="flex items-center justify-between mb-6">
       <div className="flex items-center space-x-3">
         <div className="p-2 bg-info-100 rounded-lg">
@@ -244,7 +244,7 @@ const RiskDistributionChart = ({
   const COLORS = [colors.danger[500], colors.success[500], colors.warning[500], colors.primary[500]];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100">
+    <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
           <div className="p-2 bg-danger-100 rounded-lg">
@@ -514,7 +514,7 @@ const Dashboard = () => {
   if (error) {
     return (
       <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-6">
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-danger-200 max-w-md w-full text-center">
+        <div className="bg-card rounded-2xl p-8 shadow-soft border border-danger-200 max-w-md w-full text-center">
           <AlertTriangle size={48} className="text-danger-500 mx-auto mb-4" />
           <h2 className="text-xl font-bold text-neutral-900 mb-2">
             Error Loading Dashboard
@@ -613,7 +613,7 @@ const Dashboard = () => {
             Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100"
+                className="bg-card rounded-2xl p-6 shadow-soft border border-border"
               >
                 <div className="animate-pulse">
                   <div className="h-4 bg-neutral-200 rounded w-24 mb-4"></div>
@@ -719,7 +719,7 @@ const Dashboard = () => {
 
         {/* Regional Coverage & Map */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
+          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
             <div className="flex items-center space-x-3 mb-6">
               <div className="p-2 bg-success-100 rounded-lg">
                 <BarChart3 size={20} className="text-success-600" />
@@ -742,7 +742,7 @@ const Dashboard = () => {
               />
             ))}
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
+          <div className="bg-card rounded-2xl p-6 shadow-soft border border-border">
             <div className="flex items-center space-x-3 mb-4">
               <div className="p-2 bg-primary-100 rounded-lg">
                 <Activity size={20} className="text-primary-600" />

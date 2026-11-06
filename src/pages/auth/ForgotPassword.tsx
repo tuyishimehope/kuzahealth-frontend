@@ -5,7 +5,6 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeft,
   Mail,
-  Shield,
   AlertCircle,
   CheckCircle2,
 } from "lucide-react";
@@ -13,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { axiosInstance } from "@/utils/axiosInstance";
 import axios from "axios";
+import AuthShowcase from "@/components/auth/AuthShowcase";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string;
@@ -193,11 +193,11 @@ const ForgotPassword = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center"
+          className="max-w-md w-full bg-card rounded-2xl shadow-xl p-8 text-center border border-border"
         >
           <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="h-8 w-8 text-success-600" />
@@ -221,39 +221,12 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50">
+    <div className="min-h-screen bg-background">
       <div className="flex min-h-screen">
-        {/* Left side - Hero Image */}
-        <motion.div
-          className="hidden lg:flex lg:w-1/2 relative overflow-hidden"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-600/90 via-primary-600/80 to-info-700/90 z-10" />
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
-            }}
-          />
-          <div className="absolute inset-0 z-20 flex flex-col justify-center px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <Shield className="h-16 w-16 text-white mb-8" />
-              <h1 className="text-4xl font-bold text-white mb-6">
-                Secure Account Recovery
-              </h1>
-              <p className="text-xl text-primary-100 leading-relaxed">
-                Don't worry, we've got you covered. Enter your email and we'll
-                send you a secure link to reset your password.
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
+        <AuthShowcase
+          title="Locked out? We'll get you back in."
+          description="Enter your email and we'll send you a secure link to reset your password."
+        />
 
         {/* Right side - Form */}
         <motion.div

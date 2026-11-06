@@ -24,6 +24,24 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
     return {
       primaryColor: "brand",
       primaryShade: 6,
+      fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+      headings: { fontFamily: "'Inter Tight', Inter, ui-sans-serif, sans-serif", fontWeight: 600 },
+      defaultRadius: "md",
+      black: c.foreground,
+      shadows: {
+        xs: "0 1px 2px rgba(11, 27, 63, 0.04)",
+        sm: "0 1px 2px rgba(11, 27, 63, 0.04), 0 8px 24px -12px rgba(11, 27, 63, 0.12)",
+        md: "0 1px 2px rgba(11, 27, 63, 0.04), 0 12px 32px -14px rgba(11, 27, 63, 0.16)",
+        lg: "0 24px 60px -24px rgba(19, 47, 126, 0.30)",
+        xl: "0 32px 80px -24px rgba(19, 47, 126, 0.35)",
+      },
+      components: {
+        Paper: { defaultProps: { radius: "lg" } },
+        Card: { defaultProps: { radius: "lg" } },
+        Modal: { defaultProps: { radius: "lg" } },
+        Button: { defaultProps: { radius: "md" } },
+        Badge: { defaultProps: { radius: "sm" } },
+      },
       colors: {
         brand,
         // Legacy color names used across the app now follow the tokens
@@ -47,6 +65,29 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
   const muiTheme = useMemo(
     () =>
       createTheme({
+        shape: { borderRadius: 12 },
+        typography: {
+          fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+          h1: { fontFamily: "'Inter Tight', Inter, sans-serif", fontWeight: 600 },
+          h2: { fontFamily: "'Inter Tight', Inter, sans-serif", fontWeight: 600 },
+          h3: { fontFamily: "'Inter Tight', Inter, sans-serif", fontWeight: 600 },
+          h4: { fontFamily: "'Inter Tight', Inter, sans-serif", fontWeight: 600 },
+          h5: { fontFamily: "'Inter Tight', Inter, sans-serif", fontWeight: 600 },
+          h6: { fontFamily: "'Inter Tight', Inter, sans-serif", fontWeight: 600 },
+          button: { textTransform: "none", fontWeight: 600 },
+        },
+        components: {
+          MuiPaper: {
+            styleOverrides: {
+              rounded: { borderRadius: 16 },
+              elevation1: {
+                boxShadow: "0 1px 2px rgba(11, 27, 63, 0.04), 0 8px 24px -12px rgba(11, 27, 63, 0.12)",
+                border: `1px solid ${c.border}`,
+              },
+            },
+          },
+          MuiButton: { defaultProps: { disableElevation: true } },
+        },
         palette: {
           primary: {
             main: c.primary[600],

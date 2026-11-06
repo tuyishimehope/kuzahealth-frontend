@@ -41,7 +41,7 @@ const MonitorCard = ({
   icon: any;
   color: string;
 }) => (
-  <div className="bg-white rounded-xl p-4 shadow-sm border border-neutral-100 flex items-center space-x-4">
+  <div className="bg-card rounded-2xl p-4 shadow-soft border border-border flex items-center space-x-4">
     <div className={`p-3 rounded-lg ${color}`}>
       <Icon className="text-white" size={20} />
     </div>
@@ -206,7 +206,7 @@ const SystemMonitor = () => {
 
   // --- Render actual cards ---
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100 space-y-6">
+    <div className="bg-card rounded-2xl p-6 shadow-soft border border-border space-y-6">
       <h3 className="text-lg font-semibold text-neutral-900">System Monitor</h3>
 
       <MonitorCard

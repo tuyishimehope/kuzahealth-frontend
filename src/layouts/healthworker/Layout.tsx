@@ -1,81 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { IoMenuOutline } from "react-icons/io5";
-import Navbar from "../../components/HealthWorker/Navbar";
-import Sidebar from "../../components/HealthWorker/Sidebar";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import {
+  BarChart3,
+  Baby,
+  CalendarDays,
+  CalendarPlus,
+  LayoutDashboard,
+  Salad,
+  Syringe,
+  UserCog,
+  UserPlus,
+  UsersRound,
+} from "lucide-react";
+import AppShell, { type NavSection } from "@/components/shell/AppShell";
 
-type LayoutProps = object;
-
-const HealthWorkerLayout: React.FC<LayoutProps> = () => {
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+const HealthWorkerLayout = () => {
   const navigate = useNavigate();
-
-  // Detect mobile screen
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { t } = useTranslation();
 
   // Authentication check
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) navigate("/auth/signin");
+    if (!localStorage.getItem("token")) navigate("/auth/signin");
   }, [navigate]);
 
-  const toggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
-
-  return (
-    <div className="flex h-screen bg-neutral-50 overflow-hidden relative">
-      {/* Desktop sidebar */}
-      {!isMobile && <Sidebar />}
-
-      {/* Mobile sidebar with overlay */}
-      <AnimatePresence>
-        {isMobile && isSidebarVisible && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black z-30"
-              onClick={toggleSidebar}
-            />
-
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 left-0 h-full w-64 bg-primary-100 shadow-md z-40"
-            >
-              <Sidebar  />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden relative">
-        {isMobile && (
-          <button
-            aria-label="Toggle sidebar"
-            className="absolute top-4 left-4 p-2 w-10 h-10 bg-white hover:bg-primary-600 hover:text-white rounded-full shadow-md z-50 transition-colors duration-200"
-            onClick={toggleSidebar}
-          >
-            <IoMenuOutline className="w-full h-full" />
-          </button>
-        )}
-        <Navbar />
-        <main className="p-6 flex-1 overflow-auto bg-neutral-50">
-          <Outlet />
-        </main>
-      </div>
-    </div>
+  const sections = useMemo<NavSection[]>(
+    () => [
+      {
+        items: [
+          { label: t("menu.dashboard"), href: "/healthworker/dashboard", icon: LayoutDashboard },
+          { label: t("menu.analytics"), href: "/healthworker/analytics", icon: BarChart3 },
+        ],
+      },
+      {
+        title: t("sidebar.mother-information"),
+        items: [
+          { label: t("menu.addMother"), href: "/healthworker/patient", icon: UserPlus },
+          { label: t("menu.viewMothers"), href: "/healthworker/view-patient", icon: UsersRound },
+          { label: t("menu.nutritionInfo"), href: "/healthworker/nutrition", icon: Salad },
+        ],
+      },
+      {
+        title: t("sidebar.infant-information"),
+        items: [
+          { label: t("menu.addInfant"), href: "/healthworker/add-infant", icon: Baby },
+          { label: t("menu.viewInfants"), href: "/healthworker/view-infants", icon: UsersRound },
+          { label: t("menu.vaccinations"), href: "/healthworker/infant-vaccination", icon: Syringe },
+        ],
+      },
+      {
+        title: t("sidebar.schedules"),
+        items: [
+          { label: t("menu.addSchedule"), href: "/healthworker/schedule", icon: CalendarPlus },
+          { label: t("menu.viewSchedules"), href: "/healthworker/view-schedule", icon: CalendarDays },
+        ],
+      },
+      {
+        title: t("sidebar.settings"),
+        items: [{ label: t("menu.updateProfile"), href: "/healthworker/profile", icon: UserCog }],
+      },
+    ],
+    [t]
   );
+
+  return <AppShell portal="Health worker" sections={sections} />;
 };
 
 export default HealthWorkerLayout;

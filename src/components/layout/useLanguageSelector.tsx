@@ -32,9 +32,12 @@ const useLanguageSelector = (initialLang = "en") => {
 export const ModernDropdownSelector = ({
   lang,
   changeLanguage,
+  tone = "light",
 }: {
   lang: any;
   changeLanguage: any;
+  /** "dark" renders a translucent pill for dark/hero backgrounds */
+  tone?: "light" | "dark";
 }) => {
   const {
     currentLang,
@@ -69,23 +72,27 @@ export const ModernDropdownSelector = ({
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2.5 bg-white border border-neutral-200 rounded-lg shadow-sm hover:border-neutral-300 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-info-500 focus:border-transparent"
+        className={
+          tone === "dark"
+            ? "flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40"
+            : "flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-2 transition hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+        }
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <Globe className="w-4 h-4 text-neutral-500" />
-        <span className="text-sm font-medium text-neutral-700">
-          {currentLanguage?.flag} {currentLanguage?.name}
+        <Globe className={`w-4 h-4 ${tone === "dark" ? "text-white/70" : "text-muted-foreground"}`} />
+        <span className={`text-[13px] font-medium ${tone === "dark" ? "text-white" : "text-foreground"}`}>
+          {currentLanguage?.code.toUpperCase()}
         </span>
         <ChevronDown
-          className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${
+          className={`w-3.5 h-3.5 ${tone === "dark" ? "text-white/60" : "text-muted-foreground"} transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-1 left-0 right-0 bg-white border border-neutral-200 rounded-lg shadow-lg z-50 py-1">
+        <div className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-card py-1 shadow-float">
           {LANGUAGES.map((language) => (
             <button
               key={language.code}
@@ -102,7 +109,7 @@ export const ModernDropdownSelector = ({
                 </div>
               </div>
               {currentLang === language.code && (
-                <Check className="w-4 h-4 text-info-600" />
+                <Check className="w-4 h-4 text-primary" />
               )}
             </button>
           ))}

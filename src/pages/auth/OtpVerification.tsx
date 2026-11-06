@@ -3,7 +3,7 @@ import type { ChangeEvent, KeyboardEvent, MouseEvent } from "react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import image from "@/assets/image.png";
+import AuthShowcase from "@/components/auth/AuthShowcase";
 interface ButtonProps {
   name: React.ReactNode;
   disabled?: boolean;
@@ -317,29 +317,13 @@ const OtpVerification = () => {
   const isFormValid = inputValues.join("").length === 6;
 
   return (
-    <div className="flex min-h-screen w-full bg-neutral-50">
-      {/* Left side - Image Placeholder */}
-      <div className="hidden md:block w-1/2 relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-600/40 via-primary-600/30 to-transparent" /> */}
+    <div className="flex min-h-screen w-full bg-background">
+      <AuthShowcase
+        title="One more step"
+        description="Enter the code we sent you to confirm it's really you."
+      />
 
-        <img
-          src={image}
-          alt="Healthcare Sign In"
-          className="h-screen object-cover w-full"
-        />
-
-        <div className="absolute bottom-10 left-10 text-white max-w-md">
-          <h2 className="text-4xl font-bold drop-shadow-lg mb-3">
-            Welcome Back
-          </h2>
-          <p className="text-lg drop-shadow-lg opacity-90 leading-relaxed">
-            Sign in to access your healthcare dashboard and continue providing
-            excellent patient care.
-          </p>
-        </div>
-      </div>
-
-      {/* Right side - Form */}
+        {/* Right side - Form */}
       <div className="flex flex-col items-center justify-center w-full lg:w-1/2 py-8 px-6 sm:px-10">
         <div className="w-full max-w-md space-y-8">
           {/* Header Section */}

@@ -1,55 +1,40 @@
-import { useState } from "react";
-import Sidebar from "@/components/superadmin/Sidebar";
-import { Outlet } from "react-router-dom";
-import Navbar from "@/components/superadmin/Navbar";
-import { cn } from "@/lib/utils";
+import {
+  Baby,
+  LayoutDashboard,
+  ScrollText,
+  Settings,
+  ShieldCheck,
+  UserPlus,
+  UserRoundCog,
+  Users2,
+  UsersRound,
+} from "lucide-react";
+import AppShell, { type NavSection } from "@/components/shell/AppShell";
 
-const SuperAdminLayout = () => {
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false); // Mobile only
-  const [collapsed, setCollapsed] = useState<boolean>(false); // Desktop only
+const sections: NavSection[] = [
+  {
+    items: [{ label: "Dashboard", href: "/superadmin/dashboard", icon: LayoutDashboard }],
+  },
+  {
+    title: "People",
+    items: [
+      { label: "Add health worker", href: "/superadmin/add-health-workers", icon: UserPlus },
+      { label: "Health workers", href: "/superadmin/health-workers", icon: UsersRound },
+      { label: "Mothers", href: "/superadmin/parents", icon: Baby },
+      { label: "Add data analyst", href: "/superadmin/add-data-analyst", icon: UserRoundCog },
+      { label: "Users", href: "/superadmin/users", icon: Users2 },
+    ],
+  },
+  {
+    title: "System",
+    items: [
+      { label: "Audit", href: "/superadmin/audit", icon: ShieldCheck },
+      { label: "Admin logs", href: "/superadmin/adminlogs", icon: ScrollText },
+      { label: "Settings", href: "/superadmin/settings", icon: Settings },
+    ],
+  },
+];
 
-  // const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
-  const toggleCollapse = () => setCollapsed(!collapsed);
-
-  return (
-    <div className="flex h-screen bg-neutral-50">
-      {/* Desktop Sidebar */}
-      <div
-        className={cn(
-          "hidden md:block transition-all duration-300 ease-in-out border-r border-neutral-200",
-          collapsed ? "w-16" : "w-64"
-        )}
-      >
-        <Sidebar
-          collapsed={collapsed}
-          onCollapse={toggleCollapse}
-          menuOpen={sidebarOpen}
-          setMenuOpen={setSidebarOpen}
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-neutral-50">
-        {/* Pass mobile toggle to Navbar */}
-        <Navbar menuOpen={sidebarOpen} setMenuOpen={setSidebarOpen} />
-
-        {/* Mobile Sidebar */}
-        {sidebarOpen && (
-          <Sidebar
-            collapsed={collapsed} 
-            onCollapse={() => setSidebarOpen(!collapsed)}
-            menuOpen={sidebarOpen}
-            setMenuOpen={setSidebarOpen}
-          />
-        )}
-
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-auto px-4 md:px-6 py-6">
-          <Outlet />
-        </main>
-      </div>
-    </div>
-  );
-};
+const SuperAdminLayout = () => <AppShell portal="Super admin" sections={sections} />;
 
 export default SuperAdminLayout;

@@ -69,7 +69,7 @@ interface CustomTooltipProps {
 const CustomTooltip: FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (!active || !payload || payload.length === 0) return null;
   return (
-    <div className="bg-white p-4 border border-neutral-200 rounded-lg shadow-lg">
+    <div className="bg-card p-4 border border-border rounded-2xl shadow-soft">
       <p className="font-medium text-neutral-900 mb-2">{label}</p>
       {payload.map((entry, index) => (
         <div key={index} className="flex items-center space-x-2">

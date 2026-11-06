@@ -126,7 +126,7 @@ const StatsCard = ({
   icon: React.ReactNode;
   color: string;
 }) => (
-  <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+  <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
     <div className="flex items-center justify-between">
       <div>
         <p className="text-sm font-medium text-neutral-600">{title}</p>
@@ -323,7 +323,7 @@ const MaternalNutritionDashboard = () => {
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
             {/* Patient Messaging */}
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+            <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
               <div className="flex items-center space-x-2 mb-6">
                 <Stethoscope className="h-5 w-5 text-primary-600" />
                 <h2 className="text-lg font-semibold text-neutral-900">
@@ -386,7 +386,7 @@ const MaternalNutritionDashboard = () => {
             </div>
 
             {/* Nutritional Guidelines */}
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+            <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-neutral-900">
                   {t("nutritionalGuidelines")}
@@ -412,7 +412,7 @@ const MaternalNutritionDashboard = () => {
 
           {/* Right Column - Analytics & Actions */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+            <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">
                 {t("riskDistribution")}
               </h3>
@@ -433,7 +433,7 @@ const MaternalNutritionDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+            <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">
                 {t("complianceTrends")}
               </h3>
@@ -458,7 +458,7 @@ const MaternalNutritionDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+            <div className="bg-card rounded-2xl shadow-soft p-6 border border-border">
               <h3 className="text-lg font-semibold text-neutral-900 mb-4">
                 {t('quickActions')}
               </h3>
@@ -479,7 +479,7 @@ const MaternalNutritionDashboard = () => {
         </div>
 
         {/* Nutrition Chart */}
-        <div className="mt-8 bg-white rounded-xl shadow-sm p-6 border border-neutral-100">
+        <div className="mt-8 bg-card rounded-2xl shadow-soft p-6 border border-border">
           <h3 className="text-lg font-semibold text-neutral-900 mb-6">
             {t("scheduleFollowUp")}
           </h3>

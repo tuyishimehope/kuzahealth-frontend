@@ -24,7 +24,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   const { t } = useTranslation(); // ✅ use translation
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white p-3 border border-neutral-200 rounded-lg shadow-lg">
+      <div className="bg-card p-3 border border-border rounded-2xl shadow-soft">
         <p className="font-medium text-neutral-900">{label}</p>
         <p className="text-sm text-neutral-600">
           {t("analytics.tooltip.count")}:{" "}

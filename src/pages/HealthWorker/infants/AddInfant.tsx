@@ -81,7 +81,7 @@ const AddInfant = () => {
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-xl border border-neutral-200 overflow-hidden">
+        <div className="bg-card rounded-2xl shadow-xl border border-border overflow-hidden">
           <div className="p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
               {/* Personal Information Section */}

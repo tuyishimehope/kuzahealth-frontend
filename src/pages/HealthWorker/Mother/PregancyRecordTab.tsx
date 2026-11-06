@@ -238,7 +238,7 @@ const PregnancyRecordCard = ({
                   <FileText className="w-4 h-4" />
                   Medical History
                 </h4>
-                <div className="bg-white rounded-lg p-3 border border-neutral-200">
+                <div className="bg-card rounded-2xl p-3 border border-border">
                   <p className="text-sm text-neutral-700">
                     {record.medical_history}
                   </p>
@@ -252,7 +252,7 @@ const PregnancyRecordCard = ({
                   <AlertCircle className="w-4 h-4" />
                   Pregnancy Complications
                 </h4>
-                <div className="bg-white rounded-lg p-3 border border-neutral-200">
+                <div className="bg-card rounded-2xl p-3 border border-border">
                   <p className="text-sm text-neutral-700">
                     {record.pregancy_complications}
                   </p>
@@ -275,7 +275,7 @@ const PregnancyRecordCard = ({
 
 // Enhanced Loading Component
 const LoadingCard = () => (
-  <div className="border border-neutral-200 rounded-xl bg-white p-6 animate-pulse">
+  <div className="border border-border rounded-2xl bg-card p-6 animate-pulse">
     <div className="space-y-4">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-3">

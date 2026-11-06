@@ -212,7 +212,7 @@ const AppointmentCard = ({
 
 // Loading Component
 const LoadingCard = () => (
-  <div className="border border-neutral-200 rounded-lg bg-white p-4 animate-pulse">
+  <div className="border border-border rounded-2xl bg-card p-4 animate-pulse">
     <div className="space-y-3">
       <div className="flex justify-between">
         <div className="h-5 bg-neutral-200 rounded w-1/3"></div>

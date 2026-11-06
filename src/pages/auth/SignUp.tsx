@@ -19,11 +19,11 @@ import {
   Briefcase,
   Users,
 } from "lucide-react";
-import image from "../../assets/signup.png";
 
 import { axiosInstance } from "@/utils/axiosInstance";
 import { Toaster, toast } from "sonner";
 import { colors } from "@/theme/colors";
+import AuthShowcase from "@/components/auth/AuthShowcase";
 
 // Enhanced Zod schema with better validation
 const signUpSchema = z
@@ -414,7 +414,7 @@ const SignUp = (): JSX.Element => {
   );
 
   return (
-    <motion.div className="flex h-screen w-full bg-gradient-to-br from-neutral-50 to-neutral-100">
+    <motion.div className="flex h-screen w-full bg-background">
       <Toaster
         position="top-right"
         toastOptions={{
@@ -425,43 +425,13 @@ const SignUp = (): JSX.Element => {
         }}
       />
 
-      {/* Left side - Image (fixed) */}
-      <motion.div
-        className="hidden lg:block lg:w-2/5 relative overflow-hidden h-screen top-0"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-      >
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-primary-600/40 via-primary-600/30 to-transparent"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        />
+      <AuthShowcase
+        className="lg:w-2/5 h-screen"
+        title="Join KuzaHealth"
+        description="Create your health worker account and keep every mother and child on track."
+      />
 
-        <img
-          src={image}
-          alt="Healthcare Registration"
-          className="w-full h-full object-cover"
-        />
-
-        <motion.div
-          className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-10 text-white max-w-md"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <h2 className="text-2xl lg:text-4xl font-bold drop-shadow-lg mb-3">
-            Join Our Platform
-          </h2>
-          <p className="text-base lg:text-lg drop-shadow-lg opacity-90 leading-relaxed">
-            Create your healthcare professional account and start making a
-            difference in patient care.
-          </p>
-        </motion.div>
-      </motion.div>
-
-      {/* Right side - Scrollable */}
+        {/* Right side - Scrollable */}
       <motion.div
         className="flex flex-col items-center px-6 py-12 sm:px-8 lg:px-12 w-full lg:w-3/5 overflow-y-auto h-screen"
         initial={{ opacity: 0, x: 50 }}
