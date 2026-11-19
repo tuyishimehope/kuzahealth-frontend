@@ -1,266 +1,205 @@
+<div align="center">
+
+<img src="public/favicon.svg" alt="KuzaHealth" width="72" />
+
 # KuzaHealth Frontend
 
-KuzaHealth is a React and TypeScript frontend for maternal and child healthcare workflows. It includes a public website, authentication screens, and separate workspaces for health workers, super administrators, and data analysts.
+**A digital register for maternal and child care.** Health workers record pregnancies, visits and vaccinations, and see which mothers and babies are due for care.
 
-This repository contains the browser application only. Authentication, patient records, and other API-backed operations require a separately running compatible backend.
+[![React](https://img.shields.io/badge/React-18.3-149ECA?logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
-## Contents
+[Quick start](#quick-start) · [Features](#features) · [Configuration](#configuration) · [Development](#development)
 
-- [Application areas](#application-areas)
-- [Technology stack](#technology-stack)
-- [Getting started](#getting-started)
-- [Environment configuration](#environment-configuration)
-- [Available commands](#available-commands)
-- [Project structure](#project-structure)
-- [Routing and authentication](#routing-and-authentication)
-- [Translations](#translations)
-- [Development workflow](#development-workflow)
-- [Production build and deployment](#production-build-and-deployment)
-- [Troubleshooting](#troubleshooting)
-- [Documentation and license](#documentation-and-license)
+</div>
 
-## Application areas
+---
 
-| Area | Screens and workflows |
-| --- | --- |
-| Public website | Healthcare information, services, and contact content |
-| Authentication | Sign-up, sign-in, OTP verification, and password recovery/reset |
-| Health worker | Dashboard, analytics, maternal patient records, infant records, vaccination, nutrition, appointments, schedules, reports, and settings |
-| Super administrator | Dashboard, health worker and parent management, data analyst creation, facilities, users, audit information, admin logs, reports, and settings |
-| Data analyst | Dashboard, health workers, parents, schedules, facilities, reports, and settings |
+This is the browser app for KuzaHealth. It has a public landing page, sign-in screens, and a separate workspace for each role: health workers, super admins and data analysts. All data comes from the [KuzaHealth backend](https://github.com/tuyishimehope/kuzehealth-backend), a Spring Boot API that this repo talks to over HTTP.
 
-These describe the screens wired into the router; individual workflows depend on their implementation and backend availability.
+> [!IMPORTANT]
+> You need a running KuzaHealth backend and an account on it to use anything past the landing page. This repo has no mock API or demo accounts.
 
-## Technology stack
-
-| Purpose | Technologies |
-| --- | --- |
-| Application | React 18, TypeScript 5, Vite 5 |
-| Navigation | React Router 6 with nested routes |
-| API and server state | Axios, TanStack React Query 5 |
-| Styling and UI | Tailwind CSS 3, Mantine, Material UI, Radix UI components |
-| Forms and validation | React Hook Form, Zod, Mantine Form |
-| Charts and maps | Recharts, ApexCharts, Chart.js, MUI X Charts, Leaflet / React Leaflet |
-| Localization | i18next, react-i18next, browser language detection |
-| Export utilities | jsPDF, Papa Parse, export-to-csv, file-saver |
-| Code quality | ESLint 9 and TypeScript |
-
-See [package.json](package.json) for dependency ranges and [package-lock.json](package-lock.json) for the locked dependency tree.
-
-## Getting started
-
-### Prerequisites
-
-- Node.js compatible with the installed Vite 5 toolchain (`^18.0.0 || >=20.0.0`). Node 22 is a suitable baseline; this repository does not pin a Node version.
-- npm, using the committed `package-lock.json`.
-- A compatible KuzaHealth API URL and backend-provisioned accounts for authenticated workflows.
-
-### Local setup
-
-1. Clone this repository using its Git remote URL, then enter the checkout:
-
-   ```bash
-   cd kuzahealth_frontend
-   ```
-
-2. Install the locked dependencies:
-
-   ```bash
-   npm ci
-   ```
-
-3. Create or edit `.env.local` in the project root:
-
-   ```dotenv
-   VITE_API_BASE_URL_DEV=http://localhost:8080
-   ```
-
-   The address above is an example. Replace it with your backend's origin, including any required deployment prefix. Do not append `/api/v1` when the backend exposes the paths used by this application: request code already supplies that prefix.
-
-4. Start Vite:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open the URL printed by Vite, normally `http://localhost:5173`. Vite may select another port if it is occupied.
-
-The frontend can serve its public page without the API, but API-backed screens require the backend to be reachable and configured to accept requests from the frontend origin. No backend service or seeded demo account is supplied here.
-
-## Environment configuration
-
-| Variable | Used by | Purpose |
-| --- | --- | --- |
-| `VITE_API_BASE_URL_DEV` | `src/utils/axiosInstance.ts` and `src/pages/auth/SignIn.tsx` | Base URL for backend requests in both development and production |
-
-Despite the `_DEV` suffix, this is the variable the current application reads for production builds too. Setting only `VITE_BASE_URL` or a differently named production variable will not configure these requests.
-
-- Use `.env.local` for local overrides; `*.local` is ignored by Git.
-- Restart the development server after changing environment variables.
-- Vite embeds frontend environment values at build time. Set the API URL before building, and rebuild when it changes.
-- `VITE_` values are visible in the browser bundle. They must not contain private keys or backend secrets.
-- There is no API fallback URL or Vite development proxy configured. An unset base URL can cause requests to reach the frontend host instead of the API.
-
-## Available commands
-
-| Command | Behavior |
-| --- | --- |
-| `npm ci` | Install dependencies from the lockfile |
-| `npm run dev` | Start the Vite development server |
-| `npm run build` | Run `tsc -b`, then generate the production bundle in `dist/` |
-| `npm run preview` | Serve an existing production build locally, normally on port `4173` |
-| `npm run lint` | Run ESLint across the repository |
-| `npm run docs` | Invoke TypeDoc with `typedoc.json`; currently incomplete because that configuration file is absent |
-
-There is no `npm start` or automated test script configured. TypeScript checking and linting are the available code checks; they do not replace browser verification.
-
-## Project structure
-
-```text
-kuzahealth_frontend/
-├── public/
-│   └── locales/                 # English, Kinyarwanda, and French translations
-├── src/
-│   ├── assets/                  # Imported images and video assets
-│   ├── components/              # Shared, public-site, and role-specific UI
-│   │   ├── HealthWorker/
-│   │   ├── data-analyst/
-│   │   ├── superadmin/
-│   │   ├── layout/
-│   │   └── ui/
-│   ├── hooks/                   # Media-query and section-highlighting hooks
-│   ├── layouts/                 # Role-specific navigation and page shells
-│   ├── lib/                     # Shared utilities, including class-name helpers
-│   ├── pages/
-│   │   ├── auth/
-│   │   ├── HealthWorker/
-│   │   ├── data-analyst/
-│   │   ├── superadmin/
-│   │   └── Home.tsx
-│   ├── routes/                  # Root router and role/auth route definitions
-│   ├── utils/                   # Axios client, JWT decoding, and other helpers
-│   ├── i18n.ts                  # Translation loading and language detection
-│   ├── index.css                # Global styles and Tailwind directives
-│   └── main.tsx                 # React root, QueryClientProvider, RouterProvider
-├── index.html                   # Vite HTML entry
-├── vite.config.ts               # React plugin and @ import alias
-├── tailwind.config.js
-├── eslint.config.js
-├── tsconfig.json
-├── netlify.toml                 # SPA fallback redirect
-├── docker-compose.yml           # Incomplete container setup; see deployment notes
-└── package.json
-```
-
-The application starts in `src/main.tsx`, which initializes localization and mounts the router inside React Query's provider. `src/App.tsx` is currently an empty component and is not the mounted application entry point.
-
-The `@/` alias points to `src/` and is configured in both Vite and TypeScript.
-
-## Routing and authentication
-
-The root router lives in [src/routes/route.tsx](src/routes/route.tsx). Each role has its own nested route configuration and layout, with child pages rendered through React Router's `Outlet`.
-
-| Entry route | Purpose |
-| --- | --- |
-| `/` | Public home page |
-| `/auth/signin` | Sign-in |
-| `/auth/signup` | Account registration |
-| `/auth/otp-verification` | OTP verification |
-| `/auth/forgot-password` | Request a password reset |
-| `/auth/reset-password` | Set a new password |
-| `/healthworker/dashboard` | Health worker dashboard |
-| `/superadmin/dashboard` | Super administrator dashboard |
-| `/data-analyst/dashboard` | Data analyst dashboard |
-
-Use the explicit dashboard paths: the role roots currently have no index route. For the full route list, consult the files under `src/routes/`. Patient and infant detail routes include an `:id` parameter.
-
-### API request flow
-
-1. Sign-in requests an OTP through `/api/v1/auth/send-otp`.
-2. OTP verification submits credentials to `/api/v1/auth/login?otp=...`.
-3. A successful response stores the token as a JSON-encoded value under the `token` key in `localStorage` and uses the decoded role to choose a destination.
-4. The shared Axios client reads that token and adds `Authorization: Bearer <token>` to outgoing requests.
-
-Reuse [src/utils/axiosInstance.ts](src/utils/axiosInstance.ts) for API requests that need this configuration. React Query is available through the root provider for queries and mutations.
-
-The route definitions do not currently wrap role areas in an authentication guard. Backend endpoints must enforce authentication and authorization; a role-specific URL or client-side redirect is not an access-control boundary.
-
-## Translations
-
-Localization is configured in [src/i18n.ts](src/i18n.ts). The configured languages are:
-
-| Code | Language | Translation file |
-| --- | --- | --- |
-| `en` | English, also the fallback | `public/locales/en/translation.json` |
-| `rw` | Kinyarwanda | `public/locales/rw/translation.json` |
-| `fr` | French | `public/locales/fr/translation.json` |
-
-Translations load over HTTP from `/locales/{{lng}}/{{ns}}.json`, and the browser language detector helps select the language. Keep corresponding keys aligned across all three files when adding translated content. Adding another language also requires updating `supportedLngs` in `src/i18n.ts` and any language-selection UI.
-
-## Development workflow
-
-1. Add page components under the relevant role directory in `src/pages/`.
-2. Register new routes in the matching file under `src/routes/`, and update the relevant sidebar or navigation when needed.
-3. Reuse the role's layout and existing shared components; match the UI conventions of the surrounding feature.
-4. Use the shared API client and handle loading, empty, and failure states for API-backed screens.
-5. Update translation keys for localized text.
-6. Run the existing checks:
-
-   ```bash
-   npm run lint
-   npm run build
-   ```
-
-7. Verify the affected workflow in the browser, including navigation, form validation, API failures, and narrow-screen layouts. For routing changes, also test a direct visit and refresh on the nested URL.
-
-Include a description of the change, relevant screenshots for UI work, and check results in pull requests. Report existing failures separately from regressions introduced by the change.
-
-## Production build and deployment
-
-Set `VITE_API_BASE_URL_DEV` to the intended API URL in the build environment, then run:
+## Quick start
 
 ```bash
+git clone https://github.com/tuyishimekyrie/kuzahealth.git
+cd kuzahealth
 npm ci
-npm run build
-npm run preview
+echo "VITE_API_BASE_URL_DEV=http://localhost:8080" > .env.local   # your backend's address
+npm run dev
 ```
 
-Deploy the generated `dist/` directory to a static host. The preview command is for inspecting the build locally. Configure the host to serve existing assets normally and return `index.html` for application routes so that direct links and browser refreshes work with `createBrowserRouter`.
+Open `http://localhost:5173`. If that port is taken, Vite picks the next free one and prints it.
 
-### Netlify
+> [!NOTE]
+> The backend must allow requests from the frontend's origin (CORS). If Vite moves to another port, such as `5174`, the backend may reject sign-in until you allow that origin too.
 
-The repository includes a fallback rewrite in [netlify.toml](netlify.toml). Configure the site with:
+## Features
 
-| Setting | Value |
+| | |
 | --- | --- |
-| Build command | `npm run build` |
-| Publish directory | `dist` |
-| Build environment variable | `VITE_API_BASE_URL_DEV` set to the deployed API URL |
+| **Landing page** | Explains the product with a sample "due this week" register, how it works and a feature overview. |
+| **Sign-in and accounts** | Email and password sign-in that sends each role to its own dashboard. Also sign-up, forgot password and reset password. |
+| **Health worker workspace** | Dashboard and analytics. Register and view mothers, nutrition info, register and view infants, infant vaccinations, schedules, appointments, reports, settings and profile. |
+| **Super admin workspace** | Dashboard. Manage health workers, mothers, data analysts and users. Facilities, reports, audit, admin logs and settings. |
+| **Data analyst workspace** | Dashboard, health workers, mothers, schedules, facilities, reports and settings. |
+| **Three languages** | English, Kinyarwanda and French, with a language picker. English is the fallback for any missing text. |
+| **One color system** | Every color comes from one file, so a rebrand is a single edit. See [Theming](#theming). |
 
-The current routing and translation paths assume hosting at the domain root. Hosting under a subpath requires corresponding changes to the Vite base, router configuration, and asset/translation paths.
+## Architecture
 
-### Existing deployment configuration gaps
+```mermaid
+flowchart LR
+    U[Browser] --> SPA[React app<br/>Vite build]
+    SPA -- "Axios + Bearer token" --> API[KuzaHealth API<br/>Spring Boot]
+    API --> DB[(PostgreSQL)]
+    SPA -- "/locales/*.json" --> Static[Static host]
+```
 
-- **Docker:** `docker-compose.yml` references a build context, but no Dockerfile is included. It also uses `VITE_BASE_URL`, which differs from the variable consumed by the application. Add a Dockerfile and pass the correct variable during the frontend build before relying on this setup; runtime container variables alone do not rewrite an already built bundle.
-- **GitHub Actions:** the workflow-like file is at `.github/main.yml`, outside the required `.github/workflows/` directory. It specifies Node 16 and uploads `build/`, while this project uses Vite 5 and outputs `dist/`. Correct its location, Node version, artifact path, action versions, and build environment before using it for CI.
+The app is a single-page React app served as static files. Sign-in posts email and password to `POST /api/v1/auth/login`. The token that comes back is stored JSON-encoded in `localStorage` under `token`. The shared Axios client in [`src/utils/axiosInstance.ts`](src/utils/axiosInstance.ts) adds it as `Authorization: Bearer …` to every request. Translations load from the same static host at runtime.
 
-## Troubleshooting
+> [!WARNING]
+> Route protection in the browser is minimal. Only the health worker area checks that a token exists. The backend is what actually enforces who can see what.
 
-| Symptom | What to check |
+<details>
+<summary><b>Project structure</b></summary>
+
+<br />
+
+```text
+kuzahealth/
+├── public/
+│   ├── favicon.svg
+│   └── locales/{en,rw,fr}/translation.json
+├── src/
+│   ├── components/
+│   │   ├── landing/         # Landing page sections
+│   │   ├── auth/            # Shared side panel for sign-in screens
+│   │   ├── shell/           # AppShell: sidebar and top bar for all workspaces
+│   │   ├── common/          # Logo, Button and other shared pieces
+│   │   ├── ui/              # shadcn-style primitives
+│   │   └── HealthWorker/    # Health worker widgets (map, charts, modal)
+│   ├── layouts/             # One layout per role, each built on AppShell
+│   ├── pages/               # auth/, HealthWorker/, superadmin/, data-analyst/, Home.tsx
+│   ├── routes/              # Root router plus one route file per area
+│   ├── styles/tokens.css    # Design tokens: the single source of colors
+│   ├── theme/               # Token bridge for JS, Mantine and MUI themes
+│   ├── utils/               # Axios client and helpers
+│   ├── i18n.ts              # Language setup
+│   └── main.tsx             # App entry: theme, React Query and router
+├── tailwind.config.js       # Maps Tailwind color names to the tokens
+├── vite.config.ts           # React plugin and the @/ → src/ alias
+└── netlify.toml             # SPA fallback to index.html
+```
+
+</details>
+
+<details>
+<summary><b>Routes</b></summary>
+
+<br />
+
+| Route | Page |
 | --- | --- |
-| `npm start` fails | Use `npm run dev`; no start script exists. |
-| API requests target the frontend host | Set `VITE_API_BASE_URL_DEV` and restart Vite or rebuild the deployment. |
-| Requests fail with CORS or connection errors | Confirm the API is reachable and allows the actual frontend origin. No local proxy is configured. |
-| Authentication returns `401` or `403` | Check account permissions, token validity, and backend responses; sign in again if the token has expired. |
-| Token parsing fails before a request | The Axios interceptor expects JSON-encoded token storage. Clear a stale or manually edited `token` entry and sign in again. |
-| A role root shows only its layout | Navigate to its explicit `/dashboard` child route. |
-| Refreshing a nested URL returns `404` | Configure the static host's SPA fallback to `index.html`. |
-| Translations fail to load | Confirm `/locales/<language>/translation.json` is served and contains valid JSON. |
-| `npm run docs` fails | The referenced `typedoc.json` is missing; supply a configuration before using the command. |
-| Container startup fails | The Compose setup needs the missing Dockerfile and corrected build-time API variable. |
+| `/` | Landing page |
+| `/auth/signin` | Sign in |
+| `/auth/signup` | Create an account |
+| `/auth/forgot-password` | Request a password reset |
+| `/auth/reset-password` | Set a new password |
+| `/healthworker/dashboard` | Health worker home |
+| `/superadmin/dashboard` | Super admin home |
+| `/data-analyst/dashboard` | Data analyst home |
 
-## Documentation and license
+The role roots (`/healthworker`, `/superadmin`, `/data-analyst`) have no index page, so link to `/dashboard` directly. The full lists are in [`src/routes/`](src/routes).
 
-[documentation.md](documentation.md) contains earlier architecture notes under the HealVirtue name. Some descriptions there, including testing tools and planned features, do not match the current repository. Use the source code and package scripts as the reference for implemented behavior.
+</details>
 
-No license file is included in this repository. Confirm licensing terms with the project owner before redistributing the code.
+## Tech stack
+
+| Layer | Tools |
+| --- | --- |
+| App | React 18, TypeScript 5, Vite 5 |
+| Routing | React Router 6 (nested routes) |
+| Data | Axios, TanStack Query 5 |
+| UI and styling | Tailwind CSS 3, Mantine 6, MUI 7, Radix UI, Framer Motion, Lucide icons |
+| Forms | React Hook Form, Zod |
+| Charts and maps | Recharts, ApexCharts, Chart.js, MUI X Charts, Leaflet |
+| Languages | i18next, react-i18next |
+| Export | jsPDF, Papa Parse, export-to-csv, file-saver |
+| Quality | ESLint 9, TypeScript |
+
+## Configuration
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `VITE_API_BASE_URL_DEV` | none | The backend's address, for example `http://localhost:8080`. Leave off `/api/v1`, because the code adds it. Used in development **and** production builds, despite the `_DEV` suffix. |
+
+Put it in `.env.local`, which git ignores. Vite reads it when it starts and bakes it into the build, so restart `npm run dev` or rebuild after you change it. Anything prefixed `VITE_` ends up in the browser bundle, so never put secrets there.
+
+### Theming
+
+All colors live in [`src/styles/tokens.css`](src/styles/tokens.css) as CSS variables: color ramps from 50 to 950, plus names for each purpose such as `--primary`, `--background` and `--chart-1`. Tailwind classes (`bg-primary`, `text-muted-foreground`), Mantine, MUI and the charts all read from that file. To rebrand, edit the `primary` ramp there. Don't hard-code hex values in components. In JavaScript, use `colors` and `alpha()` from [`src/theme/colors.ts`](src/theme/colors.ts).
+
+### Translations
+
+Text lives in `public/locales/<lang>/translation.json` for `en`, `rw` and `fr`. Keep the keys the same in all three files. Some newer text, such as the landing page, passes English fallback text to `t()` and has no translation keys yet. To add a language, add its file and put its code in `supportedLngs` in [`src/i18n.ts`](src/i18n.ts).
+
+## Development
+
+```bash
+npm run dev       # start the dev server with hot reload
+npm run build     # type-check (tsc -b), then build to dist/
+npm run preview   # serve the built dist/ locally on port 4173
+npm run lint      # run ESLint
+```
+
+There's no test suite or `npm start` script. Lint and the type check in `npm run build` are the only automated checks, so also click through what you changed in the browser.
+
+### Deploying
+
+Set `VITE_API_BASE_URL_DEV` in the build environment, run `npm run build`, and serve `dist/` from any static host. The host must send `index.html` for unknown paths so deep links and refreshes work. [`netlify.toml`](netlify.toml) already does this on Netlify: use build command `npm run build` and publish directory `dist`. The app assumes it is served from the domain root, not a subpath.
+
+<details>
+<summary><b>Known gaps</b></summary>
+
+<br />
+
+| Item | State |
+| --- | --- |
+| `docker-compose.yml` | Has no Dockerfile to build from, and sets `VITE_BASE_URL`, which the app doesn't read. Not usable as is. |
+| `.github/main.yml` | Not in `.github/workflows/`, so GitHub doesn't run it. It also targets Node 16 and uploads `build/` instead of `dist/`. |
+| `npm run docs` | Points at a `typedoc.json` that doesn't exist. |
+| [`documentation.md`](documentation.md) | Older notes under a previous name. Trust the code where they differ. |
+
+</details>
+
+<details>
+<summary><b>Troubleshooting</b></summary>
+
+<br />
+
+| Symptom | Likely cause |
+| --- | --- |
+| Requests go to the frontend's own address | `VITE_API_BASE_URL_DEV` isn't set. Set it, then restart Vite or rebuild. |
+| Sign-in fails with a CORS or network error | The backend isn't running or doesn't allow this origin. Check the port Vite printed. |
+| Sign-in says `otp` is required | The backend is running an older build. Rebuild and restart it. |
+| `401` or `403` on API calls | The token is missing or expired, or the role isn't allowed. Sign in again. |
+| Errors about parsing the token | A hand-edited `token` in `localStorage`. Clear it and sign in again. |
+| `/healthworker` shows an empty shell | Role roots have no index page. Go to `/healthworker/dashboard`. |
+| Refresh on a deep link returns 404 | The host isn't falling back to `index.html`. |
+| Translation keys show as raw text | The key is missing from that language's `translation.json`. |
+
+</details>
+
+## Contributing
+
+1. Branch from `main`.
+2. Run `npm run lint` and `npm run build`, and check your change in the browser, including at phone width.
+3. Open a pull request with a short description and screenshots for UI changes.
+
+## License
+
+No license is included yet. Ask the project owner before reusing or redistributing this code.
