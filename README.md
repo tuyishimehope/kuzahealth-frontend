@@ -19,6 +19,9 @@
 
 This is the browser app for KuzaHealth. It has a public landing page, sign-in screens, and a separate workspace for each role: health workers, super admins and data analysts. All data comes from the [KuzaHealth backend](https://github.com/tuyishimehope/kuzehealth-backend), a Spring Boot API that this repo talks to over HTTP.
 
+> [!CAUTION]
+> **KuzaHealth is a personal learning project.** All data in it is synthetic and describes no real people. It isn't affiliated with, or endorsed by, any government, ministry of health or health facility. Don't enter real personal or medical information, and don't use it for patient care.
+
 > [!IMPORTANT]
 > You need a running KuzaHealth backend and an account on it to use anything past the landing page. This repo has no mock API or demo accounts.
 
@@ -43,11 +46,13 @@ Open `http://localhost:5173`. If that port is taken, Vite picks the next free on
 | --- | --- |
 | **Landing page** | Explains the product with a sample "due this week" register, how it works and a feature overview. |
 | **Sign-in and accounts** | Email and password sign-in that sends each role to its own dashboard. Also sign-up, forgot password and reset password. |
+| **Project notice** | Sign-in and sign-up open a short notice, once per browser session, saying this is a learning project with synthetic data and no government ties. A link under each form reopens it. |
 | **Health worker workspace** | Dashboard and analytics. Register and view mothers, nutrition info, register and view infants, infant vaccinations, schedules, appointments, reports, settings and profile. |
 | **Super admin workspace** | Dashboard. Manage health workers, mothers, data analysts and users. Facilities, reports, audit, admin logs and settings. |
 | **Data analyst workspace** | Dashboard, health workers, mothers, schedules, facilities, reports and settings. |
 | **Three languages** | English, Kinyarwanda and French, with a language picker. English is the fallback for any missing text. |
 | **One color system** | Every color comes from one file, so a rebrand is a single edit. See [Theming](#theming). |
+| **Consistent form fields** | Every input, select and textarea shares one look, with clear focus and error states. Mantine inputs match it. See [Form fields](#form-fields). |
 
 ## Architecture
 
@@ -77,7 +82,7 @@ kuzahealth/
 ├── src/
 │   ├── components/
 │   │   ├── landing/         # Landing page sections
-│   │   ├── auth/            # Shared side panel for sign-in screens
+│   │   ├── auth/            # Sign-in side panel and the project notice popup
 │   │   ├── shell/           # AppShell: sidebar and top bar for all workspaces
 │   │   ├── common/          # Logo, Button and other shared pieces
 │   │   ├── ui/              # shadcn-style primitives
@@ -143,6 +148,26 @@ Put it in `.env.local`, which git ignores. Vite reads it when it starts and bake
 
 All colors live in [`src/styles/tokens.css`](src/styles/tokens.css) as CSS variables: color ramps from 50 to 950, plus names for each purpose such as `--primary`, `--background` and `--chart-1`. Tailwind classes (`bg-primary`, `text-muted-foreground`), Mantine, MUI and the charts all read from that file. To rebrand, edit the `primary` ramp there. Don't hard-code hex values in components. In JavaScript, use `colors` and `alpha()` from [`src/theme/colors.ts`](src/theme/colors.ts).
 
+### Form fields
+
+Plain inputs, selects and textareas use shared classes from [`src/index.css`](src/index.css). Don't restyle fields by hand:
+
+```tsx
+<label className="field-label"><Mail /> Email</label>
+<input className={`field ${error ? "field-invalid" : ""}`} />
+<p className="field-error"><AlertCircle /> {error}</p>
+```
+
+| Class | Use |
+| --- | --- |
+| `field` | The input, select or textarea itself. Selects get a chevron, and textareas grow taller. |
+| `field-invalid` | Add alongside `field` when the value has an error. |
+| `field-label` | The label above a field. A leading icon is sized and muted automatically. |
+| `field-error` / `field-hint` | The message below a field. |
+| `field-adornment` | An icon inside the field's `relative` wrapper, centered vertically. |
+
+Mantine's `TextInput`, `Select` and the rest get the same look from the theme in [`src/theme/ThemeProvider.tsx`](src/theme/ThemeProvider.tsx).
+
 ### Translations
 
 Text lives in `public/locales/<lang>/translation.json` for `en`, `rw` and `fr`. Keep the keys the same in all three files. Some newer text, such as the landing page, passes English fallback text to `t()` and has no translation keys yet. To add a language, add its file and put its code in `supportedLngs` in [`src/i18n.ts`](src/i18n.ts).
@@ -191,6 +216,7 @@ Set `VITE_API_BASE_URL_DEV` in the build environment, run `npm run build`, and s
 | `/healthworker` shows an empty shell | Role roots have no index page. Go to `/healthworker/dashboard`. |
 | Refresh on a deep link returns 404 | The host isn't falling back to `index.html`. |
 | Translation keys show as raw text | The key is missing from that language's `translation.json`. |
+| The project notice doesn't open again | It shows once per browser session. Use the link under the form, or open a new session. |
 
 </details>
 
