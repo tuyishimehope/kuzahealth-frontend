@@ -460,16 +460,7 @@ const CreateNewPassword = () => {
                   type="text"
                   placeholder="Enter Email"
                   {...register("email")}
-                  className={`
-            w-full pl-11 pr-12 py-3 rounded-lg border transition-all duration-200
-            ${
-              errors.email
-                ? "border-danger-300 bg-danger-50 focus:border-danger-500 focus:ring-danger-200"
-                : "border-neutral-200 bg-white focus:border-primary-500 focus:ring-primary-200"
-            }
-            focus:outline-none focus:ring-2 focus:ring-opacity-50
-            placeholder:text-neutral-400
-          `}
+                  className={`field w-full pl-11 pr-12 ${ errors.email ? "field-invalid" : "" }`}
                 />
                 {errors.email && (
                   <p className="text-sm text-danger-500">{errors.email.message}</p>
@@ -501,16 +492,7 @@ const CreateNewPassword = () => {
                   type="text"
                   placeholder="Enter token"
                   {...register("token")}
-                  className={`
-            w-full pl-11 pr-12 py-3 rounded-lg border transition-all duration-200
-            ${
-              errors.token
-                ? "border-danger-300 bg-danger-50 focus:border-danger-500 focus:ring-danger-200"
-                : "border-neutral-200 bg-white focus:border-primary-500 focus:ring-primary-200"
-            }
-            focus:outline-none focus:ring-2 focus:ring-opacity-50
-            placeholder:text-neutral-400
-          `}
+                  className={`field w-full pl-11 pr-12 ${ errors.token ? "field-invalid" : "" }`}
                 />
                 {errors.token && (
                   <p className="text-sm text-danger-500">{errors.token.message}</p>

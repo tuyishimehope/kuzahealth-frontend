@@ -66,4 +66,61 @@
   .card-surface {
     @apply rounded-2xl border border-border bg-card shadow-soft;
   }
+
+  /* ---------------------------------------------------------------
+   * Form fields. Use on <input>, <select> and <textarea>:
+   *   <label class="field-label">…</label>
+   *   <input class="field [field-invalid]" />
+   *   <p class="field-error">…</p>   <p class="field-hint">…</p>
+   * --------------------------------------------------------------- */
+  .field {
+    @apply block h-11 w-full rounded-xl border border-input bg-card px-3.5 text-[14px] text-foreground
+      shadow-[0_1px_2px_rgb(var(--neutral-900)/0.04)] outline-none transition-[border-color,box-shadow,background-color] duration-150
+      placeholder:text-neutral-400
+      hover:border-neutral-300
+      focus:border-primary-500 focus:ring-4 focus:ring-primary-500/15
+      disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:hover:border-input;
+  }
+  textarea.field {
+    @apply h-auto min-h-[96px] py-2.5 leading-relaxed;
+  }
+  select.field {
+    @apply appearance-none bg-no-repeat pr-10;
+    /* Chevron in --neutral-500 (#5B6B8C); a data URI can't read CSS variables */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%235B6B8C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 0.85rem center;
+    background-size: 1.1rem;
+  }
+  input[type="date"].field,
+  input[type="time"].field,
+  input[type="datetime-local"].field {
+    @apply pr-3;
+  }
+  .field:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 40px rgb(var(--card)) inset;
+    -webkit-text-fill-color: rgb(var(--foreground));
+  }
+  .field-invalid {
+    @apply border-danger-400 bg-danger-50/40 hover:border-danger-400
+      focus:border-danger-500 focus:ring-danger-500/15;
+  }
+  .field-label {
+    @apply mb-1.5 flex items-center gap-1.5 text-[13px] font-medium text-foreground;
+  }
+  .field-label > svg {
+    @apply h-3.5 w-3.5 text-muted-foreground;
+  }
+  .field-error {
+    @apply mt-1.5 flex items-center gap-1.5 text-[12px] font-medium text-danger-600;
+  }
+  .field-error > svg {
+    @apply h-3.5 w-3.5 shrink-0;
+  }
+  .field-hint {
+    @apply mt-1.5 text-[12px] text-muted-foreground;
+  }
+  /* Icon inside a field wrapper (<div class="relative">): vertically centered */
+  .field-adornment {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground;
+  }
 }

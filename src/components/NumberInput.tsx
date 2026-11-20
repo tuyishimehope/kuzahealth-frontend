@@ -15,7 +15,7 @@ const NumberInput: React.FC<NumberInputProps> = ({ value, onChange, maxLength, i
       maxLength={maxLength}
       value={value}
       onChange={onChange}
-      className="input bg-neutral-100 px-2 py-2 rounded-md custom-input w-12 text-center"
+      className="field custom-input w-12 text-center"
     />
   );
 };

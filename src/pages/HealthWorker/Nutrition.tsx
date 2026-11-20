@@ -332,13 +332,13 @@ const MaternalNutritionDashboard = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-neutral-700 mb-2">
+                  <label className="field-label">
                     {t("selectPatient")}
                   </label>
                   <select
                     value={selectedMother}
                     onChange={(e) => setSelectedMother(e.target.value)}
-                    className="w-full border border-neutral-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    className="field w-full"
                   >
                     <option value="">{t("choosePatient")}</option>
                     {mothers.map((m) => (
@@ -352,13 +352,13 @@ const MaternalNutritionDashboard = () => {
                 {selectedMother && (
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      <label className="field-label">
                         {t("quickMessage")}
                       </label>
                       <select
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="w-full border border-neutral-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                        className="field w-full"
                       >
                         <option value="">Select a message...</option>
                         {PRESET_MESSAGES.map((msg, idx) => (
@@ -398,7 +398,7 @@ const MaternalNutritionDashboard = () => {
                     placeholder="Search nutrients..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    className="field pl-10 pr-4"
                   />
                 </div>
               </div>

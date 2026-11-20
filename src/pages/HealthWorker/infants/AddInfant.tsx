@@ -107,7 +107,7 @@ const AddInfant = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-neutral-700">
+                    <label className="field-label">
                       {t("First Name")} <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
@@ -128,7 +128,7 @@ const AddInfant = () => {
                       </div>
                       <input
                         {...register("firstName")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
+                        className="field block w-full pl-10 pr-3"
                         placeholder="Enter first name"
                       />
                     </div>
@@ -143,7 +143,7 @@ const AddInfant = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-neutral-700">
+                    <label className="field-label">
                       {t("Last Name")} <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
@@ -164,7 +164,7 @@ const AddInfant = () => {
                       </div>
                       <input
                         {...register("lastName")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
+                        className="field block w-full pl-10 pr-3"
                         placeholder="Enter last name"
                       />
                     </div>
@@ -181,7 +181,7 @@ const AddInfant = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-neutral-700">
+                    <label className="field-label">
                       {t("Date of Birth")}{" "}
                       <span className="text-danger-500">*</span>
                     </label>
@@ -204,7 +204,7 @@ const AddInfant = () => {
                       <input
                         type="date"
                         {...register("dateOfBirth")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
+                        className="field block w-full pl-10 pr-3"
                       />
                     </div>
                     {errors.dateOfBirth && (
@@ -218,7 +218,7 @@ const AddInfant = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-neutral-700">
+                    <label className="field-label">
                       {t("Gender")} <span className="text-danger-500">*</span>
                     </label>
                     <div className="relative">
@@ -239,7 +239,7 @@ const AddInfant = () => {
                       </div>
                       <select
                         {...register("gender")}
-                        className="block w-full pl-10 pr-8 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none appearance-none bg-white cursor-pointer"
+                        className="field block w-full pl-10 pr-8 cursor-pointer"
                       >
                         <option value="">{t("Select gender")}</option>
                         <option value="FEMALE">{t("Female")}</option>
@@ -296,7 +296,7 @@ const AddInfant = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-neutral-700">
+                    <label className="field-label">
                       {t("Birth Weight (kg)")}{" "}
                       <span className="text-danger-500">*</span>
                     </label>
@@ -320,7 +320,7 @@ const AddInfant = () => {
                         type="number"
                         step="0.1"
                         {...register("birthWeight")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
+                        className="field block w-full pl-10 pr-3"
                         placeholder="Weight in kg (e.g., 3.2)"
                       />
                     </div>
@@ -335,7 +335,7 @@ const AddInfant = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-neutral-700">
+                    <label className="field-label">
                       {t("Birth Height (cm)")}
                       <span className="text-danger-500">*</span>
                     </label>
@@ -359,7 +359,7 @@ const AddInfant = () => {
                         type="number"
                         step="0.1"
                         {...register("birthHeight")}
-                        className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
+                        className="field block w-full pl-10 pr-3"
                         placeholder="Height in cm (e.g., 50.0)"
                       />
                     </div>
@@ -375,7 +375,7 @@ const AddInfant = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-700">
+                  <label className="field-label">
                     {t("Blood Group")}
                   </label>
                   <div className="relative">
@@ -396,7 +396,7 @@ const AddInfant = () => {
                     </div>
                     <input
                       {...register("bloodGroup")}
-                      className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none"
+                      className="field block w-full pl-10 pr-3"
                       placeholder="e.g., A+, B-, O+, AB-"
                     />
                   </div>
@@ -433,7 +433,7 @@ const AddInfant = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-700">
+                  <label className="field-label">
                     {t("Mother")} <span className="text-danger-500">*</span>
                   </label>
                   <div className="relative">
@@ -454,7 +454,7 @@ const AddInfant = () => {
                     </div>
                     <select
                       {...register("motherId")}
-                      className="block w-full pl-10 pr-8 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none appearance-none bg-white cursor-pointer"
+                      className="field block w-full pl-10 pr-8 cursor-pointer"
                     >
                       <option value="">{t("Select mother")}</option>
                       {mothers.map((mother) => (
@@ -490,7 +490,7 @@ const AddInfant = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-700">
+                  <label className="field-label">
                     {t("Special Conditions")}
                   </label>
                   <div className="relative">
@@ -511,7 +511,7 @@ const AddInfant = () => {
                     </div>
                     <textarea
                       {...register("specialConditions")}
-                      className="block w-full pl-10 pr-3 py-3 text-base border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-neutral-400 focus:outline-none resize-none"
+                      className="field block w-full pl-10 pr-3 resize-none"
                       placeholder="Any special medical conditions, allergies, or notes..."
                       rows={4}
                     />

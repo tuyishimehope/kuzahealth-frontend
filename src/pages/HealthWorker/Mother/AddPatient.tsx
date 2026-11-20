@@ -120,9 +120,7 @@ const AddMotherForm: React.FC = () => {
         <select
           id={name}
           {...register(name)}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-            error ? "border-danger-500" : "border-neutral-300"
-          }`}
+          className={`field w-full ${ error ? "field-invalid" : "" }`}
         >
           <option value="">Select {label}</option>
           {options.map((option) => (
@@ -137,14 +135,12 @@ const AddMotherForm: React.FC = () => {
           type={type}
           placeholder={placeholder}
           {...register(name)}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-            error ? "border-danger-500" : "border-neutral-300"
-          }`}
+          className={`field w-full ${ error ? "field-invalid" : "" }`}
         />
       )}
 
       {error && (
-        <p className="mt-1 text-sm text-danger-600 flex items-center">
+        <p className="field-error">
           <FaInfoCircle className="mr-1" size={14} />
           {error}
         </p>

@@ -41,18 +41,7 @@ const Input: React.FC<InputProps> = ({
       value={value}
       onChange={onChange}
       disabled={disabled}
-      className={`
-        w-full px-4 py-3 rounded-lg border transition-all duration-200
-        ${Icon ? "pl-11" : "pl-4"}
-        ${
-          error
-            ? "border-danger-300 bg-danger-50 focus:border-danger-500 focus:ring-danger-200"
-            : "border-neutral-200 bg-white focus:border-primary-500 focus:ring-primary-200"
-        }
-        focus:outline-none focus:ring-2 focus:ring-opacity-50
-        disabled:bg-neutral-50 disabled:text-neutral-500 disabled:cursor-not-allowed
-        placeholder:text-neutral-400
-      `}
+      className={`field w-full ${Icon ? "pl-11" : "pl-4"} ${ error ? "field-invalid" : "" }`}
       {...props}
     />
   </div>

@@ -12,6 +12,7 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { colors } from "@/theme/colors";
 import AuthShowcase from "@/components/auth/AuthShowcase";
+import ProjectNotice from "@/components/auth/ProjectNotice";
 const api = import.meta.env.VITE_API_BASE_URL_DEV;
 const signInSchema = z.object({
   email: z.string().min(1, "Please enter email address or phone number"),
@@ -218,7 +219,7 @@ const SignIn = () => {
           >
             {/* Email Input with enhanced styling */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-neutral-700 flex items-center gap-2">
+              <label className="field-label !mb-0">
                 <Mail className="w-4 h-4" />
                {t("signin.email-address")}
               </label>
@@ -227,15 +228,11 @@ const SignIn = () => {
                   {...register("email")}
                   type="text"
                   placeholder="you@example.com"
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
-                    errors.email 
-                      ? 'border-danger-300 focus:ring-danger-500 focus:border-danger-500' 
-                      : 'border-neutral-300 hover:border-neutral-400'
-                  }`}
+                  className={`field w-full ${ errors.email ? 'field-invalid' : '' }`}
                   disabled={isSubmitting}
                 />
                 {watchedEmail && !errors.email && (
-                  <CheckCircle2 className="absolute right-3 top-3.5 w-5 h-5 text-success-500" />
+                  <CheckCircle2 className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-success-500" />
                 )}
               </div>
               <AnimatePresence>
@@ -244,7 +241,7 @@ const SignIn = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-sm text-danger-600 flex items-center gap-2"
+                    className="field-error !mt-0"
                   >
                     <AlertCircle className="w-4 h-4" />
                     {errors.email.message}
@@ -255,7 +252,7 @@ const SignIn = () => {
 
             {/* Password Input with enhanced styling */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-neutral-700 flex items-center gap-2">
+              <label className="field-label !mb-0">
                 <Lock className="w-4 h-4" />
                 {t("signin.password")}
               </label>
@@ -264,17 +261,13 @@ const SignIn = () => {
                   {...register("password")}
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
-                    errors.password 
-                      ? 'border-danger-300 focus:ring-danger-500 focus:border-danger-500' 
-                      : 'border-neutral-300 hover:border-neutral-400'
-                  }`}
+                  className={`field w-full pr-12 ${ errors.password ? 'field-invalid' : '' }`}
                   disabled={isSubmitting}
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-3 top-3.5 text-neutral-500 hover:text-neutral-700 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                   disabled={isSubmitting}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -286,7 +279,7 @@ const SignIn = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-sm text-danger-600 flex items-center gap-2"
+                    className="field-error !mt-0"
                   >
                     <AlertCircle className="w-4 h-4" />
                     {errors.password.message}
@@ -349,6 +342,8 @@ const SignIn = () => {
               {t("signin.back-to-home")}
             </motion.button>
           </motion.form>
+
+          <ProjectNotice />
 
           {/* Sign Up Link */}
           {/* <motion.div className="text-center mt-8" variants={itemVariants}>

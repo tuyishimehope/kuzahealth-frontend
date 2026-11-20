@@ -185,7 +185,7 @@ const Audit = () => {
               <select
                 value={selectedTimeRange}
                 onChange={(e) => setSelectedTimeRange(e.target.value)}
-                className="rounded-md border-neutral-300 shadow-sm focus:border-info-500 focus:ring-info-500 text-sm"
+                className="field"
               >
                 <option value="today">Today</option>
                 <option value="week">This Week</option>
@@ -324,7 +324,7 @@ const Audit = () => {
                 placeholder="Search users, resources, IPs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-lg border border-neutral-300 shadow-sm focus:border-info-500 focus:ring-2 focus:ring-info-500 focus:ring-offset-1 sm:text-sm transition"
+                className="field w-full pl-10 pr-4 sm:text-sm"
               />
             </div>
 
@@ -335,7 +335,7 @@ const Audit = () => {
                 <select
                   value={filterAction}
                   onChange={(e) => setFilterAction(e.target.value)}
-                  className="rounded-lg border-neutral-300 shadow-sm focus:border-info-500 focus:ring-2 focus:ring-info-500 sm:text-sm transition"
+                  className="field sm:text-sm"
                 >
                   <option value="all">All Actions</option>
                   <option value="GET">GET</option>
@@ -350,7 +350,7 @@ const Audit = () => {
                 <select
                   value={filterResource}
                   onChange={(e) => setFilterResource(e.target.value)}
-                  className="rounded-lg border-neutral-300 shadow-sm focus:border-info-500 focus:ring-2 focus:ring-info-500 sm:text-sm transition"
+                  className="field sm:text-sm"
                 >
                   <option value="all">All Resources</option>
                   <option value="patients">Patients</option>

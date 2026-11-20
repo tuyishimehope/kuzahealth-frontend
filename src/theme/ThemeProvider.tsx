@@ -41,6 +41,37 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
         Modal: { defaultProps: { radius: "lg" } },
         Button: { defaultProps: { radius: "md" } },
         Badge: { defaultProps: { radius: "sm" } },
+        // Match the Tailwind `.field` style (src/index.css)
+        Input: {
+          styles: {
+            input: {
+              borderRadius: 12,
+              borderColor: c.border,
+              backgroundColor: c.card,
+              fontSize: 14,
+              boxShadow: "0 1px 2px rgba(11, 27, 63, 0.04)",
+              transition: "border-color 150ms, box-shadow 150ms",
+              "&::placeholder": { color: c.neutral[400] },
+              "&:hover:not(:focus):not([data-invalid])": { borderColor: c.neutral[300] },
+              "&:focus, &:focus-within": {
+                borderColor: c.primary[500],
+                boxShadow: `0 0 0 4px ${c.primary[500]}26`,
+              },
+              "&[data-invalid]": {
+                borderColor: c.danger[400],
+                backgroundColor: `${c.danger[50]}66`,
+              },
+              "&[data-invalid]:focus": { boxShadow: `0 0 0 4px ${c.danger[500]}26` },
+            },
+          },
+        },
+        InputWrapper: {
+          styles: {
+            label: { fontSize: 13, fontWeight: 500, color: c.foreground, marginBottom: 6 },
+            description: { fontSize: 12, color: c.mutedForeground },
+            error: { fontSize: 12, fontWeight: 500 },
+          },
+        },
       },
       colors: {
         brand,

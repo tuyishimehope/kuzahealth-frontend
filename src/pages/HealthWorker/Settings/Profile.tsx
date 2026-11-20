@@ -90,7 +90,7 @@ const Profile = () => {
               {field.label}:
               <input
                 type={field.type}
-                className="border border-neutral-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-primaryColor transition duration-200"
+                className="field"
               />
             </label>
           ))}

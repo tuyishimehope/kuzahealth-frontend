@@ -24,13 +24,11 @@ const AnimatedInput = React.forwardRef<HTMLInputElement, {
       className="flex flex-col space-y-2"
       variants={itemVariants}
     >
-      <label className="text-sm font-medium text-neutral-700">{label}</label>
+      <label className="field-label !mb-0">{label}</label>
       <div className="relative">
         <input
           ref={ref} // Now ref works correctly!
-          className={`w-full px-4 py-3 bg-neutral-50 border ${
-            error ? "border-danger-300" : "border-neutral-200"
-          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200`}
+          className={`field w-full ${ error ? "field-invalid" : "" }`}
           {...props}
         />
       </div>
@@ -38,7 +36,7 @@ const AnimatedInput = React.forwardRef<HTMLInputElement, {
         <motion.p 
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
-          className="text-danger-500 text-xs mt-1"
+          className="field-error !mt-0"
         >
           {error}
         </motion.p>

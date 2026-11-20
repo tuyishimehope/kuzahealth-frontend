@@ -354,7 +354,7 @@ const SearchFilterBar = ({
         placeholder="Search by patient name..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-info-500 focus:border-info-500 outline-none"
+        className="field w-full pl-10 pr-4"
       />
     </div>
     <div className="flex items-center gap-2">
@@ -362,7 +362,7 @@ const SearchFilterBar = ({
       <select
         value={statusFilter}
         onChange={(e) => setStatusFilter(e.target.value)}
-        className="px-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-info-500 focus:border-info-500 outline-none"
+        className="field"
       >
         <option value="">All Records</option>
         <option value="Active">Active Pregnancies</option>

@@ -75,7 +75,7 @@ export default function AdminLogs() {
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="rounded-md border-neutral-300 shadow-sm focus:border-info-500 focus:ring-info-500 text-sm"
+              className="field"
             >
               <option value="ALL">All</option>
               <option value="INFO">Info</option>

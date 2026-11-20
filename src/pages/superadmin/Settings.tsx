@@ -277,7 +277,7 @@ const InputField = ({
   icon?: React.ReactNode;
 }) => (
   <div>
-    <label className="block text-sm font-medium text-neutral-700 mb-2">
+    <label className="field-label">
       {label}
     </label>
     <div className="relative">
@@ -286,9 +286,7 @@ const InputField = ({
         type={type}
         value={value || ""}
         onChange={onChange}
-        className={`w-full ${
-          icon ? "pl-10" : "pl-3"
-        } pr-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent`}
+        className={`field w-full ${ icon ? "pl-10" : "pl-3" } pr-3`}
       />
     </div>
   </div>
@@ -307,13 +305,13 @@ const SelectField = ({
   options: string[];
 }) => (
   <div>
-    <label className="block text-sm font-medium text-neutral-700 mb-2">
+    <label className="field-label">
       {label}
     </label>
     <select
       value={value || ""}
       onChange={onChange}
-      className="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+      className="field w-full"
     >
       {options.map((opt) => (
         <option key={opt} value={opt}>

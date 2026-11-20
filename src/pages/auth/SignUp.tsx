@@ -24,6 +24,7 @@ import { axiosInstance } from "@/utils/axiosInstance";
 import { Toaster, toast } from "sonner";
 import { colors } from "@/theme/colors";
 import AuthShowcase from "@/components/auth/AuthShowcase";
+import ProjectNotice from "@/components/auth/ProjectNotice";
 
 // Enhanced Zod schema with better validation
 const signUpSchema = z
@@ -302,7 +303,7 @@ const SignUp = (): JSX.Element => {
     isPassword = false
   ) => (
     <div className="space-y-2">
-      <label className="text-sm font-medium text-neutral-700 flex items-center gap-2">
+      <label className="field-label !mb-0">
         {icon}
         {label}
       </label>
@@ -321,13 +322,7 @@ const SignUp = (): JSX.Element => {
               : type
           }
           placeholder={placeholder}
-          className={`w-full px-4 py-3 ${
-            isPassword ? "pr-12" : ""
-          } border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
-            errors[name]
-              ? "border-danger-300 focus:ring-danger-500 focus:border-danger-500"
-              : "border-neutral-300 hover:border-neutral-400"
-          }`}
+          className={`field w-full ${ isPassword ? "pr-12" : "" } ${ errors[name] ? "field-invalid" : "" }`}
           disabled={isSubmitting}
         />
         {isPassword && (
@@ -336,7 +331,7 @@ const SignUp = (): JSX.Element => {
             onClick={() =>
               togglePasswordVisibility(name as "password" | "confirmPassword")
             }
-            className="absolute right-3 top-3.5 text-neutral-500 hover:text-neutral-700 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
             disabled={isSubmitting}
           >
             {(name === "password" ? showPassword : showConfirmPassword) ? (
@@ -347,7 +342,7 @@ const SignUp = (): JSX.Element => {
           </button>
         )}
         {watchedFields[name] && !errors[name] && !isPassword && (
-          <CheckCircle2 className="absolute right-3 top-3.5 w-5 h-5 text-success-500" />
+          <CheckCircle2 className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-success-500" />
         )}
       </div>
       <AnimatePresence>
@@ -356,7 +351,7 @@ const SignUp = (): JSX.Element => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="text-sm text-danger-600 flex items-center gap-2"
+            className="field-error !mt-0"
           >
             <AlertCircle className="w-4 h-4" />
             {errors[name]?.message}
@@ -373,18 +368,14 @@ const SignUp = (): JSX.Element => {
     icon: React.ReactNode
   ) => (
     <div className="space-y-2">
-      <label className="text-sm font-medium text-neutral-700 flex items-center gap-2">
+      <label className="field-label !mb-0">
         {icon}
         {label}
       </label>
       <div className="relative">
         <select
           {...register(name)}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-white/50 backdrop-blur-sm ${
-            errors[name]
-              ? "border-danger-300 focus:ring-danger-500 focus:border-danger-500"
-              : "border-neutral-300 hover:border-neutral-400"
-          }`}
+          className={`field w-full ${ errors[name] ? "field-invalid" : "" }`}
           disabled={isSubmitting}
         >
           {options.map((option) => (
@@ -394,7 +385,7 @@ const SignUp = (): JSX.Element => {
           ))}
         </select>
         {watchedFields[name] && !errors[name] && watchedFields[name] !== "" && (
-          <CheckCircle2 className="absolute right-10 top-3.5 w-5 h-5 text-success-500" />
+          <CheckCircle2 className="pointer-events-none absolute right-10 top-1/2 h-4 w-4 -translate-y-1/2 text-success-500" />
         )}
       </div>
       <AnimatePresence>
@@ -403,7 +394,7 @@ const SignUp = (): JSX.Element => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="text-sm text-danger-600 flex items-center gap-2"
+            className="field-error !mt-0"
           >
             <AlertCircle className="w-4 h-4" />
             {errors[name]?.message}
@@ -685,6 +676,8 @@ const SignUp = (): JSX.Element => {
               </motion.button>
             </motion.div>
           </motion.form>
+
+          <ProjectNotice />
         </motion.div>
       </motion.div>
     </motion.div>
